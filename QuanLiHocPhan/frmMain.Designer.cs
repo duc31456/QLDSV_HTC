@@ -195,7 +195,6 @@ namespace QuanLiHocPhan
             this.ribbonPageGroup9});
             this.ribNhapLieu.Name = "ribNhapLieu";
             this.ribNhapLieu.Text = "Nhập Liệu";
-            this.ribNhapLieu.Visible = false;
             // 
             // ribbonPageGroup4
             // 

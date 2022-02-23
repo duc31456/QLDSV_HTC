@@ -16,5 +16,25 @@ namespace QuanLiHocPhan
         {
             InitializeComponent();
         }
+
+        private void btnexit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Boolean changedInput = false;
+            if (txtmasv.Text != "")
+            {
+                changedInput = true;
+            }
+            if (changedInput)
+            {
+
+                if (MessageBox.Show("Bạn đang nhập dở, bạn có muốn thoát không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+
+                    return;
+                }
+            }
+
+            this.Close();
+        }
     }
 }
