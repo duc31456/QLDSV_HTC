@@ -30,10 +30,10 @@ namespace QuanLiHocPhan
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapDSSV));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnexit = new DevExpress.XtraBars.BarButtonItem();
@@ -61,11 +61,11 @@ namespace QuanLiHocPhan
             this.MA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DANGHIHOCC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tablelop = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TENLOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KHOAHOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnreset = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -87,9 +87,10 @@ namespace QuanLiHocPhan
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButtonItem4,
-            this.btnexit});
+            this.btnexit,
+            this.btnreset});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             // 
             // bar2
             // 
@@ -98,6 +99,7 @@ namespace QuanLiHocPhan
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnreset, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnexit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -208,6 +210,7 @@ namespace QuanLiHocPhan
             this.btntimkiem.TabIndex = 35;
             this.btntimkiem.Text = "Tìm kiếm";
             this.btntimkiem.UseVisualStyleBackColor = true;
+            this.btntimkiem.Click += new System.EventHandler(this.btntimkiem_Click);
             // 
             // label3
             // 
@@ -224,6 +227,7 @@ namespace QuanLiHocPhan
             this.txtmasv.Name = "txtmasv";
             this.txtmasv.Size = new System.Drawing.Size(167, 22);
             this.txtmasv.TabIndex = 33;
+            this.txtmasv.TextChanged += new System.EventHandler(this.txtmasv_TextChanged);
             // 
             // label2
             // 
@@ -240,14 +244,14 @@ namespace QuanLiHocPhan
             this.tablesinhvien.AllowUserToAddRows = false;
             this.tablesinhvien.AllowUserToDeleteRows = false;
             this.tablesinhvien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablesinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablesinhvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.tablesinhvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablesinhvien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MASVV,
@@ -258,26 +262,26 @@ namespace QuanLiHocPhan
             this.NGAYSINHH,
             this.MA,
             this.DANGHIHOCC});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablesinhvien.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablesinhvien.DefaultCellStyle = dataGridViewCellStyle8;
             this.tablesinhvien.Dock = System.Windows.Forms.DockStyle.Right;
             this.tablesinhvien.Location = new System.Drawing.Point(550, 313);
             this.tablesinhvien.Name = "tablesinhvien";
             this.tablesinhvien.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablesinhvien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablesinhvien.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.tablesinhvien.RowHeadersWidth = 51;
             this.tablesinhvien.RowTemplate.Height = 24;
             this.tablesinhvien.Size = new System.Drawing.Size(1261, 405);
@@ -359,8 +363,7 @@ namespace QuanLiHocPhan
             this.tablelop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MALOP,
             this.TENLOP,
-            this.KHOAHOC,
-            this.SISO});
+            this.KHOAHOC});
             this.tablelop.Dock = System.Windows.Forms.DockStyle.Top;
             this.tablelop.Location = new System.Drawing.Point(0, 0);
             this.tablelop.Name = "tablelop";
@@ -369,34 +372,7 @@ namespace QuanLiHocPhan
             this.tablelop.RowTemplate.Height = 24;
             this.tablelop.Size = new System.Drawing.Size(1811, 313);
             this.tablelop.TabIndex = 2;
-            // 
-            // MALOP
-            // 
-            this.MALOP.HeaderText = "Mã Lớp";
-            this.MALOP.MinimumWidth = 6;
-            this.MALOP.Name = "MALOP";
-            this.MALOP.ReadOnly = true;
-            // 
-            // TENLOP
-            // 
-            this.TENLOP.HeaderText = "Tên Lớp";
-            this.TENLOP.MinimumWidth = 6;
-            this.TENLOP.Name = "TENLOP";
-            this.TENLOP.ReadOnly = true;
-            // 
-            // KHOAHOC
-            // 
-            this.KHOAHOC.HeaderText = "Khóa Học";
-            this.KHOAHOC.MinimumWidth = 6;
-            this.KHOAHOC.Name = "KHOAHOC";
-            this.KHOAHOC.ReadOnly = true;
-            // 
-            // SISO
-            // 
-            this.SISO.HeaderText = "Sĩ Số";
-            this.SISO.MinimumWidth = 6;
-            this.SISO.Name = "SISO";
-            this.SISO.ReadOnly = true;
+            this.tablelop.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablelop_CellClick);
             // 
             // label1
             // 
@@ -410,6 +386,39 @@ namespace QuanLiHocPhan
             this.label1.TabIndex = 1;
             this.label1.Text = "THÔNG TIN SINH VIÊN KHOA CÔNG NGHỆ THÔNG TIN";
             // 
+            // MALOP
+            // 
+            this.MALOP.DataPropertyName = "MALOP";
+            this.MALOP.HeaderText = "Mã Lớp";
+            this.MALOP.MinimumWidth = 6;
+            this.MALOP.Name = "MALOP";
+            this.MALOP.ReadOnly = true;
+            // 
+            // TENLOP
+            // 
+            this.TENLOP.DataPropertyName = "TENLOP";
+            this.TENLOP.HeaderText = "Tên Lớp";
+            this.TENLOP.MinimumWidth = 6;
+            this.TENLOP.Name = "TENLOP";
+            this.TENLOP.ReadOnly = true;
+            // 
+            // KHOAHOC
+            // 
+            this.KHOAHOC.DataPropertyName = "KHOAHOC";
+            this.KHOAHOC.HeaderText = "Khóa Học";
+            this.KHOAHOC.MinimumWidth = 6;
+            this.KHOAHOC.Name = "KHOAHOC";
+            this.KHOAHOC.ReadOnly = true;
+            // 
+            // btnreset
+            // 
+            this.btnreset.Caption = "Reset";
+            this.btnreset.Id = 7;
+            this.btnreset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnreset.ImageOptions.Image")));
+            this.btnreset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnreset.ImageOptions.LargeImage")));
+            this.btnreset.Name = "btnreset";
+            this.btnreset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnreset_ItemClick);
+            // 
             // frmNhapDSSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -422,6 +431,7 @@ namespace QuanLiHocPhan
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmNhapDSSV";
             this.Text = "Danh Sách Sinh Viên";
+            this.Load += new System.EventHandler(this.frmNhapDSSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -451,10 +461,6 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView tablelop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MALOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TENLOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KHOAHOC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
         private System.Windows.Forms.DataGridView tablesinhvien;
         private System.Windows.Forms.DataGridViewTextBoxColumn MASVV;
         private System.Windows.Forms.DataGridViewTextBoxColumn HOO;
@@ -468,5 +474,9 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.TextBox txtmasv;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btntimkiem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MALOP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TENLOP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KHOAHOC;
+        private DevExpress.XtraBars.BarButtonItem btnreset;
     }
 }

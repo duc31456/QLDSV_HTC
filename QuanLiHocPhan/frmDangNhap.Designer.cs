@@ -41,7 +41,7 @@ namespace QuanLiHocPhan
             // cbxRole
             // 
             this.cbxRole.FormattingEnabled = true;
-            this.cbxRole.Location = new System.Drawing.Point(325, 109);
+            this.cbxRole.Location = new System.Drawing.Point(876, 188);
             this.cbxRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(268, 24);
@@ -51,7 +51,7 @@ namespace QuanLiHocPhan
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(255, 109);
+            this.label2.Location = new System.Drawing.Point(780, 195);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
@@ -61,7 +61,7 @@ namespace QuanLiHocPhan
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 260);
+            this.label1.Location = new System.Drawing.Point(760, 356);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 16;
@@ -69,7 +69,7 @@ namespace QuanLiHocPhan
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(327, 255);
+            this.passwordTextBox.Location = new System.Drawing.Point(876, 356);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
@@ -78,7 +78,7 @@ namespace QuanLiHocPhan
             // 
             // dangNhapButton
             // 
-            this.dangNhapButton.Location = new System.Drawing.Point(325, 295);
+            this.dangNhapButton.Location = new System.Drawing.Point(873, 408);
             this.dangNhapButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dangNhapButton.Name = "dangNhapButton";
             this.dangNhapButton.Size = new System.Drawing.Size(271, 37);
@@ -89,7 +89,7 @@ namespace QuanLiHocPhan
             // 
             // maGVTextBox
             // 
-            this.maGVTextBox.Location = new System.Drawing.Point(327, 217);
+            this.maGVTextBox.Location = new System.Drawing.Point(876, 310);
             this.maGVTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maGVTextBox.Name = "maGVTextBox";
             this.maGVTextBox.Size = new System.Drawing.Size(268, 22);
@@ -97,8 +97,8 @@ namespace QuanLiHocPhan
             // 
             // taiKhoanLabel
             // 
-            this.taiKhoanLabel.Location = new System.Drawing.Point(204, 217);
-            this.taiKhoanLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.taiKhoanLabel.Location = new System.Drawing.Point(763, 310);
+            this.taiKhoanLabel.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.taiKhoanLabel.Name = "taiKhoanLabel";
             this.taiKhoanLabel.Size = new System.Drawing.Size(90, 17);
             this.taiKhoanLabel.TabIndex = 12;
@@ -108,7 +108,7 @@ namespace QuanLiHocPhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 554);
+            this.ClientSize = new System.Drawing.Size(1599, 896);
             this.Controls.Add(this.cbxRole);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

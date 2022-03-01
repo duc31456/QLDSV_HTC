@@ -58,3 +58,5 @@ C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\Qua
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDSLTC.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmNhapDanhMucLop.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmNhapDSSV.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDSDHP.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmHP.resources

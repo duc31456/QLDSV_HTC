@@ -21,6 +21,18 @@ namespace QuanLiHocPhan
             hoTen.Text = "Họ tên : " + Program.mHoten;
             nhom.Text = "Nhóm : " + Program.mGroup;
             ribNhapLieu.Visible = ribThongTin.Visible = ribDangKy.Visible = true;
+            if(Program.mGroup == "PGV")
+            {
+                btnDanhMucLop.Enabled = btnDSSV.Enabled = btnLTC.Enabled = btnDSDHP.Enabled = btnlichgiangday.Enabled = true;
+            }
+            else if(Program.mType == "GV")
+            {
+                btnDanhMucLop.Enabled = btnDSSV.Enabled = btnlichgiangday.Enabled = true;
+            }    
+            else if(Program.mType == "SV")
+            {
+                btnDKLTC.Enabled = btnTKB.Enabled = btnHP.Enabled = true;
+            }    
         }
         private Form checkExists(Type ftype)
         {
@@ -208,6 +220,21 @@ namespace QuanLiHocPhan
         private void frmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnlichgiangday_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmLichGiangDay));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmLichGiangDay f = new frmLichGiangDay();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }

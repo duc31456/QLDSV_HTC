@@ -37,6 +37,7 @@ namespace QuanLiHocPhan
             this.btnsave = new DevExpress.XtraBars.BarButtonItem();
             this.btnedit = new DevExpress.XtraBars.BarButtonItem();
             this.btndelete = new DevExpress.XtraBars.BarButtonItem();
+            this.btnreset = new DevExpress.XtraBars.BarButtonItem();
             this.btnexit = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -44,11 +45,11 @@ namespace QuanLiHocPhan
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtsiso = new System.Windows.Forms.TextBox();
             this.checkhuylop = new System.Windows.Forms.CheckBox();
             this.dateketthuc = new System.Windows.Forms.DateTimePicker();
             this.datebatdau = new System.Windows.Forms.DateTimePicker();
             this.numtietbatdau = new System.Windows.Forms.NumericUpDown();
-            this.numsiso = new System.Windows.Forms.NumericUpDown();
             this.cbmagv = new System.Windows.Forms.ComboBox();
             this.numnhom = new System.Windows.Forms.NumericUpDown();
             this.cbmamh = new System.Windows.Forms.ComboBox();
@@ -73,7 +74,7 @@ namespace QuanLiHocPhan
             this.MALTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SOTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIENKHOA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HỌCKY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HOCKY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NHOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +86,6 @@ namespace QuanLiHocPhan
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numtietbatdau)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numsiso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numnhom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numhocky)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numsotc)).BeginInit();
@@ -107,9 +107,10 @@ namespace QuanLiHocPhan
             this.btnsave,
             this.btnedit,
             this.btndelete,
-            this.btnexit});
+            this.btnexit,
+            this.btnreset});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -123,6 +124,7 @@ namespace QuanLiHocPhan
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnsave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnedit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btndelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnreset, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnexit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -135,10 +137,12 @@ namespace QuanLiHocPhan
             this.btnadd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnadd.ImageOptions.Image")));
             this.btnadd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnadd.ImageOptions.LargeImage")));
             this.btnadd.Name = "btnadd";
+            this.btnadd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnadd_ItemClick);
             // 
             // btnsave
             // 
             this.btnsave.Caption = "Ghi";
+            this.btnsave.Enabled = false;
             this.btnsave.Id = 1;
             this.btnsave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnsave.ImageOptions.Image")));
             this.btnsave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnsave.ImageOptions.LargeImage")));
@@ -152,6 +156,7 @@ namespace QuanLiHocPhan
             this.btnedit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnedit.ImageOptions.Image")));
             this.btnedit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnedit.ImageOptions.LargeImage")));
             this.btnedit.Name = "btnedit";
+            this.btnedit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnedit_ItemClick);
             // 
             // btndelete
             // 
@@ -160,6 +165,16 @@ namespace QuanLiHocPhan
             this.btndelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btndelete.ImageOptions.Image")));
             this.btndelete.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btndelete.ImageOptions.LargeImage")));
             this.btndelete.Name = "btndelete";
+            this.btndelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btndelete_ItemClick);
+            // 
+            // btnreset
+            // 
+            this.btnreset.Caption = "Reset";
+            this.btnreset.Id = 5;
+            this.btnreset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnreset.ImageOptions.Image")));
+            this.btnreset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnreset.ImageOptions.LargeImage")));
+            this.btnreset.Name = "btnreset";
+            this.btnreset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnreset_ItemClick);
             // 
             // btnexit
             // 
@@ -216,11 +231,11 @@ namespace QuanLiHocPhan
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtsiso);
             this.panel1.Controls.Add(this.checkhuylop);
             this.panel1.Controls.Add(this.dateketthuc);
             this.panel1.Controls.Add(this.datebatdau);
             this.panel1.Controls.Add(this.numtietbatdau);
-            this.panel1.Controls.Add(this.numsiso);
             this.panel1.Controls.Add(this.cbmagv);
             this.panel1.Controls.Add(this.numnhom);
             this.panel1.Controls.Add(this.cbmamh);
@@ -249,6 +264,13 @@ namespace QuanLiHocPhan
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // txtsiso
+            // 
+            this.txtsiso.Location = new System.Drawing.Point(715, 243);
+            this.txtsiso.Name = "txtsiso";
+            this.txtsiso.Size = new System.Drawing.Size(100, 22);
+            this.txtsiso.TabIndex = 30;
+            // 
             // checkhuylop
             // 
             this.checkhuylop.AutoSize = true;
@@ -260,19 +282,21 @@ namespace QuanLiHocPhan
             // 
             // dateketthuc
             // 
+            this.dateketthuc.CustomFormat = "MMMMdd, yyyy";
             this.dateketthuc.Location = new System.Drawing.Point(1391, 196);
             this.dateketthuc.Name = "dateketthuc";
-            this.dateketthuc.Size = new System.Drawing.Size(230, 22);
+            this.dateketthuc.Size = new System.Drawing.Size(259, 22);
             this.dateketthuc.TabIndex = 28;
             this.dateketthuc.Value = new System.DateTime(2022, 2, 23, 0, 0, 0, 0);
             // 
             // datebatdau
             // 
+            this.datebatdau.CustomFormat = "MMMMdd, yyyy";
             this.datebatdau.Location = new System.Drawing.Point(1391, 157);
             this.datebatdau.Name = "datebatdau";
-            this.datebatdau.Size = new System.Drawing.Size(230, 22);
+            this.datebatdau.Size = new System.Drawing.Size(259, 22);
             this.datebatdau.TabIndex = 27;
-            this.datebatdau.Value = new System.DateTime(2022, 2, 23, 0, 0, 0, 0);
+            this.datebatdau.Value = new System.DateTime(2022, 2, 14, 0, 0, 0, 0);
             // 
             // numtietbatdau
             // 
@@ -280,13 +304,6 @@ namespace QuanLiHocPhan
             this.numtietbatdau.Name = "numtietbatdau";
             this.numtietbatdau.Size = new System.Drawing.Size(88, 22);
             this.numtietbatdau.TabIndex = 26;
-            // 
-            // numsiso
-            // 
-            this.numsiso.Location = new System.Drawing.Point(715, 241);
-            this.numsiso.Name = "numsiso";
-            this.numsiso.Size = new System.Drawing.Size(73, 22);
-            this.numsiso.TabIndex = 25;
             // 
             // cbmagv
             // 
@@ -469,7 +486,7 @@ namespace QuanLiHocPhan
             this.MALTC,
             this.SOTC,
             this.NIENKHOA,
-            this.HỌCKY,
+            this.HOCKY,
             this.MAMH,
             this.NHOM,
             this.MAGV,
@@ -486,6 +503,7 @@ namespace QuanLiHocPhan
             this.tableltc.RowTemplate.Height = 24;
             this.tableltc.Size = new System.Drawing.Size(1678, 378);
             this.tableltc.TabIndex = 3;
+            this.tableltc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellClick);
             // 
             // MALTC
             // 
@@ -511,13 +529,13 @@ namespace QuanLiHocPhan
             this.NIENKHOA.Name = "NIENKHOA";
             this.NIENKHOA.ReadOnly = true;
             // 
-            // HỌCKY
+            // HOCKY
             // 
-            this.HỌCKY.DataPropertyName = "HỌCKY";
-            this.HỌCKY.HeaderText = "Học Kỳ";
-            this.HỌCKY.MinimumWidth = 6;
-            this.HỌCKY.Name = "HỌCKY";
-            this.HỌCKY.ReadOnly = true;
+            this.HOCKY.DataPropertyName = "HOCKY";
+            this.HOCKY.HeaderText = "Học Kỳ";
+            this.HOCKY.MinimumWidth = 6;
+            this.HOCKY.Name = "HOCKY";
+            this.HOCKY.ReadOnly = true;
             // 
             // MAMH
             // 
@@ -595,11 +613,11 @@ namespace QuanLiHocPhan
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmDSLTC";
             this.Text = "Danh Sách Lớp Tín Chỉ";
+            this.Load += new System.EventHandler(this.frmDSLTC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numtietbatdau)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numsiso)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numnhom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numhocky)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numsotc)).EndInit();
@@ -638,7 +656,6 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numsiso;
         private System.Windows.Forms.ComboBox cbmagv;
         private System.Windows.Forms.NumericUpDown numnhom;
         private System.Windows.Forms.ComboBox cbmamh;
@@ -653,7 +670,7 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DataGridViewTextBoxColumn MALTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIENKHOA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HỌCKY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HOCKY;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
         private System.Windows.Forms.DataGridViewTextBoxColumn NHOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAGV;
@@ -662,5 +679,7 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANBATDAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANKETTHUC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn HUYLOP;
+        private System.Windows.Forms.TextBox txtsiso;
+        private DevExpress.XtraBars.BarButtonItem btnreset;
     }
 }

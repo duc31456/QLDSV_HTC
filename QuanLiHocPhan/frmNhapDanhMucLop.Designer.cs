@@ -43,7 +43,6 @@ namespace QuanLiHocPhan
             this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TENLOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KHOAHOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
@@ -144,6 +143,7 @@ namespace QuanLiHocPhan
             this.btntimkiem.TabIndex = 36;
             this.btntimkiem.Text = "Tìm kiếm";
             this.btntimkiem.UseVisualStyleBackColor = true;
+            this.btntimkiem.Click += new System.EventHandler(this.btntimkiem_Click);
             // 
             // tablelop
             // 
@@ -154,8 +154,7 @@ namespace QuanLiHocPhan
             this.tablelop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MALOP,
             this.TENLOP,
-            this.KHOAHOC,
-            this.SISO});
+            this.KHOAHOC});
             this.tablelop.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tablelop.Location = new System.Drawing.Point(0, 252);
             this.tablelop.Name = "tablelop";
@@ -167,6 +166,7 @@ namespace QuanLiHocPhan
             // 
             // MALOP
             // 
+            this.MALOP.DataPropertyName = "MALOP";
             this.MALOP.HeaderText = "Mã Lớp";
             this.MALOP.MinimumWidth = 6;
             this.MALOP.Name = "MALOP";
@@ -174,6 +174,7 @@ namespace QuanLiHocPhan
             // 
             // TENLOP
             // 
+            this.TENLOP.DataPropertyName = "TENLOP";
             this.TENLOP.HeaderText = "Tên Lớp";
             this.TENLOP.MinimumWidth = 6;
             this.TENLOP.Name = "TENLOP";
@@ -181,17 +182,11 @@ namespace QuanLiHocPhan
             // 
             // KHOAHOC
             // 
+            this.KHOAHOC.DataPropertyName = "KHOAHOC";
             this.KHOAHOC.HeaderText = "Khóa Học";
             this.KHOAHOC.MinimumWidth = 6;
             this.KHOAHOC.Name = "KHOAHOC";
             this.KHOAHOC.ReadOnly = true;
-            // 
-            // SISO
-            // 
-            this.SISO.HeaderText = "Sĩ Số";
-            this.SISO.MinimumWidth = 6;
-            this.SISO.Name = "SISO";
-            this.SISO.ReadOnly = true;
             // 
             // label1
             // 
@@ -267,6 +262,7 @@ namespace QuanLiHocPhan
             this.btnreset.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnreset.ImageOptions.Image")));
             this.btnreset.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnreset.ImageOptions.LargeImage")));
             this.btnreset.Name = "btnreset";
+            this.btnreset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnreset_ItemClick);
             // 
             // btnexit
             // 
@@ -365,6 +361,7 @@ namespace QuanLiHocPhan
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmNhapDanhMucLop";
             this.Text = "Danh Mục Lớp";
+            this.Load += new System.EventHandler(this.frmNhapDanhMucLop_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablelop)).EndInit();
@@ -396,14 +393,13 @@ namespace QuanLiHocPhan
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView tablelop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MALOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TENLOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KHOAHOC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
         private System.Windows.Forms.Button btntimkiem;
         private System.Windows.Forms.TextBox txtmalop;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraBars.BarButtonItem btnreset;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MALOP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TENLOP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KHOAHOC;
     }
 }
