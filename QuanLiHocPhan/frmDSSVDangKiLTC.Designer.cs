@@ -46,9 +46,17 @@ namespace QuanLiHocPhan
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabledangky = new System.Windows.Forms.DataGridView();
+            this.MALTC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAMH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NIENKHOA1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HOCKY1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HOCPHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbmonhoc = new System.Windows.Forms.ComboBox();
             this.tableltc = new System.Windows.Forms.DataGridView();
+            this.btnloc = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.MALTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SOTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIENKHOA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,17 +65,10 @@ namespace QuanLiHocPhan
             this.NHOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIETBATDAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THOIGIANBATDAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THOIGIANKETTHUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnloc = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.MALTC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAMH1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NIENKHOA1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HOCKY1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HOCPHI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -240,6 +241,54 @@ namespace QuanLiHocPhan
             this.tabledangky.TabIndex = 4;
             this.tabledangky.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabledangky_CellClick);
             // 
+            // MALTC1
+            // 
+            this.MALTC1.DataPropertyName = "MALTC";
+            this.MALTC1.HeaderText = "Mã Lớp Tín Chỉ Đã Chọn";
+            this.MALTC1.MinimumWidth = 6;
+            this.MALTC1.Name = "MALTC1";
+            this.MALTC1.ReadOnly = true;
+            // 
+            // MAMH1
+            // 
+            this.MAMH1.DataPropertyName = "MAMH";
+            this.MAMH1.HeaderText = "Mã Môn Học Đã Chọn";
+            this.MAMH1.MinimumWidth = 6;
+            this.MAMH1.Name = "MAMH1";
+            this.MAMH1.ReadOnly = true;
+            // 
+            // NIENKHOA1
+            // 
+            this.NIENKHOA1.DataPropertyName = "NIENKHOA";
+            this.NIENKHOA1.HeaderText = "Niên Khóa";
+            this.NIENKHOA1.MinimumWidth = 6;
+            this.NIENKHOA1.Name = "NIENKHOA1";
+            this.NIENKHOA1.ReadOnly = true;
+            // 
+            // HOCKY1
+            // 
+            this.HOCKY1.DataPropertyName = "HOCKY";
+            this.HOCKY1.HeaderText = "Học Kỳ";
+            this.HOCKY1.MinimumWidth = 6;
+            this.HOCKY1.Name = "HOCKY1";
+            this.HOCKY1.ReadOnly = true;
+            // 
+            // SOTC1
+            // 
+            this.SOTC1.DataPropertyName = "SOTC";
+            this.SOTC1.HeaderText = "Số Tín Chỉ";
+            this.SOTC1.MinimumWidth = 6;
+            this.SOTC1.Name = "SOTC1";
+            this.SOTC1.ReadOnly = true;
+            // 
+            // HOCPHI
+            // 
+            this.HOCPHI.DataPropertyName = "HOCPHI";
+            this.HOCPHI.HeaderText = "Học Phí Tạm Tính";
+            this.HOCPHI.MinimumWidth = 6;
+            this.HOCPHI.Name = "HOCPHI";
+            this.HOCPHI.ReadOnly = true;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.cbmonhoc);
@@ -276,6 +325,7 @@ namespace QuanLiHocPhan
             this.NHOM,
             this.MAGV,
             this.SISO,
+            this.CL,
             this.TIETBATDAU,
             this.THOIGIANBATDAU,
             this.THOIGIANKETTHUC});
@@ -289,6 +339,26 @@ namespace QuanLiHocPhan
             this.tableltc.TabIndex = 4;
             this.tableltc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellClick);
             this.tableltc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellContentClick);
+            // 
+            // btnloc
+            // 
+            this.btnloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnloc.Location = new System.Drawing.Point(976, 6);
+            this.btnloc.Name = "btnloc";
+            this.btnloc.Size = new System.Drawing.Size(133, 46);
+            this.btnloc.TabIndex = 3;
+            this.btnloc.Text = "Lọc>>";
+            this.btnloc.UseVisualStyleBackColor = true;
+            this.btnloc.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(485, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Lọc Theo Môn Học:";
             // 
             // MALTC
             // 
@@ -354,6 +424,14 @@ namespace QuanLiHocPhan
             this.SISO.Name = "SISO";
             this.SISO.ReadOnly = true;
             // 
+            // CL
+            // 
+            this.CL.DataPropertyName = "CL";
+            this.CL.HeaderText = "Còn Lại";
+            this.CL.MinimumWidth = 6;
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            // 
             // TIETBATDAU
             // 
             this.TIETBATDAU.DataPropertyName = "TIETBATDAU";
@@ -377,74 +455,6 @@ namespace QuanLiHocPhan
             this.THOIGIANKETTHUC.MinimumWidth = 6;
             this.THOIGIANKETTHUC.Name = "THOIGIANKETTHUC";
             this.THOIGIANKETTHUC.ReadOnly = true;
-            // 
-            // btnloc
-            // 
-            this.btnloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnloc.Location = new System.Drawing.Point(976, 6);
-            this.btnloc.Name = "btnloc";
-            this.btnloc.Size = new System.Drawing.Size(133, 46);
-            this.btnloc.TabIndex = 3;
-            this.btnloc.Text = "Lọc>>";
-            this.btnloc.UseVisualStyleBackColor = true;
-            this.btnloc.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(485, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Lọc Theo Môn Học:";
-            // 
-            // MALTC1
-            // 
-            this.MALTC1.DataPropertyName = "MALTC";
-            this.MALTC1.HeaderText = "Mã Lớp Tín Chỉ Đã Chọn";
-            this.MALTC1.MinimumWidth = 6;
-            this.MALTC1.Name = "MALTC1";
-            this.MALTC1.ReadOnly = true;
-            // 
-            // MAMH1
-            // 
-            this.MAMH1.DataPropertyName = "MAMH";
-            this.MAMH1.HeaderText = "Mã Môn Học Đã Chọn";
-            this.MAMH1.MinimumWidth = 6;
-            this.MAMH1.Name = "MAMH1";
-            this.MAMH1.ReadOnly = true;
-            // 
-            // NIENKHOA1
-            // 
-            this.NIENKHOA1.DataPropertyName = "NIENKHOA";
-            this.NIENKHOA1.HeaderText = "Niên Khóa";
-            this.NIENKHOA1.MinimumWidth = 6;
-            this.NIENKHOA1.Name = "NIENKHOA1";
-            this.NIENKHOA1.ReadOnly = true;
-            // 
-            // HOCKY1
-            // 
-            this.HOCKY1.DataPropertyName = "HOCKY";
-            this.HOCKY1.HeaderText = "Học Kỳ";
-            this.HOCKY1.MinimumWidth = 6;
-            this.HOCKY1.Name = "HOCKY1";
-            this.HOCKY1.ReadOnly = true;
-            // 
-            // SOTC1
-            // 
-            this.SOTC1.DataPropertyName = "SOTC";
-            this.SOTC1.HeaderText = "Số Tín Chỉ";
-            this.SOTC1.MinimumWidth = 6;
-            this.SOTC1.Name = "SOTC1";
-            this.SOTC1.ReadOnly = true;
-            // 
-            // HOCPHI
-            // 
-            this.HOCPHI.DataPropertyName = "HOCPHI";
-            this.HOCPHI.HeaderText = "Học Phí Tạm Tính";
-            this.HOCPHI.MinimumWidth = 6;
-            this.HOCPHI.Name = "HOCPHI";
-            this.HOCPHI.ReadOnly = true;
             // 
             // frmDSSVDangKiLTC
             // 
@@ -489,17 +499,6 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Button btnloc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView tableltc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MALTC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOTC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NIENKHOA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HOCKY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NHOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIETBATDAU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANBATDAU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANKETTHUC;
         private System.Windows.Forms.ComboBox cbmonhoc;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.Panel panel3;
@@ -511,5 +510,17 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DataGridViewTextBoxColumn HOCKY1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOTC1;
         private System.Windows.Forms.DataGridViewTextBoxColumn HOCPHI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MALTC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NIENKHOA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HOCKY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NHOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIETBATDAU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANBATDAU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANKETTHUC;
     }
 }

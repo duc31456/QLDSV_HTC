@@ -92,7 +92,7 @@ namespace QuanLiHocPhan
         private void load_dsltc()
         {
 
-            String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0";
+            String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0";
             try
             {
                 SqlCommand com = new SqlCommand(queryltc, Program.conn);
