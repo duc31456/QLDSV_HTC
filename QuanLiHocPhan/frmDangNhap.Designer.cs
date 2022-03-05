@@ -29,6 +29,7 @@ namespace QuanLiHocPhan
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangNhap));
             this.cbxRole = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,12 +37,14 @@ namespace QuanLiHocPhan
             this.dangNhapButton = new System.Windows.Forms.Button();
             this.maGVTextBox = new System.Windows.Forms.TextBox();
             this.taiKhoanLabel = new DevExpress.XtraEditors.LabelControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxRole
             // 
             this.cbxRole.FormattingEnabled = true;
-            this.cbxRole.Location = new System.Drawing.Point(325, 109);
+            this.cbxRole.Location = new System.Drawing.Point(876, 188);
             this.cbxRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbxRole.Name = "cbxRole";
             this.cbxRole.Size = new System.Drawing.Size(268, 24);
@@ -51,7 +54,7 @@ namespace QuanLiHocPhan
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(255, 109);
+            this.label2.Location = new System.Drawing.Point(760, 191);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
@@ -61,7 +64,7 @@ namespace QuanLiHocPhan
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 260);
+            this.label1.Location = new System.Drawing.Point(760, 356);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 16;
@@ -69,7 +72,7 @@ namespace QuanLiHocPhan
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(327, 255);
+            this.passwordTextBox.Location = new System.Drawing.Point(876, 356);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
@@ -78,7 +81,7 @@ namespace QuanLiHocPhan
             // 
             // dangNhapButton
             // 
-            this.dangNhapButton.Location = new System.Drawing.Point(325, 295);
+            this.dangNhapButton.Location = new System.Drawing.Point(873, 408);
             this.dangNhapButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dangNhapButton.Name = "dangNhapButton";
             this.dangNhapButton.Size = new System.Drawing.Size(271, 37);
@@ -89,7 +92,7 @@ namespace QuanLiHocPhan
             // 
             // maGVTextBox
             // 
-            this.maGVTextBox.Location = new System.Drawing.Point(327, 217);
+            this.maGVTextBox.Location = new System.Drawing.Point(876, 310);
             this.maGVTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maGVTextBox.Name = "maGVTextBox";
             this.maGVTextBox.Size = new System.Drawing.Size(268, 22);
@@ -97,18 +100,29 @@ namespace QuanLiHocPhan
             // 
             // taiKhoanLabel
             // 
-            this.taiKhoanLabel.Location = new System.Drawing.Point(204, 217);
-            this.taiKhoanLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.taiKhoanLabel.Location = new System.Drawing.Point(763, 315);
+            this.taiKhoanLabel.Margin = new System.Windows.Forms.Padding(12);
             this.taiKhoanLabel.Name = "taiKhoanLabel";
             this.taiKhoanLabel.Size = new System.Drawing.Size(90, 17);
             this.taiKhoanLabel.TabIndex = 12;
             this.taiKhoanLabel.Text = "Mã Đăng Nhập";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(443, 188);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(225, 225);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 554);
+            this.ClientSize = new System.Drawing.Size(1599, 896);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbxRole);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -119,6 +133,7 @@ namespace QuanLiHocPhan
             this.Name = "frmDangNhap";
             this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +148,6 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Button dangNhapButton;
         private System.Windows.Forms.TextBox maGVTextBox;
         private DevExpress.XtraEditors.LabelControl taiKhoanLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

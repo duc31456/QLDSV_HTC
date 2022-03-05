@@ -51,8 +51,9 @@ namespace QuanLiHocPhan
                 {
                     if (String.Equals(Program.mType, "SV"))
                     {
-                        Program.constr = "Data Source=DESKTOP-MMFEF8Q; Initial Catalog=" + Program.database + ";User ID= 'SV' ;password='sa'";
-                    }
+                    Program.constr = "Data Source=DESKTOP-MMFEF8Q; Initial Catalog=" + Program.database + ";User ID=" + Program.mlogin + ";password=" +
+                    Program.password;
+                }
                     else
                     {
                         Program.constr = "Data Source=DESKTOP-MMFEF8Q; Initial Catalog=" + Program.database + ";User ID=" + Program.mlogin + ";password=" +

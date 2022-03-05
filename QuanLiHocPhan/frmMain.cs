@@ -20,7 +20,21 @@ namespace QuanLiHocPhan
             maGiangVien.Text = "Mã : " + Program.username;
             hoTen.Text = "Họ tên : " + Program.mHoten;
             nhom.Text = "Nhóm : " + Program.mGroup;
-            ribNhapLieu.Visible = ribThongTin.Visible = ribDangKy.Visible = true;
+            ribNhapLieu.Visible = ribThongTin.Visible = ribDangKy.Visible = ribBaoCao.Visible = true;
+            if(Program.mGroup == "PGV")
+            {
+                btnDanhMucLop.Enabled = btnDSSV.Enabled = btnLTC.Enabled = btnDSDHP.Enabled = btnlichgiangday.Enabled = true;
+                btncapphong.Enabled = btnMonHoc.Enabled = true;
+                btnDangKy.Enabled = true;
+            }
+            else if(Program.mType == "GV")
+            {
+                btnDanhMucLop.Enabled = btnDSSV.Enabled = btnlichgiangday.Enabled = true;
+            }    
+            else if(Program.mType == "SV")
+            {
+                btnDKLTC.Enabled = btnTKB.Enabled = btnHP.Enabled = true;
+            }    
         }
         private Form checkExists(Type ftype)
         {
@@ -85,6 +99,7 @@ namespace QuanLiHocPhan
 
             closeAllForm();
             MessageBox.Show("Đăng xuất thành công");
+            
         }
 
         public static void closeAllForm()
@@ -208,6 +223,66 @@ namespace QuanLiHocPhan
         private void frmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnlichgiangday_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmLichGiangDay));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmLichGiangDay f = new frmLichGiangDay();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btncapphong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmCapPhongHoc));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmCapPhongHoc f = new frmCapPhongHoc();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barEditItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barEditItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barHeaderItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmMH));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmMH f = new frmMH();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }
