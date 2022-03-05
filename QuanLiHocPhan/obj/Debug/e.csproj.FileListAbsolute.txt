@@ -112,3 +112,5 @@ C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\Qua
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\bin\Debug\ja\DevExpress.Office.v19.2.Core.resources.dll
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\bin\Debug\ru\DevExpress.Office.v19.2.Core.resources.dll
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmLichGiangDay.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmCapPhongHoc.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QuanLiHocPhan\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmMH.resources

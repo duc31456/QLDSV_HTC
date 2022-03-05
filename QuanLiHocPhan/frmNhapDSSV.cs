@@ -138,5 +138,10 @@ namespace QuanLiHocPhan
         {
 
         }
+
+        private void tablelop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

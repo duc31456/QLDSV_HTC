@@ -134,5 +134,15 @@ namespace QuanLiHocPhan
                 MessageBox.Show("Lỗi khi in học phí!");
             }
         }
+
+        private void btnexit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnreset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            loadViewDSDHP();
+        }
     }
     }

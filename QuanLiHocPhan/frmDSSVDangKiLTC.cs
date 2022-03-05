@@ -44,7 +44,7 @@ namespace QuanLiHocPhan
         private void button1_Click(object sender, EventArgs e)
         {
             Comboboxmonhoc comboboxmonhoc = (Comboboxmonhoc)cbmonhoc.SelectedItem;
-            String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0 and MAMH =N'" + comboboxmonhoc.Value + "'";
+            String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, MAPHONG, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0 and MAMH =N'" + comboboxmonhoc.Value + "'";
             try
             {
                 SqlCommand com = new SqlCommand(queryltc, Program.conn);
@@ -66,7 +66,7 @@ namespace QuanLiHocPhan
         {
 
         }
-        private void loadViewDSDHP()
+        private void loadView()
         {
             try
             {
@@ -92,7 +92,7 @@ namespace QuanLiHocPhan
         private void load_dsltc()
         {
 
-            String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0";
+            String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, MAPHONG ,TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0";
             try
             {
                 SqlCommand com = new SqlCommand(queryltc, Program.conn);
@@ -113,7 +113,7 @@ namespace QuanLiHocPhan
         private void frmDSSVDangKiLTC_Load(object sender, EventArgs e)
         {
             load_dsltc();
-            loadViewDSDHP();
+            loadView();
         }
 
         private void btnreset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -157,13 +157,13 @@ namespace QuanLiHocPhan
         }
         private void layDSDK(int MALTC)
         {          
-            tabledangky.Rows.Add(tempmaltc, tempmamh, tempnienkhoa, temphocky, tempsotc, temphocphi);                        
+            tabledangky.Rows.Add(tempmaltc, tempmamh, tempnienkhoa, temphocky, tempsotc, temphocphi);
+            
         }
 
         private void btndk_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             layDSDK(tempmaltc);
-            
             
         }
 
@@ -215,6 +215,7 @@ namespace QuanLiHocPhan
                 }
                 
                 MessageBox.Show("Lưu thành công!");
+                loadView();
             }
             catch
             {
@@ -230,6 +231,7 @@ namespace QuanLiHocPhan
             if (dlr == DialogResult.OK)
             {
                 Luu_Vao_CSDL();
+                tabledangky.Enabled = false;
             }
             else
             {

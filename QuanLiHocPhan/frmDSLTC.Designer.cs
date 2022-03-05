@@ -45,6 +45,10 @@ namespace QuanLiHocPhan
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.t = new System.Windows.Forms.Label();
+            this.txtmaphong = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtchuyenmon = new System.Windows.Forms.TextBox();
             this.txtsiso = new System.Windows.Forms.TextBox();
             this.checkhuylop = new System.Windows.Forms.CheckBox();
             this.dateketthuc = new System.Windows.Forms.DateTimePicker();
@@ -79,6 +83,8 @@ namespace QuanLiHocPhan
             this.NHOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAPHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIETBATDAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THOIGIANBATDAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THOIGIANKETTHUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -203,15 +209,15 @@ namespace QuanLiHocPhan
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1678, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1924, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 795);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1035);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1678, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1924, 20);
             // 
             // barDockControlLeft
             // 
@@ -219,18 +225,22 @@ namespace QuanLiHocPhan
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 765);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1005);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1678, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1924, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 765);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1005);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.t);
+            this.panel1.Controls.Add(this.txtmaphong);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtchuyenmon);
             this.panel1.Controls.Add(this.txtsiso);
             this.panel1.Controls.Add(this.checkhuylop);
             this.panel1.Controls.Add(this.dateketthuc);
@@ -260,13 +270,46 @@ namespace QuanLiHocPhan
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1678, 765);
+            this.panel1.Size = new System.Drawing.Size(1924, 1005);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // t
+            // 
+            this.t.AutoSize = true;
+            this.t.Location = new System.Drawing.Point(1268, 121);
+            this.t.Name = "t";
+            this.t.Size = new System.Drawing.Size(87, 17);
+            this.t.TabIndex = 36;
+            this.t.Text = "MÃ PHÒNG:";
+            // 
+            // txtmaphong
+            // 
+            this.txtmaphong.Location = new System.Drawing.Point(1459, 116);
+            this.txtmaphong.Name = "txtmaphong";
+            this.txtmaphong.Size = new System.Drawing.Size(164, 22);
+            this.txtmaphong.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(568, 293);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "CHUYÊN MÔN:";
+            // 
+            // txtchuyenmon
+            // 
+            this.txtchuyenmon.Location = new System.Drawing.Point(715, 288);
+            this.txtchuyenmon.Name = "txtchuyenmon";
+            this.txtchuyenmon.Size = new System.Drawing.Size(164, 22);
+            this.txtchuyenmon.TabIndex = 31;
+            this.txtchuyenmon.TextChanged += new System.EventHandler(this.txtchuyenmon_TextChanged);
+            // 
             // txtsiso
             // 
-            this.txtsiso.Location = new System.Drawing.Point(715, 243);
+            this.txtsiso.Location = new System.Drawing.Point(715, 198);
             this.txtsiso.Name = "txtsiso";
             this.txtsiso.Size = new System.Drawing.Size(100, 22);
             this.txtsiso.TabIndex = 30;
@@ -274,7 +317,7 @@ namespace QuanLiHocPhan
             // checkhuylop
             // 
             this.checkhuylop.AutoSize = true;
-            this.checkhuylop.Location = new System.Drawing.Point(1391, 246);
+            this.checkhuylop.Location = new System.Drawing.Point(1459, 292);
             this.checkhuylop.Name = "checkhuylop";
             this.checkhuylop.Size = new System.Drawing.Size(18, 17);
             this.checkhuylop.TabIndex = 29;
@@ -283,24 +326,26 @@ namespace QuanLiHocPhan
             // dateketthuc
             // 
             this.dateketthuc.CustomFormat = "MMMMdd, yyyy";
-            this.dateketthuc.Location = new System.Drawing.Point(1391, 196);
+            this.dateketthuc.Location = new System.Drawing.Point(1459, 248);
             this.dateketthuc.Name = "dateketthuc";
             this.dateketthuc.Size = new System.Drawing.Size(259, 22);
             this.dateketthuc.TabIndex = 28;
             this.dateketthuc.Value = new System.DateTime(2022, 2, 23, 0, 0, 0, 0);
+            this.dateketthuc.ValueChanged += new System.EventHandler(this.dateketthuc_ValueChanged);
             // 
             // datebatdau
             // 
             this.datebatdau.CustomFormat = "MMMMdd, yyyy";
-            this.datebatdau.Location = new System.Drawing.Point(1391, 157);
+            this.datebatdau.Location = new System.Drawing.Point(1459, 197);
             this.datebatdau.Name = "datebatdau";
             this.datebatdau.Size = new System.Drawing.Size(259, 22);
             this.datebatdau.TabIndex = 27;
             this.datebatdau.Value = new System.DateTime(2022, 2, 14, 0, 0, 0, 0);
+            this.datebatdau.ValueChanged += new System.EventHandler(this.datebatdau_ValueChanged);
             // 
             // numtietbatdau
             // 
-            this.numtietbatdau.Location = new System.Drawing.Point(1391, 117);
+            this.numtietbatdau.Location = new System.Drawing.Point(1459, 163);
             this.numtietbatdau.Name = "numtietbatdau";
             this.numtietbatdau.Size = new System.Drawing.Size(88, 22);
             this.numtietbatdau.TabIndex = 26;
@@ -308,10 +353,12 @@ namespace QuanLiHocPhan
             // cbmagv
             // 
             this.cbmagv.FormattingEnabled = true;
-            this.cbmagv.Location = new System.Drawing.Point(715, 194);
+            this.cbmagv.Location = new System.Drawing.Point(715, 234);
             this.cbmagv.Name = "cbmagv";
             this.cbmagv.Size = new System.Drawing.Size(164, 24);
             this.cbmagv.TabIndex = 23;
+            this.cbmagv.SelectedIndexChanged += new System.EventHandler(this.cbmagv_SelectedIndexChanged);
+            this.cbmagv.TextChanged += new System.EventHandler(this.cbmagv_TextChanged);
             // 
             // numnhom
             // 
@@ -377,7 +424,7 @@ namespace QuanLiHocPhan
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(568, 246);
+            this.label12.Location = new System.Drawing.Point(568, 201);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(48, 17);
             this.label12.TabIndex = 14;
@@ -404,7 +451,7 @@ namespace QuanLiHocPhan
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1200, 119);
+            this.label9.Location = new System.Drawing.Point(1268, 162);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 17);
             this.label9.TabIndex = 11;
@@ -413,7 +460,7 @@ namespace QuanLiHocPhan
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1200, 163);
+            this.label8.Location = new System.Drawing.Point(1268, 203);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 17);
             this.label8.TabIndex = 10;
@@ -422,7 +469,7 @@ namespace QuanLiHocPhan
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1200, 201);
+            this.label7.Location = new System.Drawing.Point(1268, 253);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(155, 17);
             this.label7.TabIndex = 9;
@@ -431,7 +478,7 @@ namespace QuanLiHocPhan
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1200, 246);
+            this.label6.Location = new System.Drawing.Point(1268, 293);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 8;
@@ -449,7 +496,7 @@ namespace QuanLiHocPhan
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(568, 201);
+            this.label4.Location = new System.Drawing.Point(568, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 17);
             this.label4.TabIndex = 6;
@@ -491,19 +538,22 @@ namespace QuanLiHocPhan
             this.NHOM,
             this.MAGV,
             this.SISO,
+            this.CL,
+            this.MAPHONG,
             this.TIETBATDAU,
             this.THOIGIANBATDAU,
             this.THOIGIANKETTHUC,
             this.HUYLOP});
             this.tableltc.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableltc.Location = new System.Drawing.Point(0, 387);
+            this.tableltc.Location = new System.Drawing.Point(0, 627);
             this.tableltc.Name = "tableltc";
             this.tableltc.ReadOnly = true;
             this.tableltc.RowHeadersWidth = 51;
             this.tableltc.RowTemplate.Height = 24;
-            this.tableltc.Size = new System.Drawing.Size(1678, 378);
+            this.tableltc.Size = new System.Drawing.Size(1924, 378);
             this.tableltc.TabIndex = 3;
             this.tableltc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellClick);
+            this.tableltc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellContentClick);
             // 
             // MALTC
             // 
@@ -569,6 +619,22 @@ namespace QuanLiHocPhan
             this.SISO.Name = "SISO";
             this.SISO.ReadOnly = true;
             // 
+            // CL
+            // 
+            this.CL.DataPropertyName = "CL";
+            this.CL.HeaderText = "Số Lượng Đăng Ký Còn Lại";
+            this.CL.MinimumWidth = 6;
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            // 
+            // MAPHONG
+            // 
+            this.MAPHONG.DataPropertyName = "MAPHONG";
+            this.MAPHONG.HeaderText = "Mã Phòng Học";
+            this.MAPHONG.MinimumWidth = 6;
+            this.MAPHONG.Name = "MAPHONG";
+            this.MAPHONG.ReadOnly = true;
+            // 
             // TIETBATDAU
             // 
             this.TIETBATDAU.DataPropertyName = "TIETBATDAU";
@@ -605,7 +671,7 @@ namespace QuanLiHocPhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1678, 815);
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -667,6 +733,12 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DateTimePicker dateketthuc;
         private System.Windows.Forms.DateTimePicker datebatdau;
         private System.Windows.Forms.NumericUpDown numtietbatdau;
+        private System.Windows.Forms.TextBox txtsiso;
+        private DevExpress.XtraBars.BarButtonItem btnreset;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtchuyenmon;
+        private System.Windows.Forms.Label t;
+        private System.Windows.Forms.TextBox txtmaphong;
         private System.Windows.Forms.DataGridViewTextBoxColumn MALTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOTC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIENKHOA;
@@ -675,11 +747,11 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DataGridViewTextBoxColumn NHOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAPHONG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIETBATDAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANBATDAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANKETTHUC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn HUYLOP;
-        private System.Windows.Forms.TextBox txtsiso;
-        private DevExpress.XtraBars.BarButtonItem btnreset;
     }
 }

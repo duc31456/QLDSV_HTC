@@ -66,6 +66,7 @@ namespace QuanLiHocPhan
             this.MAGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAPHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIETBATDAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THOIGIANBATDAU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.THOIGIANKETTHUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -326,6 +327,7 @@ namespace QuanLiHocPhan
             this.MAGV,
             this.SISO,
             this.CL,
+            this.MAPHONG,
             this.TIETBATDAU,
             this.THOIGIANBATDAU,
             this.THOIGIANKETTHUC});
@@ -432,6 +434,14 @@ namespace QuanLiHocPhan
             this.CL.Name = "CL";
             this.CL.ReadOnly = true;
             // 
+            // MAPHONG
+            // 
+            this.MAPHONG.DataPropertyName = "MAPHONG";
+            this.MAPHONG.HeaderText = "Phòng Học";
+            this.MAPHONG.MinimumWidth = 6;
+            this.MAPHONG.Name = "MAPHONG";
+            this.MAPHONG.ReadOnly = true;
+            // 
             // TIETBATDAU
             // 
             this.TIETBATDAU.DataPropertyName = "TIETBATDAU";
@@ -519,6 +529,7 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DataGridViewTextBoxColumn MAGV;
         private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAPHONG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIETBATDAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANBATDAU;
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIANKETTHUC;

@@ -32,6 +32,7 @@ namespace QuanLiHocPhan
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLichGiangDay));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtchuyenmon = new System.Windows.Forms.TextBox();
             this.txthocham = new System.Windows.Forms.TextBox();
             this.txthocvi = new System.Windows.Forms.TextBox();
@@ -44,7 +45,18 @@ namespace QuanLiHocPhan
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbhocky = new System.Windows.Forms.ComboBox();
+            this.btnloc = new System.Windows.Forms.Button();
+            this.cbnienkhoa = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tablegiangday = new System.Windows.Forms.DataGridView();
+            this.MALTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAPHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NHOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.THOIGIAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -53,18 +65,8 @@ namespace QuanLiHocPhan
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbnienkhoa = new System.Windows.Forms.ComboBox();
-            this.btnloc = new System.Windows.Forms.Button();
-            this.cbhocky = new System.Windows.Forms.ComboBox();
-            this.MALTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NHOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.THOIGIAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HUYLOP = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablegiangday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -72,6 +74,7 @@ namespace QuanLiHocPhan
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.txtchuyenmon);
             this.panel1.Controls.Add(this.txthocham);
             this.panel1.Controls.Add(this.txthocvi);
@@ -88,6 +91,16 @@ namespace QuanLiHocPhan
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1870, 667);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(62, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 62);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // txtchuyenmon
             // 
@@ -194,6 +207,54 @@ namespace QuanLiHocPhan
             this.panel2.Size = new System.Drawing.Size(1870, 448);
             this.panel2.TabIndex = 1;
             // 
+            // cbhocky
+            // 
+            this.cbhocky.FormattingEnabled = true;
+            this.cbhocky.Location = new System.Drawing.Point(236, 54);
+            this.cbhocky.Name = "cbhocky";
+            this.cbhocky.Size = new System.Drawing.Size(191, 24);
+            this.cbhocky.TabIndex = 8;
+            this.cbhocky.SelectedIndexChanged += new System.EventHandler(this.cbhocky_SelectedIndexChanged);
+            // 
+            // btnloc
+            // 
+            this.btnloc.Location = new System.Drawing.Point(472, 29);
+            this.btnloc.Name = "btnloc";
+            this.btnloc.Size = new System.Drawing.Size(150, 51);
+            this.btnloc.TabIndex = 7;
+            this.btnloc.Text = "Lọc Thông Tin";
+            this.btnloc.UseVisualStyleBackColor = true;
+            this.btnloc.Click += new System.EventHandler(this.btnloc_Click);
+            // 
+            // cbnienkhoa
+            // 
+            this.cbnienkhoa.FormattingEnabled = true;
+            this.cbnienkhoa.Location = new System.Drawing.Point(236, 14);
+            this.cbnienkhoa.Name = "cbnienkhoa";
+            this.cbnienkhoa.Size = new System.Drawing.Size(191, 24);
+            this.cbnienkhoa.TabIndex = 5;
+            this.cbnienkhoa.SelectedIndexChanged += new System.EventHandler(this.cbnienkhoa_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(62, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 17);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Nhập học kỳ cần xem:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(62, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(168, 17);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Nhập niên khóa cần xem:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
             // tablegiangday
             // 
             this.tablegiangday.AllowUserToAddRows = false;
@@ -202,11 +263,11 @@ namespace QuanLiHocPhan
             this.tablegiangday.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablegiangday.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MALTC,
+            this.MAPHONG,
             this.MAMH,
             this.NHOM,
             this.SISO,
-            this.THOIGIAN,
-            this.HUYLOP});
+            this.THOIGIAN});
             this.tablegiangday.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tablegiangday.Location = new System.Drawing.Point(0, 144);
             this.tablegiangday.Name = "tablegiangday";
@@ -215,6 +276,55 @@ namespace QuanLiHocPhan
             this.tablegiangday.RowTemplate.Height = 24;
             this.tablegiangday.Size = new System.Drawing.Size(1870, 304);
             this.tablegiangday.TabIndex = 2;
+            this.tablegiangday.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablegiangday_CellContentClick);
+            // 
+            // MALTC
+            // 
+            this.MALTC.DataPropertyName = "MALTC";
+            this.MALTC.HeaderText = "Mã Lớp Giảng Dạy";
+            this.MALTC.MinimumWidth = 6;
+            this.MALTC.Name = "MALTC";
+            this.MALTC.ReadOnly = true;
+            // 
+            // MAPHONG
+            // 
+            this.MAPHONG.DataPropertyName = "MAPHONG";
+            this.MAPHONG.HeaderText = "Phòng Dạy Học";
+            this.MAPHONG.MinimumWidth = 6;
+            this.MAPHONG.Name = "MAPHONG";
+            this.MAPHONG.ReadOnly = true;
+            // 
+            // MAMH
+            // 
+            this.MAMH.DataPropertyName = "MAMH";
+            this.MAMH.HeaderText = "Mã Môn Học";
+            this.MAMH.MinimumWidth = 6;
+            this.MAMH.Name = "MAMH";
+            this.MAMH.ReadOnly = true;
+            // 
+            // NHOM
+            // 
+            this.NHOM.DataPropertyName = "NHOM";
+            this.NHOM.HeaderText = "Nhóm";
+            this.NHOM.MinimumWidth = 6;
+            this.NHOM.Name = "NHOM";
+            this.NHOM.ReadOnly = true;
+            // 
+            // SISO
+            // 
+            this.SISO.DataPropertyName = "SISO";
+            this.SISO.HeaderText = "Sĩ Số Lớp Giảng Dạy ";
+            this.SISO.MinimumWidth = 6;
+            this.SISO.Name = "SISO";
+            this.SISO.ReadOnly = true;
+            // 
+            // THOIGIAN
+            // 
+            this.THOIGIAN.DataPropertyName = "THOIGIAN";
+            this.THOIGIAN.HeaderText = "Thời Gian";
+            this.THOIGIAN.MinimumWidth = 6;
+            this.THOIGIAN.Name = "THOIGIAN";
+            this.THOIGIAN.ReadOnly = true;
             // 
             // label2
             // 
@@ -222,7 +332,7 @@ namespace QuanLiHocPhan
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1004, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(308, 39);
+            this.label2.Size = new System.Drawing.Size(297, 38);
             this.label2.TabIndex = 1;
             this.label2.Text = "LỊCH GIẢNG DẠY";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -294,98 +404,6 @@ namespace QuanLiHocPhan
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 667);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(62, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(168, 17);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Nhập niên khóa cần xem:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(62, 63);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(147, 17);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Nhập học kỳ cần xem:";
-            // 
-            // cbnienkhoa
-            // 
-            this.cbnienkhoa.FormattingEnabled = true;
-            this.cbnienkhoa.Location = new System.Drawing.Point(236, 14);
-            this.cbnienkhoa.Name = "cbnienkhoa";
-            this.cbnienkhoa.Size = new System.Drawing.Size(191, 24);
-            this.cbnienkhoa.TabIndex = 5;
-            // 
-            // btnloc
-            // 
-            this.btnloc.Location = new System.Drawing.Point(472, 29);
-            this.btnloc.Name = "btnloc";
-            this.btnloc.Size = new System.Drawing.Size(150, 51);
-            this.btnloc.TabIndex = 7;
-            this.btnloc.Text = "Lọc Thông Tin";
-            this.btnloc.UseVisualStyleBackColor = true;
-            this.btnloc.Click += new System.EventHandler(this.btnloc_Click);
-            // 
-            // cbhocky
-            // 
-            this.cbhocky.FormattingEnabled = true;
-            this.cbhocky.Location = new System.Drawing.Point(236, 54);
-            this.cbhocky.Name = "cbhocky";
-            this.cbhocky.Size = new System.Drawing.Size(191, 24);
-            this.cbhocky.TabIndex = 8;
-            // 
-            // MALTC
-            // 
-            this.MALTC.DataPropertyName = "MALTC";
-            this.MALTC.HeaderText = "Mã Lớp Giảng Dạy";
-            this.MALTC.MinimumWidth = 6;
-            this.MALTC.Name = "MALTC";
-            this.MALTC.ReadOnly = true;
-            // 
-            // MAMH
-            // 
-            this.MAMH.DataPropertyName = "MAMH";
-            this.MAMH.HeaderText = "Mã Môn Học";
-            this.MAMH.MinimumWidth = 6;
-            this.MAMH.Name = "MAMH";
-            this.MAMH.ReadOnly = true;
-            // 
-            // NHOM
-            // 
-            this.NHOM.DataPropertyName = "NHOM";
-            this.NHOM.HeaderText = "Nhóm";
-            this.NHOM.MinimumWidth = 6;
-            this.NHOM.Name = "NHOM";
-            this.NHOM.ReadOnly = true;
-            // 
-            // SISO
-            // 
-            this.SISO.DataPropertyName = "SISO";
-            this.SISO.HeaderText = "Sĩ Số Lớp Giảng Dạy ";
-            this.SISO.MinimumWidth = 6;
-            this.SISO.Name = "SISO";
-            this.SISO.ReadOnly = true;
-            // 
-            // THOIGIAN
-            // 
-            this.THOIGIAN.DataPropertyName = "THOIGIAN";
-            this.THOIGIAN.HeaderText = "Thời Gian";
-            this.THOIGIAN.MinimumWidth = 6;
-            this.THOIGIAN.Name = "THOIGIAN";
-            this.THOIGIAN.ReadOnly = true;
-            // 
-            // HUYLOP
-            // 
-            this.HUYLOP.DataPropertyName = "HUYLOP";
-            this.HUYLOP.HeaderText = "Trạng Thái Lớp Giảng Dạy ";
-            this.HUYLOP.MinimumWidth = 6;
-            this.HUYLOP.Name = "HUYLOP";
-            this.HUYLOP.ReadOnly = true;
-            // 
             // frmLichGiangDay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -398,10 +416,11 @@ namespace QuanLiHocPhan
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmLichGiangDay";
-            this.Text = "frmLichGiangDay";
+            this.Text = "Lịch Giảng Dạy";
             this.Load += new System.EventHandler(this.frmLichGiangDay_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablegiangday)).EndInit();
@@ -441,10 +460,11 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbhocky;
         private System.Windows.Forms.DataGridViewTextBoxColumn MALTC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAPHONG;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
         private System.Windows.Forms.DataGridViewTextBoxColumn NHOM;
         private System.Windows.Forms.DataGridViewTextBoxColumn SISO;
         private System.Windows.Forms.DataGridViewTextBoxColumn THOIGIAN;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn HUYLOP;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

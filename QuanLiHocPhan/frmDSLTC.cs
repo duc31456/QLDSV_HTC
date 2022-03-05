@@ -59,7 +59,7 @@ namespace QuanLiHocPhan
             {
                 addltc();
 
-                txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
+                txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled = txtmaphong.Enabled =
                 cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
                 datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = false;
 
@@ -72,7 +72,7 @@ namespace QuanLiHocPhan
             {
                 editltc();
 
-                txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
+                txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled = txtmaphong.Enabled =
                 cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
                 datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = false;
 
@@ -109,7 +109,7 @@ namespace QuanLiHocPhan
         }
         private void load_dsltc()
         {
-            String queryltc = "select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC, HUYLOP from Get_DSLTC";               
+            String queryltc = "select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, MAPHONG, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC, HUYLOP from Get_DSLTC";               
                 try
                 {
                     SqlCommand com = new SqlCommand(queryltc, Program.conn);
@@ -159,17 +159,18 @@ namespace QuanLiHocPhan
         }
         private void frmDSLTC_Load(object sender, EventArgs e)
         {
-            txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
+            txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled = txtmaphong.Enabled =
             cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
             datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = false;
 
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
 
+            txtchuyenmon.Enabled = false;
             load_dsltc();
             load_cbx();
                        
         }
-
+        int tempcl = 0;
         private void tableltc_CellClick(object sender, DataGridViewCellEventArgs e)
         {          
             if (e.RowIndex >= 0)
@@ -184,21 +185,23 @@ namespace QuanLiHocPhan
                     cbmamh.Text = row.Cells["MAMH"].Value.ToString();                   
                     numnhom.Value = Int32.Parse(row.Cells["NHOM"].Value.ToString());                    
                     cbmagv.Text = row.Cells["MAGV"].Value.ToString();                    
-                    txtsiso.Text = row.Cells["SISO"].Value.ToString();                   
-                    numtietbatdau.Value = Int32.Parse(row.Cells["TIETBATDAU"].Value.ToString());                   
+                    txtsiso.Text = row.Cells["SISO"].Value.ToString();
+                    tempcl = Int32.Parse(row.Cells["CL"].Value.ToString());
+                    txtmaphong.Text = row.Cells["MAPHONG"].Value.ToString();
+                    numtietbatdau.Value = Int32.Parse(row.Cells["TIETBATDAU"].Value.ToString());                      
                     datebatdau.Text = row.Cells["THOIGIANBATDAU"].Value.ToString();                    
                     dateketthuc.Text = row.Cells["THOIGIANKETTHUC"].Value.ToString();                    
                     checkhuylop.Checked = (bool)row.Cells["HUYLOP"].Value;
                    
-                    maltcUpdate = Int32.Parse(txtmaltc.Text); ;
+                    maltcUpdate = Int32.Parse(txtmaltc.Text);                   
 
-                    txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
+                    txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled = txtmaphong.Enabled=
                     cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
                     datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = false;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Không thể lấy danh sách sinh viên của lớp này!");
+                    MessageBox.Show("Không thể lấy danh sách lớp tín chỉ này!");
                 }
             }
         }
@@ -207,14 +210,14 @@ namespace QuanLiHocPhan
         {
             load_dsltc();
             load_cbx();
-            txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled = 
+            txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled = txtmaphong.Enabled =
             cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled = 
             datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = false;
 
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true ;
 
         }
-        
+        String thaythe = "";
         public void addltc()
         {
             Comboboxmamh comboboxmonhoc = (Comboboxmamh)cbmamh.SelectedItem;
@@ -222,14 +225,15 @@ namespace QuanLiHocPhan
             string queryaddltc = "";
             queryaddltc = "exec SP_ADD_EDIT_DELETE_LTC @MALTC=N'" + txtmaltc.Text + "',@SOTC=" + numsotc.Value + ",@NIENKHOA=N'" + 
             txtnienkhoa.Text + "',@HOCKY=" + numhocky.Value + ",@MAMH=N'" + comboboxmonhoc.Value + "',@NHOM=" + 
-            numnhom.Value + ",@MAGV=N'" + comboboxmagv.Value + "',@SISO=" + Int32.Parse(txtsiso.Text) + ",@TIETBATDAU=" + 
-            numtietbatdau.Value + ",@THOIGIANBATDAU=N'" + datebatdau.Value.ToString("yyyy/MM/dd") + "',@THOIGIANKETTHUC=N'" + dateketthuc.Value.ToString("yyyy/MM/dd") + "',@HUYLOP=N'" + checkhuylop.Checked + "',@TYPE=N'" + type + "',@MALTCOLD=N'" + maltcUpdate + "'";
+            numnhom.Value + ",@MAGV=N'" + comboboxmagv.Value + "',@SISO=" + Int32.Parse(txtsiso.Text) + ",@CL=" + Int32.Parse(txtsiso.Text) +
+            ",@MAPHONG=N'" + thaythe + "',@TIETBATDAU=" + numtietbatdau.Value + ",@THOIGIANBATDAU=N'" + datebatdau.Value.ToString("yyyy/MM/dd") + 
+            "',@THOIGIANKETTHUC=N'" + dateketthuc.Value.ToString("yyyy/MM/dd") + "',@HUYLOP=N'" + checkhuylop.Checked + "',@TYPE=N'" + type + "',@MALTCOLD=N'" + maltcUpdate + "'";
             try
             {
                 SqlCommand com = new SqlCommand(queryaddltc, Program.conn);
                 com.ExecuteNonQuery();
                 DataTable dt = tableltc.DataSource as DataTable;
-                dt.Rows.Add(txtmaltc.Text, numsotc.Value, txtnienkhoa.Text, numhocky.Value, comboboxmonhoc.Value, numnhom.Value, comboboxmagv.Value, txtsiso.Text, numtietbatdau.Value, datebatdau.Value.ToString("yyyy/MM/dd"), datebatdau.Value.ToString("yyyy/MM/dd"), checkhuylop.Checked);
+                dt.Rows.Add(txtmaltc.Text, numsotc.Value, txtnienkhoa.Text, numhocky.Value, comboboxmonhoc.Value, numnhom.Value, comboboxmagv.Value, txtsiso.Text, txtsiso.Text,thaythe,numtietbatdau.Value, datebatdau.Value.ToString("yyyy/MM/dd"), datebatdau.Value.ToString("yyyy/MM/dd"), checkhuylop.Checked);
                 tableltc.DataSource = dt;
             }
             catch (Exception ex)
@@ -245,8 +249,11 @@ namespace QuanLiHocPhan
             string queryeditltc = "";
             queryeditltc = "exec SP_ADD_EDIT_DELETE_LTC @MALTC=N'" + txtmaltc.Text + "',@SOTC=" + numsotc.Value + ",@NIENKHOA=N'" +
             txtnienkhoa.Text + "',@HOCKY=" + numhocky.Value + ",@MAMH=N'" + comboboxmonhoc.Value + "',@NHOM=" +
-            numnhom.Value + ",@MAGV=N'" + comboboxmagv.Value + "',@SISO=" + txtsiso.Text + ",@TIETBATDAU=" +
-            numtietbatdau.Value + ",@THOIGIANBATDAU=N'" + datebatdau.Value.ToString("yyyy/MM/dd") + "',@THOIGIANKETTHUC=N'" + dateketthuc.Value.ToString("yyyy/MM/dd") + "',@HUYLOP=N'" + checkhuylop.Checked + "',@TYPE=N'" + type + "',@MALTCOLD=N'" + maltcUpdate + "'";
+            numnhom.Value + ",@MAGV=N'" + comboboxmagv.Value + "',@SISO=" + txtsiso.Text + ",@CL=" + tempcl +
+            ",@MAPHONG=N'" + txtmaphong.Text + ",@TIETBATDAU=" + numtietbatdau.Value + ",@THOIGIANBATDAU=N'" + 
+            datebatdau.Value.ToString("yyyy/MM/dd") + "',@THOIGIANKETTHUC=N'" + dateketthuc.Value.ToString("yyyy/MM/dd") + 
+            "',@HUYLOP=N'" + checkhuylop.Checked + "',@TYPE=N'" + type + "',@MALTCOLD=N'" + maltcUpdate + "'";
+
             Console.WriteLine(queryeditltc);
             try
             {
@@ -266,6 +273,8 @@ namespace QuanLiHocPhan
                         dt.Rows[index]["NHOM"] = numnhom.Value;
                         dt.Rows[index]["MAGV"] = comboboxmagv.Value;
                         dt.Rows[index]["SISO"] = txtsiso.Text;
+                        dt.Rows[index]["CL"] = tempcl;
+                        dt.Rows[index]["MAPHONG"] = txtmaphong.Text;
                         dt.Rows[index]["TIETBATDAU"] = numtietbatdau.Value;
                         dt.Rows[index]["THOIGIANBATDAU"] = datebatdau.Value.ToString("yyyy/MM/dd");
                         dt.Rows[index]["THOIGIANKETTHUC"] = dateketthuc.Value.ToString("yyyy/MM/dd");
@@ -279,7 +288,7 @@ namespace QuanLiHocPhan
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thay đổi dữ liệu lớp tín chỉ!");
+                MessageBox.Show("Lỗi khi thay đổi dữ liệu lớp tín chỉ hoặc thay đổi trùng với lịch học lớp khác!");
             }
         }
 
@@ -290,8 +299,9 @@ namespace QuanLiHocPhan
             string querydeleteltc = "";
             querydeleteltc = "exec SP_ADD_EDIT_DELETE_LTC @MALTC=N'" + txtmaltc.Text + "',@SOTC=" + numsotc.Value + ",@NIENKHOA=N'" +
             txtnienkhoa.Text + "',@HOCKY=" + numhocky.Value + ",@MAMH=N'" + comboboxmonhoc.Value + "',@NHOM=" +
-            numnhom.Value + ",@MAGV=N'" + comboboxmagv.Value + "',@SISO=" + Int32.Parse(txtsiso.Text) + ",@TIETBATDAU=" +
-            numtietbatdau.Value + ",@THOIGIANBATDAU=N'" + datebatdau.Value.ToString("yyyy/MM/dd") + "',@THOIGIANKETTHUC=N'" + dateketthuc.Value.ToString("yyyy/MM/dd") + "',@HUYLOP=N'" + checkhuylop.Checked + "',@TYPE=N'" + type + "',@MALTCOLD=N'" + maltcUpdate + "'";
+            numnhom.Value + ",@MAGV=N'" + comboboxmagv.Value + "',@SISO=" + Int32.Parse(txtsiso.Text) + ",@CL=" + tempcl +
+            ",@MAPHONG=N'" + txtmaphong.Text + ",@TIETBATDAU=" + numtietbatdau.Value + ",@THOIGIANBATDAU=N'" + datebatdau.Value.ToString("yyyy/MM/dd") +
+            "',@THOIGIANKETTHUC=N'" + dateketthuc.Value.ToString("yyyy/MM/dd") + "',@HUYLOP=N'" + checkhuylop.Checked + "',@TYPE=N'" + type + "',@MALTCOLD=N'" + maltcUpdate + "'";
 
             try
             {
@@ -321,7 +331,7 @@ namespace QuanLiHocPhan
         private void btnadd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
-            cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
+            cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =            
             datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = true;          
 
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
@@ -334,6 +344,7 @@ namespace QuanLiHocPhan
             numhocky.Value = 1;
             numnhom.Value = 1;
             txtsiso.Text = "";
+            txtmaphong.Text = "";
             numtietbatdau.Value = 1;
             checkhuylop.Checked = false;
 
@@ -343,8 +354,8 @@ namespace QuanLiHocPhan
 
         private void btnedit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
-            cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
+            numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
+            cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =           
             datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = true;
 
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
@@ -364,7 +375,7 @@ namespace QuanLiHocPhan
                     deleteltc();
                 
                     txtmaltc.Enabled = numsotc.Enabled = txtnienkhoa.Enabled = numhocky.Enabled =
-                    cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = numtietbatdau.Enabled =
+                    cbmamh.Enabled = numnhom.Enabled = cbmagv.Enabled = txtsiso.Enabled = txtmaphong.Enabled = numtietbatdau.Enabled =
                     datebatdau.Enabled = dateketthuc.Enabled = checkhuylop.Enabled = false;
                     
                     btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
@@ -376,6 +387,58 @@ namespace QuanLiHocPhan
             {
                 return;
             }    
+        }
+
+        private void datebatdau_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateketthuc_ValueChanged(object sender, EventArgs e)
+        {
+            if(dateketthuc.Value <= datebatdau.Value)
+            {
+                MessageBox.Show("Thời gian kết thúc môn học phải muộn hơn thời gian bắt đầu--- Vui lòng kiểm tra lại thông tin!!");
+                return;
+            }    
+        }
+
+        private void txtchuyenmon_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbmagv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlDataReader myReader;
+            Comboboxmagv comboboxmagv = (Comboboxmagv)cbmagv.SelectedItem;
+            String query;
+            query = "use [QLDSV_HTC] select CHUYENMON from dbo.GIANGVIEN where MAGV=N'" + comboboxmagv.Value + "'";
+            Console.WriteLine(query);
+            SqlCommand command = new SqlCommand(query, Program.conn);
+            command.CommandType = CommandType.Text;
+            try
+            {
+                myReader = command.ExecuteReader();
+                myReader.Read();
+                txtchuyenmon.Text = myReader["CHUYENMON"].ToString();
+                Console.WriteLine(txtchuyenmon.Text);
+                myReader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Chuyên môn của giảng viên bị lỗi---Vui lòng kiểm tra lại!!");
+            }
+        }
+
+        private void tableltc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbmagv_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
  }

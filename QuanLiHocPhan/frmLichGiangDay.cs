@@ -137,5 +137,30 @@ namespace QuanLiHocPhan
                 MessageBox.Show("Lỗi khi tìm kiếm lớp giảng dạy!");
             }
         }
+
+        private void cbhocky_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbnienkhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tablegiangday_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

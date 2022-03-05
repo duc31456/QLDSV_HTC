@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCapPhongHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCapPhongHoc.Designer.cs">
+      <DependentUpon>frmCapPhongHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMH.Designer.cs">
+      <DependentUpon>frmMH.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNhapDanhMucLop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +136,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCapPhongHoc.resx">
+      <DependentUpon>frmCapPhongHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDangKy.resx">
       <DependentUpon>frmDangKy.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMH.resx">
+      <DependentUpon>frmMH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNhapDanhMucLop.resx">
       <DependentUpon>frmNhapDanhMucLop.cs</DependentUpon>

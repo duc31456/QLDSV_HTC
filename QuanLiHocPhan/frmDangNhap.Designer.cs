@@ -29,6 +29,7 @@ namespace QuanLiHocPhan
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangNhap));
             this.cbxRole = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +37,8 @@ namespace QuanLiHocPhan
             this.dangNhapButton = new System.Windows.Forms.Button();
             this.maGVTextBox = new System.Windows.Forms.TextBox();
             this.taiKhoanLabel = new DevExpress.XtraEditors.LabelControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxRole
@@ -51,7 +54,7 @@ namespace QuanLiHocPhan
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(780, 195);
+            this.label2.Location = new System.Drawing.Point(760, 191);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
@@ -97,18 +100,29 @@ namespace QuanLiHocPhan
             // 
             // taiKhoanLabel
             // 
-            this.taiKhoanLabel.Location = new System.Drawing.Point(763, 310);
-            this.taiKhoanLabel.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.taiKhoanLabel.Location = new System.Drawing.Point(763, 315);
+            this.taiKhoanLabel.Margin = new System.Windows.Forms.Padding(12);
             this.taiKhoanLabel.Name = "taiKhoanLabel";
             this.taiKhoanLabel.Size = new System.Drawing.Size(90, 17);
             this.taiKhoanLabel.TabIndex = 12;
             this.taiKhoanLabel.Text = "Mã Đăng Nhập";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(443, 188);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(225, 225);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
             // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1599, 896);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbxRole);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -119,6 +133,7 @@ namespace QuanLiHocPhan
             this.Name = "frmDangNhap";
             this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +148,6 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Button dangNhapButton;
         private System.Windows.Forms.TextBox maGVTextBox;
         private DevExpress.XtraEditors.LabelControl taiKhoanLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
