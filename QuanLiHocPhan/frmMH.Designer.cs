@@ -44,8 +44,9 @@ namespace QuanLiHocPhan
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.btndelete = new DevExpress.XtraBars.BarButtonItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtsotietth = new System.Windows.Forms.TextBox();
-            this.txtsotietlt = new System.Windows.Forms.TextBox();
+            this.numsotc = new System.Windows.Forms.NumericUpDown();
+            this.cbmamh = new System.Windows.Forms.ComboBox();
+            this.txtsotiet = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txttenmh = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -55,11 +56,11 @@ namespace QuanLiHocPhan
             this.tablemonhoc = new System.Windows.Forms.DataGridView();
             this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TENMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTIET_LT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTIET_TH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbmamh = new System.Windows.Forms.ComboBox();
+            this.SOTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTIET = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numsotc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,9 +183,9 @@ namespace QuanLiHocPhan
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.numsotc);
             this.panel1.Controls.Add(this.cbmamh);
-            this.panel1.Controls.Add(this.txtsotietth);
-            this.panel1.Controls.Add(this.txtsotietlt);
+            this.panel1.Controls.Add(this.txtsotiet);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txttenmh);
             this.panel1.Controls.Add(this.label14);
@@ -198,21 +199,34 @@ namespace QuanLiHocPhan
             this.panel1.Size = new System.Drawing.Size(1752, 848);
             this.panel1.TabIndex = 4;
             // 
-            // txtsotietth
+            // numsotc
             // 
-            this.txtsotietth.Location = new System.Drawing.Point(394, 284);
-            this.txtsotietth.Name = "txtsotietth";
-            this.txtsotietth.Size = new System.Drawing.Size(91, 22);
-            this.txtsotietth.TabIndex = 31;
-            this.txtsotietth.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.numsotc.Location = new System.Drawing.Point(394, 235);
+            this.numsotc.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numsotc.Name = "numsotc";
+            this.numsotc.Size = new System.Drawing.Size(91, 22);
+            this.numsotc.TabIndex = 33;
             // 
-            // txtsotietlt
+            // cbmamh
             // 
-            this.txtsotietlt.Location = new System.Drawing.Point(394, 237);
-            this.txtsotietlt.Name = "txtsotietlt";
-            this.txtsotietlt.Size = new System.Drawing.Size(91, 22);
-            this.txtsotietlt.TabIndex = 30;
-            this.txtsotietlt.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.cbmamh.FormattingEnabled = true;
+            this.cbmamh.Location = new System.Drawing.Point(394, 148);
+            this.cbmamh.Name = "cbmamh";
+            this.cbmamh.Size = new System.Drawing.Size(157, 24);
+            this.cbmamh.TabIndex = 32;
+            this.cbmamh.SelectedIndexChanged += new System.EventHandler(this.cbmamh_SelectedIndexChanged);
+            // 
+            // txtsotiet
+            // 
+            this.txtsotiet.Location = new System.Drawing.Point(394, 284);
+            this.txtsotiet.Name = "txtsotiet";
+            this.txtsotiet.Size = new System.Drawing.Size(91, 22);
+            this.txtsotiet.TabIndex = 31;
+            this.txtsotiet.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -237,9 +251,9 @@ namespace QuanLiHocPhan
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(230, 237);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(124, 17);
+            this.label14.Size = new System.Drawing.Size(77, 17);
             this.label14.TabIndex = 24;
-            this.label14.Text = "Số Tiết Lý Thuyết:";
+            this.label14.Text = "Số Tín Chỉ:";
             // 
             // label11
             // 
@@ -255,9 +269,9 @@ namespace QuanLiHocPhan
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(230, 282);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 17);
+            this.label10.Size = new System.Drawing.Size(57, 17);
             this.label10.TabIndex = 22;
-            this.label10.Text = "Số Tiết Thực Hành:";
+            this.label10.Text = "Số Tiết:";
             // 
             // label3
             // 
@@ -277,15 +291,15 @@ namespace QuanLiHocPhan
             this.tablemonhoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MAMH,
             this.TENMH,
-            this.SOTIET_LT,
-            this.SOTIET_TH});
+            this.SOTC,
+            this.SOTIET});
             this.tablemonhoc.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tablemonhoc.Location = new System.Drawing.Point(0, 514);
+            this.tablemonhoc.Location = new System.Drawing.Point(0, 481);
             this.tablemonhoc.Name = "tablemonhoc";
             this.tablemonhoc.ReadOnly = true;
             this.tablemonhoc.RowHeadersWidth = 51;
             this.tablemonhoc.RowTemplate.Height = 24;
-            this.tablemonhoc.Size = new System.Drawing.Size(1752, 334);
+            this.tablemonhoc.Size = new System.Drawing.Size(1752, 367);
             this.tablemonhoc.TabIndex = 0;
             this.tablemonhoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablemonhoc_CellClick);
             // 
@@ -305,30 +319,21 @@ namespace QuanLiHocPhan
             this.TENMH.Name = "TENMH";
             this.TENMH.ReadOnly = true;
             // 
-            // SOTIET_LT
+            // SOTC
             // 
-            this.SOTIET_LT.DataPropertyName = "SOTIET_LT";
-            this.SOTIET_LT.HeaderText = "Số Tiết Lý Thuyết";
-            this.SOTIET_LT.MinimumWidth = 6;
-            this.SOTIET_LT.Name = "SOTIET_LT";
-            this.SOTIET_LT.ReadOnly = true;
+            this.SOTC.DataPropertyName = "SOTC";
+            this.SOTC.HeaderText = "Số Tín Chỉ";
+            this.SOTC.MinimumWidth = 6;
+            this.SOTC.Name = "SOTC";
+            this.SOTC.ReadOnly = true;
             // 
-            // SOTIET_TH
+            // SOTIET
             // 
-            this.SOTIET_TH.DataPropertyName = "SOTIET_TH";
-            this.SOTIET_TH.HeaderText = "Số Tiết Thực Hành";
-            this.SOTIET_TH.MinimumWidth = 6;
-            this.SOTIET_TH.Name = "SOTIET_TH";
-            this.SOTIET_TH.ReadOnly = true;
-            // 
-            // cbmamh
-            // 
-            this.cbmamh.FormattingEnabled = true;
-            this.cbmamh.Location = new System.Drawing.Point(394, 148);
-            this.cbmamh.Name = "cbmamh";
-            this.cbmamh.Size = new System.Drawing.Size(157, 24);
-            this.cbmamh.TabIndex = 32;
-            this.cbmamh.SelectedIndexChanged += new System.EventHandler(this.cbmamh_SelectedIndexChanged);
+            this.SOTIET.DataPropertyName = "SOTIET";
+            this.SOTIET.HeaderText = "Số Tiết";
+            this.SOTIET.MinimumWidth = 6;
+            this.SOTIET.Name = "SOTIET";
+            this.SOTIET.ReadOnly = true;
             // 
             // frmMH
             // 
@@ -346,6 +351,7 @@ namespace QuanLiHocPhan
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numsotc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -367,19 +373,19 @@ namespace QuanLiHocPhan
         private DevExpress.XtraBars.BarButtonItem btnreset;
         private DevExpress.XtraBars.BarButtonItem btnexit;
         private System.Windows.Forms.DataGridView tablemonhoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TENMH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET_LT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET_TH;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txttenmh;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtsotietth;
-        private System.Windows.Forms.TextBox txtsotietlt;
+        private System.Windows.Forms.TextBox txtsotiet;
         private DevExpress.XtraBars.BarButtonItem btnsave;
         private System.Windows.Forms.ComboBox cbmamh;
+        private System.Windows.Forms.NumericUpDown numsotc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TENMH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET;
     }
 }

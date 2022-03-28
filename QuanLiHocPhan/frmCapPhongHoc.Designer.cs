@@ -238,6 +238,7 @@ namespace QuanLiHocPhan
             this.txtsochongoi.Name = "txtsochongoi";
             this.txtsochongoi.Size = new System.Drawing.Size(158, 22);
             this.txtsochongoi.TabIndex = 6;
+            this.txtsochongoi.TextChanged += new System.EventHandler(this.txtsochongoi_TextChanged);
             // 
             // cbmaphong
             // 

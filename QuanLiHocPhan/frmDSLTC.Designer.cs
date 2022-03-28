@@ -346,6 +346,11 @@ namespace QuanLiHocPhan
             // numtietbatdau
             // 
             this.numtietbatdau.Location = new System.Drawing.Point(1459, 163);
+            this.numtietbatdau.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
             this.numtietbatdau.Name = "numtietbatdau";
             this.numtietbatdau.Size = new System.Drawing.Size(88, 22);
             this.numtietbatdau.TabIndex = 26;
@@ -378,6 +383,11 @@ namespace QuanLiHocPhan
             // numhocky
             // 
             this.numhocky.Location = new System.Drawing.Point(155, 241);
+            this.numhocky.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.numhocky.Name = "numhocky";
             this.numhocky.Size = new System.Drawing.Size(73, 22);
             this.numhocky.TabIndex = 20;
@@ -392,6 +402,11 @@ namespace QuanLiHocPhan
             // numsotc
             // 
             this.numsotc.Location = new System.Drawing.Point(155, 157);
+            this.numsotc.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.numsotc.Name = "numsotc";
             this.numsotc.Size = new System.Drawing.Size(73, 22);
             this.numsotc.TabIndex = 18;

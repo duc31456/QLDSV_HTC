@@ -15,7 +15,7 @@ namespace QuanLiHocPhan
 
             public static String constr;
 
-            public static String constr_publisher = "Data Source=DESKTOP-MMFEF8Q; Initial Catalog=QLDSV_HTC;Integrated Security=True";
+            public static String constr_publisher = "Data Source=DESKTOP-MMFEF8Q\\SQLEXPRESS; Initial Catalog=QLDSV_HTC;Integrated Security=True";
 
             public static SqlDataReader myReader;
 
@@ -51,12 +51,12 @@ namespace QuanLiHocPhan
                 {
                     if (String.Equals(Program.mType, "SV"))
                     {
-                    Program.constr = "Data Source=DESKTOP-MMFEF8Q; Initial Catalog=" + Program.database + ";User ID=" + Program.mlogin + ";password=" +
+                    Program.constr = "Data Source=DESKTOP-MMFEF8Q\\SQLEXPRESS; Initial Catalog=" + Program.database + ";User ID=" + Program.mlogin + ";password=" +
                     Program.password;
                 }
                     else
                     {
-                        Program.constr = "Data Source=DESKTOP-MMFEF8Q; Initial Catalog=" + Program.database + ";User ID=" + Program.mlogin + ";password=" +
+                        Program.constr = "Data Source=DESKTOP-MMFEF8Q\\SQLEXPRESS; Initial Catalog=" + Program.database + ";User ID=" + Program.mlogin + ";password=" +
                         Program.password;
                     }
 

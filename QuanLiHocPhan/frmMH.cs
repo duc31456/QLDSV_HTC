@@ -39,7 +39,7 @@ namespace QuanLiHocPhan
         private void load_mh()
         {
 
-            String query = "select MAMH,TENMH,SOTIET_LT,SOTIET_TH from Get_DSMH";
+            String query = "select MAMH,TENMH,SOTC,SOTIET from Get_DSMH";
             try
             {
                 SqlCommand com = new SqlCommand(query, Program.conn);
@@ -86,7 +86,7 @@ namespace QuanLiHocPhan
         private void frmMH_Load(object sender, EventArgs e)
         {
             btnedit.Enabled = false;
-            cbmamh.Enabled = txttenmh.Enabled = txtsotietlt.Enabled = txtsotietth.Enabled = false;
+            cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;
 
             load_mh();
             load_cbx();
@@ -104,9 +104,9 @@ namespace QuanLiHocPhan
                     DataGridViewRow row = this.tablemonhoc.Rows[e.RowIndex];
                     cbmamh.Text = row.Cells["MAMH"].Value.ToString();
                     txttenmh.Text = row.Cells["TENMH"].Value.ToString();
-                    txtsotietlt.Text = row.Cells["SOTIET_LT"].Value.ToString();
-                    txtsotietth.Text = row.Cells["SOTIET_TH"].Value.ToString();
-                    cbmamh.Enabled = txttenmh.Enabled = txtsotietlt.Enabled = txtsotietth.Enabled = false;
+                    numsotc.Value = int.Parse(row.Cells["SOTC"].Value.ToString());
+                    txtsotiet.Text = row.Cells["SOTIET"].Value.ToString();
+                    cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;
                     btnedit.Enabled  = true;
                     btnsave.Enabled = false;
 
@@ -143,11 +143,11 @@ namespace QuanLiHocPhan
 
         private void btnadd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {    
-            cbmamh.Enabled = txttenmh.Enabled = txtsotietlt.Enabled = txtsotietth.Enabled = true;
+            cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = true;
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
             btnsave.Enabled = true;
 
-            cbmamh.Text = txttenmh.Text = txtsotietlt.Text = txtsotietth.Text = "";
+            cbmamh.Text = txttenmh.Text = numsotc.Text = txtsotiet.Text = "";
             tablemonhoc.Enabled = false;
 
             type = "Insert";
@@ -157,15 +157,15 @@ namespace QuanLiHocPhan
         {
                    
             string queryaddmonhoc = "";
-            queryaddmonhoc = "exec SP_ADD_EDIT_MH @MAMH=N'" + cbmamh.Text + "',@TENMH=N'" + txttenmh.Text + "',@SOTIET_LT=" +
-            int.Parse(txtsotietlt.Text) + ",@SOTIET_TH=" + int.Parse(txtsotietth.Text)+ ",@TYPE=N'" + type + "',@MAMHOLD=N'" + mamhUpdate + "'";
+            queryaddmonhoc = "exec SP_ADD_EDIT_MH @MAMH=N'" + cbmamh.Text + "',@TENMH=N'" + txttenmh.Text + "',@SOTC=" +
+            numsotc.Value + ",@SOTIET=" + int.Parse(txtsotiet.Text)+ ",@TYPE=N'" + type + "',@MAMHOLD=N'" + mamhUpdate + "'";
             Console.WriteLine(queryaddmonhoc);
             try
             {
                 SqlCommand com = new SqlCommand(queryaddmonhoc, Program.conn);
                 com.ExecuteNonQuery();
                 DataTable dt = tablemonhoc.DataSource as DataTable;
-                dt.Rows.Add(cbmamh.Text, txttenmh.Text, int.Parse(txtsotietlt.Text), int.Parse(txtsotietth.Text));
+                dt.Rows.Add(cbmamh.Text, txttenmh.Text, numsotc.Value, int.Parse(txtsotiet.Text));
                 tablemonhoc.DataSource = dt;
                 MessageBox.Show("Bạn đã thêm thông tin môn học thành công!");
             }
@@ -178,8 +178,8 @@ namespace QuanLiHocPhan
         public void editmh()
         {            
             string queryeditmonhoc = "";
-            queryeditmonhoc = "exec SP_ADD_EDIT_MH @MAMH=N'" + cbmamh.Text + "',@TENMH=N'" + txttenmh.Text + "',@SOTIET_LT=" +
-            int.Parse(txtsotietlt.Text) + ",@SOTIET_TH=" + int.Parse(txtsotietth.Text) + ",@TYPE=N'" + type + "',@MAMHOLD=N'" + mamhUpdate + "'";            
+            queryeditmonhoc = "exec SP_ADD_EDIT_MH @MAMH=N'" + cbmamh.Text + "',@TENMH=N'" + txttenmh.Text + "',@SOTC=" +
+            numsotc.Value + ",@SOTIET=" + int.Parse(txtsotiet.Text) + ",@TYPE=N'" + type + "',@MAMHOLD=N'" + mamhUpdate + "'";            
             try
             {
                 SqlCommand com = new SqlCommand(queryeditmonhoc, Program.conn);
@@ -192,8 +192,8 @@ namespace QuanLiHocPhan
                     {
                         dt.Rows[index]["MAMH"] = cbmamh.Text;
                         dt.Rows[index]["TENMH"] = txttenmh.Text;
-                        dt.Rows[index]["SOTIET_LT"] = int.Parse(txtsotietlt.Text);
-                        dt.Rows[index]["SOTIET_TH"] = int.Parse(txtsotietth.Text);
+                        dt.Rows[index]["SOTC"] = numsotc.Value;
+                        dt.Rows[index]["SOTIET"] = int.Parse(txtsotiet.Text);
                         
                         mamhUpdate = cbmamh.Text;
                     }
@@ -216,7 +216,7 @@ namespace QuanLiHocPhan
             {
                 addmh();
 
-                cbmamh.Enabled = txttenmh.Enabled = txtsotietlt.Enabled = txtsotietth.Enabled = false;                
+                cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;                
               
                 btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
                 
@@ -228,7 +228,7 @@ namespace QuanLiHocPhan
             {
                 editmh();
 
-                cbmamh.Enabled = txttenmh.Enabled = txtsotietlt.Enabled = txtsotietth.Enabled = false;
+                cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;
 
                 btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
 
@@ -240,7 +240,7 @@ namespace QuanLiHocPhan
 
         private void btnedit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            cbmamh.Enabled = txttenmh.Enabled = txtsotietlt.Enabled = txtsotietth.Enabled = true;
+            cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = true;
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
             btnsave.Enabled = true;            
 

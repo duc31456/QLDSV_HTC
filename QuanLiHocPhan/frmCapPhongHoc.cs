@@ -260,6 +260,11 @@ namespace QuanLiHocPhan
         {
 
         }
+
+        private void txtsochongoi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }
