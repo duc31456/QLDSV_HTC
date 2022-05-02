@@ -210,13 +210,9 @@ C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiH
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\bin\Debug\ja\DevExpress.Office.v19.2.Core.resources.dll
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\bin\Debug\ru\DevExpress.Office.v19.2.Core.resources.dll
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\e.csproj.AssemblyReference.cache
-C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmCapPhongHoc.resources
-C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDangKy.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDangNhap.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDSDHP.resources
-C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDSLTC.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmDSSVDangKiLTC.resources
-C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmHP.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmLichGiangDay.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmMain.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmMH.resources
@@ -230,3 +226,6 @@ C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiH
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\e.csproj.CopyComplete
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.exe
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.pdb
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmGV.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmQuanLiLTC.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.frmPhanCong.resources

@@ -35,98 +35,84 @@ namespace QuanLiHocPhan
             InitializeComponent();
         }
 
-        private int ketNoiCSDL()
-        {
-            if (conn_publisher != null && conn_publisher.State == ConnectionState.Open)
-            {
-                conn_publisher.Close();
-            }
-            try
-            {
-                conn_publisher.ConnectionString = Program.constr_publisher;
-                conn_publisher.Open();
-                return 1;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Lỗi kết nối về csdl gốc" + e.Message);
-                return 0;
-            }
-        }
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            if(ketNoiCSDL() == 0)
-            {
-                return;
-            }    
-            ComboboxItem item = new ComboboxItem("GIẢNG VIÊN", "GV");
-            cbxRole.Items.Add(item);
-            item = new ComboboxItem("SINH VIÊN", "SV");
-            cbxRole.Items.Add(item);
-            cbxRole.SelectedIndex = 0;
+            cbvaitro.SelectedIndex = 0;
         }
-
-        private void cbxRole_SelectedIndexChanged(object sender, EventArgs e)
+        int ketqua = 0;
+       
+        private void dangNhapButton_Click(object sender, EventArgs e)
         {
-            ComboboxItem item = (ComboboxItem)cbxRole.SelectedItem;
-            if (String.Equals(item.Value, "GV"))
+           
+           if (txtusername.Text.Trim() == "")
             {
-                Program.mType = "GV";
+                MessageBox.Show("Tên đăng nhập không được rỗng", "", MessageBoxButtons.OK);
+                return;
+            }
+            int type;
+            if(cbvaitro.Text.ToString().Equals("Phòng giáo vụ"))
+            {
+                type = 1;
             }
             else
             {
-                Program.mType = "SV";
+                type = 2;
             }
-
-        }
-
-        private void dangNhapButton_Click(object sender, EventArgs e)
-        {
-            if (maGVTextBox.Text.Trim() == "")
-            {
-                MessageBox.Show("Login name không được rỗng", "", MessageBoxButtons.OK);
-                return;
-            }
-            Program.mlogin = maGVTextBox.Text;
-            Program.password = passwordTextBox.Text;
-            if (Program.ketNoi() == 0) return;
-            Program.mloginDN = Program.mlogin;
-            Program.passwordDN = Program.password;
-
-
-            String strLenh = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_Lay_Thong_Tin_GV_SV_Tu_Login] @TENLOGIN = N'" + Program.mloginDN + "', @TYPE =N'" + Program.mType + "', @PASSWORD=N'" + Program.passwordDN + "'";
-            Console.WriteLine(strLenh);
-            Program.myReader = Program.execSqlDataReader(strLenh);
-            if (Program.myReader == null)
-            {
-                return;
-            }
-
+            
+            string querydangnhap = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_DangNhap] @username =N'" +
+               txtusername.Text.Trim() + "', @password =N'" + txtpassword.Text.Trim() + "', @type =" + type +
+               " SELECT 'Return Value' = @return_value";
+            Console.WriteLine(querydangnhap);
+            Program.ketNoi();
             try
             {
-                Program.myReader.Read();
-                Program.username = Program.myReader.GetString(0);
-                if (Convert.IsDBNull(Program.username))
+                SqlCommand com = new SqlCommand(querydangnhap, Program.connection);
+                Program.myReader = com.ExecuteReader();
+                while (Program.myReader.Read())
                 {
-                    MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu", "", MessageBoxButtons.OK);
-                    return;
+                    String str = Program.myReader[0].ToString();
+                    if (String.Equals(str, "0"))
+                    {
+                        ketqua = 0;
+                    }
+                    if (String.Equals(str, "1"))
+                    {
+                        ketqua = 1;
+                    }
+                    if (String.Equals(str, "2"))
+                    { 
+                        ketqua = 2;
+                    }
                 }
-                Program.mHoten = Program.myReader.GetString(1);
-                Program.mGroup = Program.myReader.GetString(2);
                 Program.myReader.Close();
-                Program.frmChinh.maGiangVien.Text = "Mã = " + Program.username;
-                Program.frmChinh.hoTen.Text = "Họ Tên= " + Program.mHoten;
-                Program.frmChinh.nhom.Text = "Khoa= " + Program.mGroup;
-                Program.frmChinh.hienThiMenu();
-                this.Close();
-                Program.frmChinh.btnDangNhap.Enabled = false;
-
+                if(ketqua == 0)
+                {
+                    MessageBox.Show("Sai username hoặc mật khẩu!");
+                }    
+                else if(ketqua == 1)
+                {
+                    MessageBox.Show("Đăng nhập thành công với vai trò phòng giáo vu " + txtusername.Text);
+                    Program.frmChinh.txtma.Text = txtusername.Text;
+                    Program.frmChinh.txtquyen.Text = cbvaitro.Text.ToString();
+                    Program.frmChinh.hienThiMenu();
+                    this.Close();     
+                }   
+                else if(ketqua == 2)
+                {
+                    MessageBox.Show("Đăng nhập thành công với vai trò sinh viên " + txtusername.Text);
+                    Program.frmChinh.txtma.Text = txtusername.Text;
+                    Program.frmChinh.txtquyen.Text = cbvaitro.Text.ToString();
+                    Program.frmChinh.hienThiMenu();
+                    this.Close();
+                }    
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Sai tai khoan hoac mat khau");
+                
+                MessageBox.Show("Lỗi load dữ liệu!" + ex);
             }
+
         }
     }
 }

@@ -47,7 +47,7 @@ namespace QuanLiHocPhan
             String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, MAPHONG, TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0 and MAMH =N'" + comboboxmonhoc.Value + "'";
             try
             {
-                SqlCommand com = new SqlCommand(queryltc, Program.conn);
+                SqlCommand com = new SqlCommand(queryltc, Program.connection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);
                 DataTable dt = new DataTable();
@@ -95,7 +95,7 @@ namespace QuanLiHocPhan
             String queryltc = "use [QLDSV_HTC] select MALTC, SOTC, NIENKHOA, HOCKY, MAMH, NHOM, MAGV, SISO, CL, MAPHONG ,TIETBATDAU, THOIGIANBATDAU, THOIGIANKETTHUC from dbo.LOPTINCHI where HUYLOP = 0";
             try
             {
-                SqlCommand com = new SqlCommand(queryltc, Program.conn);
+                SqlCommand com = new SqlCommand(queryltc, Program.connection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);
                 DataTable dt = new DataTable();
@@ -194,7 +194,7 @@ namespace QuanLiHocPhan
         private void  Luu_Vao_CSDL()
         {
             
-            try
+       /*     try
             {
                 foreach (DataGridViewRow row in tabledangky.Rows)
                 {
@@ -204,7 +204,7 @@ namespace QuanLiHocPhan
                            + "',@NIENKHOA=N'" + row.Cells["NIENKHOA1"].Value.ToString() + "',@HOCKY=" + int.Parse(row.Cells["HOCKY1"].Value.ToString())
                            + ",@SOTC=" + int.Parse(row.Cells["SOTC1"].Value.ToString()) + "',@HOCPHI=" + int.Parse(row.Cells["HOCPHI"].Value.ToString()) + "";
                         Console.WriteLine(query);
-                        SqlCommand com = new SqlCommand(query, Program.conn);
+                        SqlCommand com = new SqlCommand(query, Program.connection);
                         com.ExecuteNonQuery();
                         
                     }
@@ -221,7 +221,7 @@ namespace QuanLiHocPhan
             {
                 MessageBox.Show("Lưu thất bại!");
             }
-
+       */
         }
       
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

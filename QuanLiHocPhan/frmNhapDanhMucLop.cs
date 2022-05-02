@@ -17,48 +17,29 @@ namespace QuanLiHocPhan
         {
             InitializeComponent();
         }
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-        public class ComboboxItem
+        }
+        public class Comboboxkhoahoc
         {
             public string Text { get; set; }
-            public object Value { get; set; }
+            public string Value { get; set; }
+
+            public Comboboxkhoahoc(string text, string value)
+            {
+                this.Text = text;
+                this.Value = value;
+            }
 
             public override string ToString()
             {
                 return Text;
             }
-
-            public ComboboxItem(string text, object value)
-            {
-                this.Text = text;
-                this.Value = value;
-            }
         }
-
-        public string type = "Select";
-        public String malopUpdate = "";
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        string type;
         private void btnexit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Boolean changedInput = false;
-            if (txtmalop.Text != "" || txttenlop.Text != "" || txtkhoahoc.Text != "")
-            {
-                changedInput = true;
-            }
-            if (changedInput)
-            {
-
-                if (MessageBox.Show("Bạn đang nhập dở, bạn có muốn thoát không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.No)
-                {
-
-                    return;
-                }
-            }
-
             this.Close();
         }
 
@@ -67,42 +48,31 @@ namespace QuanLiHocPhan
 
         }
 
-        private void load_lop()
-        {
-            String queryListLop = "select MALOP,TENLOP,KHOAHOC from Get_DSLOP";
-            try
-            {
-                SqlCommand com = new SqlCommand(queryListLop, Program.conn);
-                com.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                tablelop.DataSource = dt;
-                btnedit.Enabled = btndelete.Enabled = btnsave.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         private void frmNhapDanhMucLop_Load(object sender, EventArgs e)
         {
-            load_lop();
-            txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = false;
-
+            // TODO: This line of code loads data into the 'qLDSV_HTCDataSet.LOP' table. You can move, or remove it, as needed.
+            this.lOPTableAdapter.Fill(this.qLDSV_HTCDataSet.LOP);
+            reset();
+           
             
         }
 
         private void btnreset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            load_lop();
-            txtmalop.Text = "";
-            txttenlop.Text = "";
-            txtkhoahoc.Text = "";
-            txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = false;
+            this.lOPTableAdapter.Fill(this.qLDSV_HTCDataSet.LOP);
+            reset();
             MessageBox.Show("Làm mới lại thành công");
         }
-
+        private void reset()
+        {
+            txtmalop.Text = "";
+            txttenlop.Text = "";
+            btnadd.Enabled = true;
+            btnedit.Enabled = btndelete.Enabled = btnsave.Enabled = false;
+            txtmalop.Enabled = txttenlop.Enabled = cbkhoahoc.Enabled = false;
+            tablelop.Enabled = true;
+            cbkhoahoc.Items.Clear();
+        }
         private void tablelop_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -110,10 +80,10 @@ namespace QuanLiHocPhan
                 try
                 {
                     DataGridViewRow row = this.tablelop.Rows[e.RowIndex];
-                    txtmalop.Text = row.Cells["MALOP"].Value.ToString();
-                    txttenlop.Text = row.Cells["TENLOP"].Value.ToString();
-                    txtkhoahoc.Text = row.Cells["KHOAHOC"].Value.ToString();
-                    btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
+                    txtmalop.Text = row.Cells["malop"].Value.ToString();
+                    txttenlop.Text = row.Cells["tenlop"].Value.ToString();
+                    cbkhoahoc.Text = row.Cells["khoahoc"].Value.ToString();
+                    btnedit.Enabled = btndelete.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -121,56 +91,62 @@ namespace QuanLiHocPhan
                 }
             }
         }
-
-      
-        public void addlop()
+        private void load_combobox()
         {
-
-            string queryaddlop = "";
-            queryaddlop = "exec SP_ADD_EDIT_DELETE_LOP @MALOP=N'" + txtmalop.Text + "',@TENLOP=N'" + txttenlop.Text + "',@KHOAHOC=N'" +
-            txtkhoahoc.Text + "',@TYPE=N'" + type + "',@MALOPOLD=N'" + malopUpdate + "'";
-            Console.WriteLine(queryaddlop);
+            Program.ketNoi();
             try
             {
-                SqlCommand com = new SqlCommand(queryaddlop, Program.conn);
-                com.ExecuteNonQuery();
-                DataTable dt = tablelop.DataSource as DataTable;
-                dt.Rows.Add(txtmalop.Text, txttenlop.Text, txtkhoahoc.Text);
-                tablelop.DataSource = dt;
-                MessageBox.Show("Bạn đã thêm thông tin lớp thành công!");
+                String querykhoahoc = "select KHOAHOC from dbo.KHOAHOC";
+                SqlDataReader readerkhoahoc = Program.execSqlDataReader(querykhoahoc);
+
+                while (readerkhoahoc.Read())
+                {
+                    Comboboxkhoahoc itemkhoahoc = new Comboboxkhoahoc(readerkhoahoc.GetString(0), readerkhoahoc.GetString(0));
+                    cbkhoahoc.Items.Add(itemkhoahoc);
+                }
+                readerkhoahoc.Close();
+                cbkhoahoc.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void addlop()
+        {
+            Comboboxkhoahoc comboboxkhoahoc = (Comboboxkhoahoc)cbkhoahoc.SelectedItem;
+            string queryaddlop = "INSERT INTO LOP(MALOP, TENLOP, KHOAHOC) VALUES(N'" + txtmalop.Text.Trim()
+                + "', N'" + txttenlop.Text.Trim() + "', N'" + comboboxkhoahoc.Value + "')";
+            Program.ketNoi();
+            try
+            {
+                SqlCommand com = new SqlCommand(queryaddlop, Program.connection);
+                com.ExecuteNonQuery();
+                this.lOPTableAdapter.Fill(this.qLDSV_HTCDataSet.LOP);
+                MessageBox.Show("Thêm lớp thành công!");
+                reset();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex +"");
                 MessageBox.Show("Lớp này đã tồn tại --- Vui lòng kiểm tra lại!");
             }
         }
 
         public void editlop()
         {
-            string queryeditlop = "";
-            queryeditlop = "exec SP_ADD_EDIT_DELETE_LOP @MALOP=N'" + txtmalop.Text + "',@TENLOP=N'" + txttenlop.Text + "',@KHOAHOC=N'" +
-            txtkhoahoc.Text + "',@TYPE=N'" + type + "',@MALOPOLD=N'" + malopUpdate + "'";
+            Comboboxkhoahoc comboboxkhoahoc = (Comboboxkhoahoc)cbkhoahoc.SelectedItem;
+            string queryeditlop = "UPDATE LOP SET TENLOP = N'" + txttenlop.Text.Trim() + "', KHOAHOC = N'" + comboboxkhoahoc.Value +
+                "' WHERE MALOP = N'"+ txtmalop.Text.Trim() +"'";
+            Program.ketNoi();
             try
             {
-                SqlCommand com = new SqlCommand(queryeditlop, Program.conn);
+                SqlCommand com = new SqlCommand(queryeditlop, Program.connection);
                 com.ExecuteNonQuery();
-                DataTable dt = tablelop.DataSource as DataTable;
-                int index = 0;
-                foreach (DataRow dr in dt.Rows) // search whole table
-                {
-                    if (String.Equals(dr["MALOP"], malopUpdate))
-                    {
-                        dt.Rows[index]["MALOP"] = txtmalop.Text;
-                        dt.Rows[index]["TENLOP"] = txttenlop.Text;
-                        dt.Rows[index]["KHOAHOC"] = txtkhoahoc.Text;
-
-                        malopUpdate = txtmalop.Text;
-                    }
-                    index++;
-                }
-
-                tablelop.DataSource = dt;
-                MessageBox.Show("Bạn đã sửa thông tin lớp thành công!");
+                this.lOPTableAdapter.Fill(this.qLDSV_HTCDataSet.LOP);
+                MessageBox.Show("Chỉnh sửa thông tin lớp "+txtmalop.Text.Trim()+" thành công!");
+                reset();
             }
             catch (Exception ex)
             {
@@ -180,27 +156,15 @@ namespace QuanLiHocPhan
 
         public void deletelop()
         {            
-            string querydeletelop = "";
-            querydeletelop = "exec SP_ADD_EDIT_DELETE_LOP @MALOP=N'" + txtmalop.Text + "',@TENLOP=N'" + txttenlop.Text + "',@KHOAHOC=N'" +
-            txtkhoahoc.Text + "',@TYPE=N'" + type + "',@MALOPOLD=N'" + malopUpdate + "'";
+            string querydeletelop = "DELETE FROM LOP WHERE MALOP = N'" + txtmalop.Text.Trim() + "'";
+            Program.ketNoi();
             try
             {
-                SqlCommand com = new SqlCommand(querydeletelop, Program.conn);
+                SqlCommand com = new SqlCommand(querydeletelop, Program.connection);
                 com.ExecuteNonQuery();
-                DataTable dt = tablelop.DataSource as DataTable;
-                int index = 0;
-                foreach (DataRow dr in dt.Rows) // search whole table
-                {
-                    if (String.Equals(dr["MALOP"], malopUpdate))
-                    {
-                        dt.Rows.Remove(dr);
-
-                        malopUpdate = "";
-                    }
-                    index++;
-                }
-
-                tablelop.DataSource = dt;
+                this.lOPTableAdapter.Fill(this.qLDSV_HTCDataSet.LOP);
+                MessageBox.Show("Xóa thông tin lớp " + txtmalop.Text.Trim() + " thành công!");
+                reset();
             }
             catch (Exception ex)
             {
@@ -209,70 +173,62 @@ namespace QuanLiHocPhan
         }
         private void btnadd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = true;
-
-            btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
+            load_combobox();
+            type = "ADD";
+            txtmalop.Text = "";
+            txttenlop.Text = "";
+            btnadd.Enabled = false;
+            btnedit.Enabled = btndelete.Enabled = false;
+            txtmalop.Enabled = txttenlop.Enabled = cbkhoahoc.Enabled = true;
+            btnsave.Enabled = true;
             tablelop.Enabled = false;
-
-            type = "Insert";
         }
 
-        private void btnsave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (String.Equals(type, "Insert"))
-            {
-                addlop();
-
-                txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = false;
-
-                btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
-
-                btnsave.Enabled = false;
-                tablelop.Enabled = true;
-
-            }
-            else if (String.Equals(type, "Update"))
-            {
-                editlop();
-
-                txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = false;
-
-                btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
-
-
-                btnsave.Enabled = false;
-                tablelop.Enabled = true;
-            }
-
-        }
-
+     
         private void editbtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = true;
-            btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
+            load_combobox();
+            type = "EDIT";
+            btnadd.Enabled = false;
+            btnedit.Enabled = btndelete.Enabled = false;
+            txttenlop.Enabled = cbkhoahoc.Enabled = true;
             btnsave.Enabled = true;
-
-            type = "Update";
             tablelop.Enabled = false;
         }
 
         private void btndelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            btnsave.Enabled = true;
+        {     
             DialogResult dlr = MessageBox.Show("Bạn có muốn xóa lớp đã chọn này?", "Thông báo",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dlr == DialogResult.OK)
             {
-                type = "Delete";
                 deletelop();
+            }
+            else
+            {
+                return;
+            }
+        }
 
-                txtmalop.Enabled = txttenlop.Enabled = txtkhoahoc.Enabled = false;
-                btnadd.Enabled = true;
-                btnedit.Enabled = btndelete.Enabled = false;
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
-                MessageBox.Show("Bạn đã xóa lớp thành công!");
-                btnsave.Enabled = false;
-                tablelop.Enabled = true;
+        }
+
+        private void btnsave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult dlr = MessageBox.Show("Bạn có muốn lưu vào cơ sở dữ liệu?", "Thông báo",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dlr == DialogResult.OK)
+            {
+                if (type == "ADD")
+                {
+                    addlop();
+                }
+                else if (type == "EDIT")
+                {
+                    editlop();
+                }
             }
             else
             {

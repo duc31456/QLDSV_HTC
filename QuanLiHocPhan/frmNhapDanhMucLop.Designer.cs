@@ -35,15 +35,29 @@ namespace QuanLiHocPhan
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cbkhoahoc = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txttenlop = new System.Windows.Forms.TextBox();
+            this.txtmalop = new System.Windows.Forms.TextBox();
             this.tablelop = new System.Windows.Forms.DataGridView();
-            this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TENLOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KHOAHOC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.malop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenlop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.khoahoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar7 = new DevExpress.XtraBars.Bar();
+            this.btnadd = new DevExpress.XtraBars.BarButtonItem();
+            this.btnedit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnsave = new DevExpress.XtraBars.BarButtonItem();
+            this.btndelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnreset = new DevExpress.XtraBars.BarButtonItem();
             this.btnexit = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -54,22 +68,13 @@ namespace QuanLiHocPhan
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnadd = new DevExpress.XtraBars.BarButtonItem();
-            this.btnedit = new DevExpress.XtraBars.BarButtonItem();
-            this.btndelete = new DevExpress.XtraBars.BarButtonItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtmalop = new System.Windows.Forms.TextBox();
-            this.txttenlop = new System.Windows.Forms.TextBox();
-            this.txtkhoahoc = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnsave = new DevExpress.XtraBars.BarButtonItem();
+            this.lOPTableAdapter = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.LOPTableAdapter();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablelop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablelop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // bar2
@@ -104,6 +109,7 @@ namespace QuanLiHocPhan
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -112,16 +118,94 @@ namespace QuanLiHocPhan
             this.panel1.Size = new System.Drawing.Size(1417, 721);
             this.panel1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cbkhoahoc);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txttenlop);
+            this.panel2.Controls.Add(this.txtmalop);
+            this.panel2.Controls.Add(this.tablelop);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 126);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1417, 595);
+            this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // cbkhoahoc
+            // 
+            this.cbkhoahoc.FormattingEnabled = true;
+            this.cbkhoahoc.Location = new System.Drawing.Point(784, 478);
+            this.cbkhoahoc.Name = "cbkhoahoc";
+            this.cbkhoahoc.Size = new System.Drawing.Size(173, 24);
+            this.cbkhoahoc.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(692, 442);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Tên lớp:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(692, 478);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Khóa học:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(690, 343);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(233, 29);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Nhập thông tin lớp:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(693, 403);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Mã Lớp:";
+            // 
+            // txttenlop
+            // 
+            this.txttenlop.Location = new System.Drawing.Point(784, 437);
+            this.txttenlop.Name = "txttenlop";
+            this.txttenlop.Size = new System.Drawing.Size(328, 22);
+            this.txttenlop.TabIndex = 3;
+            // 
+            // txtmalop
+            // 
+            this.txtmalop.Location = new System.Drawing.Point(784, 400);
+            this.txtmalop.Name = "txtmalop";
+            this.txtmalop.Size = new System.Drawing.Size(173, 22);
+            this.txtmalop.TabIndex = 2;
+            // 
             // tablelop
             // 
             this.tablelop.AllowUserToAddRows = false;
             this.tablelop.AllowUserToDeleteRows = false;
+            this.tablelop.AutoGenerateColumns = false;
             this.tablelop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablelop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablelop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MALOP,
-            this.TENLOP,
-            this.KHOAHOC});
+            this.malop,
+            this.tenlop,
+            this.khoahoc});
+            this.tablelop.DataSource = this.lOPBindingSource;
             this.tablelop.Dock = System.Windows.Forms.DockStyle.Top;
             this.tablelop.Location = new System.Drawing.Point(0, 0);
             this.tablelop.Name = "tablelop";
@@ -132,37 +216,47 @@ namespace QuanLiHocPhan
             this.tablelop.TabIndex = 1;
             this.tablelop.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablelop_CellClick);
             // 
-            // MALOP
+            // malop
             // 
-            this.MALOP.DataPropertyName = "MALOP";
-            this.MALOP.HeaderText = "Mã Lớp";
-            this.MALOP.MinimumWidth = 6;
-            this.MALOP.Name = "MALOP";
-            this.MALOP.ReadOnly = true;
+            this.malop.DataPropertyName = "MALOP";
+            this.malop.HeaderText = "Mã Lớp";
+            this.malop.MinimumWidth = 6;
+            this.malop.Name = "malop";
+            this.malop.ReadOnly = true;
             // 
-            // TENLOP
+            // tenlop
             // 
-            this.TENLOP.DataPropertyName = "TENLOP";
-            this.TENLOP.HeaderText = "Tên Lớp";
-            this.TENLOP.MinimumWidth = 6;
-            this.TENLOP.Name = "TENLOP";
-            this.TENLOP.ReadOnly = true;
+            this.tenlop.DataPropertyName = "TENLOP";
+            this.tenlop.HeaderText = "Tên Lớp";
+            this.tenlop.MinimumWidth = 6;
+            this.tenlop.Name = "tenlop";
+            this.tenlop.ReadOnly = true;
             // 
-            // KHOAHOC
+            // khoahoc
             // 
-            this.KHOAHOC.DataPropertyName = "KHOAHOC";
-            this.KHOAHOC.HeaderText = "Khóa Học";
-            this.KHOAHOC.MinimumWidth = 6;
-            this.KHOAHOC.Name = "KHOAHOC";
-            this.KHOAHOC.ReadOnly = true;
+            this.khoahoc.DataPropertyName = "KHOAHOC";
+            this.khoahoc.HeaderText = "Khóa học";
+            this.khoahoc.MinimumWidth = 6;
+            this.khoahoc.Name = "khoahoc";
+            this.khoahoc.ReadOnly = true;
+            // 
+            // lOPBindingSource
+            // 
+            this.lOPBindingSource.DataMember = "LOP";
+            this.lOPBindingSource.DataSource = this.qLDSV_HTCDataSet;
+            // 
+            // qLDSV_HTCDataSet
+            // 
+            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
+            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(739, 70);
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(796, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(440, 23);
             this.label1.TabIndex = 0;
@@ -210,7 +304,7 @@ namespace QuanLiHocPhan
             this.btndelete,
             this.btnsave});
             this.barManager1.MainMenu = this.bar7;
-            this.barManager1.MaxItemId = 10;
+            this.barManager1.MaxItemId = 12;
             // 
             // bar7
             // 
@@ -220,14 +314,50 @@ namespace QuanLiHocPhan
             this.bar7.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar7.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnadd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnsave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnedit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnsave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btndelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnreset, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnexit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar7.OptionsBar.MultiLine = true;
             this.bar7.OptionsBar.UseWholeRow = true;
             this.bar7.Text = "Main menu";
+            // 
+            // btnadd
+            // 
+            this.btnadd.Caption = "Thêm";
+            this.btnadd.Id = 6;
+            this.btnadd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnadd.ImageOptions.Image")));
+            this.btnadd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnadd.ImageOptions.LargeImage")));
+            this.btnadd.Name = "btnadd";
+            this.btnadd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnadd_ItemClick);
+            // 
+            // btnedit
+            // 
+            this.btnedit.Caption = "Sửa";
+            this.btnedit.Id = 7;
+            this.btnedit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnedit.ImageOptions.Image")));
+            this.btnedit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnedit.ImageOptions.LargeImage")));
+            this.btnedit.Name = "btnedit";
+            this.btnedit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.editbtn_ItemClick);
+            // 
+            // btnsave
+            // 
+            this.btnsave.Caption = "Lưu";
+            this.btnsave.Id = 11;
+            this.btnsave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnsave.ImageOptions.Image")));
+            this.btnsave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnsave.ImageOptions.LargeImage")));
+            this.btnsave.Name = "btnsave";
+            this.btnsave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnsave_ItemClick);
+            // 
+            // btndelete
+            // 
+            this.btndelete.Caption = "Xóa";
+            this.btndelete.Id = 8;
+            this.btndelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btndelete.ImageOptions.Image")));
+            this.btndelete.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btndelete.ImageOptions.LargeImage")));
+            this.btndelete.Name = "btndelete";
+            this.btndelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btndelete_ItemClick);
             // 
             // btnreset
             // 
@@ -311,115 +441,9 @@ namespace QuanLiHocPhan
             this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
             this.barButtonItem4.Name = "barButtonItem4";
             // 
-            // btnadd
+            // lOPTableAdapter
             // 
-            this.btnadd.Caption = "Thêm";
-            this.btnadd.Id = 6;
-            this.btnadd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.btnadd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.btnadd.Name = "btnadd";
-            this.btnadd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnadd_ItemClick);
-            // 
-            // btnedit
-            // 
-            this.btnedit.Caption = "Sửa";
-            this.btnedit.Id = 7;
-            this.btnedit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
-            this.btnedit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
-            this.btnedit.Name = "btnedit";
-            this.btnedit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.editbtn_ItemClick);
-            // 
-            // btndelete
-            // 
-            this.btndelete.Caption = "Xóa";
-            this.btndelete.Id = 8;
-            this.btndelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.btndelete.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
-            this.btndelete.Name = "btndelete";
-            this.btndelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btndelete_ItemClick);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtkhoahoc);
-            this.panel2.Controls.Add(this.txttenlop);
-            this.panel2.Controls.Add(this.txtmalop);
-            this.panel2.Controls.Add(this.tablelop);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 126);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1417, 595);
-            this.panel2.TabIndex = 2;
-            // 
-            // txtmalop
-            // 
-            this.txtmalop.Location = new System.Drawing.Point(784, 400);
-            this.txtmalop.Name = "txtmalop";
-            this.txtmalop.Size = new System.Drawing.Size(173, 22);
-            this.txtmalop.TabIndex = 2;
-            // 
-            // txttenlop
-            // 
-            this.txttenlop.Location = new System.Drawing.Point(784, 437);
-            this.txttenlop.Name = "txttenlop";
-            this.txttenlop.Size = new System.Drawing.Size(328, 22);
-            this.txttenlop.TabIndex = 3;
-            // 
-            // txtkhoahoc
-            // 
-            this.txtkhoahoc.Location = new System.Drawing.Point(784, 478);
-            this.txtkhoahoc.Name = "txtkhoahoc";
-            this.txtkhoahoc.Size = new System.Drawing.Size(173, 22);
-            this.txtkhoahoc.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(693, 403);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Mã Lớp:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(690, 343);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 29);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Nhập thông tin lớp:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(692, 478);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Khóa học:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(692, 442);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Tên lớp:";
-            // 
-            // btnsave
-            // 
-            this.btnsave.Caption = "Lưu";
-            this.btnsave.Id = 9;
-            this.btnsave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image1")));
-            this.btnsave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage1")));
-            this.btnsave.Name = "btnsave";
-            this.btnsave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnsave_ItemClick);
+            this.lOPTableAdapter.ClearBeforeFill = true;
             // 
             // frmNhapDanhMucLop
             // 
@@ -436,10 +460,12 @@ namespace QuanLiHocPhan
             this.Load += new System.EventHandler(this.frmNhapDanhMucLop_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablelop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablelop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,20 +493,24 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView tablelop;
         private DevExpress.XtraBars.BarButtonItem btnreset;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MALOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TENLOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KHOAHOC;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtkhoahoc;
         private System.Windows.Forms.TextBox txttenlop;
         private System.Windows.Forms.TextBox txtmalop;
         private DevExpress.XtraBars.BarButtonItem btnadd;
         private DevExpress.XtraBars.BarButtonItem btnedit;
         private DevExpress.XtraBars.BarButtonItem btndelete;
+      
+        private QLDSV_HTCDataSet qLDSV_HTCDataSet;
+        private System.Windows.Forms.BindingSource lOPBindingSource;
+        private QLDSV_HTCDataSetTableAdapters.LOPTableAdapter lOPTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn malop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenlop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn khoahoc;
         private DevExpress.XtraBars.BarButtonItem btnsave;
+        private System.Windows.Forms.ComboBox cbkhoahoc;
     }
 }

@@ -57,11 +57,11 @@ namespace QuanLiHocPhan
 
         private void frmLichGiangDay_Load(object sender, EventArgs e)
         {
-            txtmagv.Enabled = txthovaten.Enabled = txthocvi.Enabled = txthocham.Enabled = txtchuyenmon.Enabled = false;
+       /*     txtmagv.Enabled = txthovaten.Enabled = txthocvi.Enabled = txthocham.Enabled = txtchuyenmon.Enabled = false;
             SqlDataReader myReader;
-            String query = "use [QLDSV_HTC] exec [dbo].[SP_LayThongTinGiangVien] @MAGV = N'" + Program.username + "'";
-            Console.WriteLine(Program.username);
-            SqlCommand command = new SqlCommand(query, Program.conn);
+         //   String query = "use [QLDSV_HTC] exec [dbo].[SP_LayThongTinGiangVien] @MAGV = N'" + Program.username + "'";
+        //    Console.WriteLine(Program.username);
+         //   SqlCommand command = new SqlCommand(query, Program.connection);
             command.CommandType = CommandType.Text;
 
             try
@@ -81,7 +81,7 @@ namespace QuanLiHocPhan
                 MessageBox.Show("Không tìm thấy giảng viên!");
                 return;
             }
-
+       */
             try
             {
                 String queryNienKhoa = "select distinct NIENKHOA from dbo.LOPTINCHI";
@@ -116,14 +116,14 @@ namespace QuanLiHocPhan
         private void btnloc_Click(object sender, EventArgs e)
         {
            
-            ComboboxNienKhoa comboboxNienKhoa = (ComboboxNienKhoa)cbnienkhoa.SelectedItem;
+        /*    ComboboxNienKhoa comboboxNienKhoa = (ComboboxNienKhoa)cbnienkhoa.SelectedItem;
             ComboboxHocKi comboboxHocKi = (ComboboxHocKi)cbhocky.SelectedItem;
             String query;
-            query = "exec [SP_Lay_Lich_Giang_Day_Cua_GV] @MAGV=N'" + Program.username + "', @NIENKHOA=N'" + comboboxNienKhoa.Value + "', @HOCKY=" + comboboxHocKi.Value;
-            Console.WriteLine(query);
+         //   query = "exec [SP_Lay_Lich_Giang_Day_Cua_GV] @MAGV=N'" + Program.username + "', @NIENKHOA=N'" + comboboxNienKhoa.Value + "', @HOCKY=" + comboboxHocKi.Value;
+          //  Console.WriteLine(query);
             try
             {
-                SqlCommand com = new SqlCommand(query, Program.conn);
+                SqlCommand com = new SqlCommand(query, Program.connection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);
                 DataTable dt = new DataTable();
@@ -135,7 +135,7 @@ namespace QuanLiHocPhan
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tìm kiếm lớp giảng dạy!");
-            }
+            }*/
         }
 
         private void cbhocky_SelectedIndexChanged(object sender, EventArgs e)

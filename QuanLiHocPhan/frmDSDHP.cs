@@ -120,7 +120,7 @@ namespace QuanLiHocPhan
             Console.WriteLine(queryDSDHP);
             try
             {
-                SqlCommand com = new SqlCommand(queryDSDHP, Program.conn);
+                SqlCommand com = new SqlCommand(queryDSDHP, Program.connection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);
                 DataTable dt = new DataTable();

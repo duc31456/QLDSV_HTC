@@ -36,7 +36,6 @@ namespace QuanLiHocPhan
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.btnDangNhap = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangKy = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
             this.btnDKLTC = new DevExpress.XtraBars.BarButtonItem();
@@ -51,15 +50,22 @@ namespace QuanLiHocPhan
             this.btncapphong = new DevExpress.XtraBars.BarButtonItem();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
             this.btnMonHoc = new DevExpress.XtraBars.BarButtonItem();
+            this.ribnhapdiem = new DevExpress.XtraBars.BarButtonItem();
+            this.btndangnhap = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnphancong = new DevExpress.XtraBars.BarButtonItem();
+            this.btnlichhoc_ltc = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribNhapLieu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribDangKy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -70,13 +76,14 @@ namespace QuanLiHocPhan
             this.ribBaoCao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.maGiangVien = new System.Windows.Forms.ToolStripStatusLabel();
-            this.hoTen = new System.Windows.Forms.ToolStripStatusLabel();
-            this.nhom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtma = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txthoten = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtquyen = new System.Windows.Forms.ToolStripStatusLabel();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribnhapdiem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -92,7 +99,6 @@ namespace QuanLiHocPhan
             this.ribbonControl1.SearchEditItem,
             this.barEditItem2,
             this.barEditItem1,
-            this.btnDangNhap,
             this.btnDangKy,
             this.btnDangXuat,
             this.btnDKLTC,
@@ -107,10 +113,15 @@ namespace QuanLiHocPhan
             this.btncapphong,
             this.barHeaderItem1,
             this.btnMonHoc,
-            this.ribnhapdiem});
+            this.ribnhapdiem,
+            this.btndangnhap,
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.btnphancong,
+            this.btnlichhoc_ltc});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.ribbonControl1.MaxItemId = 19;
+            this.ribbonControl1.MaxItemId = 25;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -123,6 +134,7 @@ namespace QuanLiHocPhan
             this.repositoryItemPictureEdit1,
             this.repositoryItemImageEdit1});
             this.ribbonControl1.Size = new System.Drawing.Size(1142, 193);
+            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barEditItem2
             // 
@@ -152,23 +164,7 @@ namespace QuanLiHocPhan
             // repositoryItemPictureEdit1
             // 
             this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
-            // 
-            // btnDangNhap
-            // 
-            this.btnDangNhap.Caption = "Đăng Nhập";
-            this.btnDangNhap.Id = 1;
-            this.btnDangNhap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangNhap.ImageOptions.SvgImage")));
-            this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangNhap_ItemClick);
-            // 
-            // btnDangKy
-            // 
-            this.btnDangKy.Caption = "Đăng Ký";
-            this.btnDangKy.Enabled = false;
-            this.btnDangKy.Id = 2;
-            this.btnDangKy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangKy.ImageOptions.SvgImage")));
-            this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDangKy_ItemClick);
+           
             // 
             // btnDangXuat
             // 
@@ -189,8 +185,7 @@ namespace QuanLiHocPhan
             // 
             // btnDanhMucLop
             // 
-            this.btnDanhMucLop.Caption = "Quản Lí Lớp";
-            this.btnDanhMucLop.Enabled = false;
+            this.btnDanhMucLop.Caption = "Quản Lí Lớp Học";
             this.btnDanhMucLop.Id = 5;
             this.btnDanhMucLop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDanhMucLop.ImageOptions.SvgImage")));
             this.btnDanhMucLop.Name = "btnDanhMucLop";
@@ -198,8 +193,7 @@ namespace QuanLiHocPhan
             // 
             // btnDSSV
             // 
-            this.btnDSSV.Caption = "Danh Sách Sinh Viên";
-            this.btnDSSV.Enabled = false;
+            this.btnDSSV.Caption = "Quản Lý Sinh Viên";
             this.btnDSSV.Id = 6;
             this.btnDSSV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDSSV.ImageOptions.SvgImage")));
             this.btnDSSV.Name = "btnDSSV";
@@ -207,8 +201,7 @@ namespace QuanLiHocPhan
             // 
             // btnLTC
             // 
-            this.btnLTC.Caption = "Mở Lớp Tín Chỉ";
-            this.btnLTC.Enabled = false;
+            this.btnLTC.Caption = "Quản Lý Lớp Tín Chỉ";
             this.btnLTC.Id = 7;
             this.btnLTC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLTC.ImageOptions.SvgImage")));
             this.btnLTC.Name = "btnLTC";
@@ -259,12 +252,8 @@ namespace QuanLiHocPhan
             // 
             // btncapphong
             // 
-            this.btncapphong.Caption = "Cấp Phòng Học";
-            this.btncapphong.Enabled = false;
-            this.btncapphong.Id = 13;
-            this.btncapphong.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btncapphong.ImageOptions.SvgImage")));
+            this.btncapphong.Id = 24;
             this.btncapphong.Name = "btncapphong";
-            this.btncapphong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btncapphong_ItemClick);
             // 
             // barHeaderItem1
             // 
@@ -276,31 +265,73 @@ namespace QuanLiHocPhan
             // 
             // btnMonHoc
             // 
-            this.btnMonHoc.Caption = "Danh Sách Môn Học";
-            this.btnMonHoc.Enabled = false;
+            this.btnMonHoc.Caption = "Quản Lý Môn Học";
             this.btnMonHoc.Id = 17;
             this.btnMonHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnMonHoc.ImageOptions.SvgImage")));
             this.btnMonHoc.Name = "btnMonHoc";
             this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
             // 
+            // ribnhapdiem
+            // 
+            this.ribnhapdiem.Caption = "Nhập Điểm";
+            this.ribnhapdiem.Enabled = false;
+            this.ribnhapdiem.Id = 18;
+            this.ribnhapdiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ribnhapdiem.ImageOptions.SvgImage")));
+            this.ribnhapdiem.Name = "ribnhapdiem";
+            // 
+            // btndangnhap
+            // 
+            this.btndangnhap.Caption = "Đăng nhập";
+            this.btndangnhap.Id = 19;
+            this.btndangnhap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btndangnhap.ImageOptions.SvgImage")));
+            this.btndangnhap.Name = "btndangnhap";
+            this.btndangnhap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btndangnhap_ItemClick_1);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Quản Lý Giảng Viên";
+            this.barButtonItem2.Id = 20;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Phân Công Giangr Dạy";
+            this.barButtonItem3.Id = 21;
+            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // btnphancong
+            // 
+            this.btnphancong.Caption = "Phân Công Và Lên Lịch Học";
+            this.btnphancong.Id = 22;
+            this.btnphancong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnphancong.ImageOptions.Image")));
+            this.btnphancong.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnphancong.ImageOptions.LargeImage")));
+            this.btnphancong.Name = "btnphancong";
+            this.btnphancong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnphanconggiangday_ItemClick);
+            // 
+            // btnlichhoc_ltc
+            // 
+            this.btnlichhoc_ltc.Caption = "Lên Lịch Học Lớp Tín Chỉ";
+            this.btnlichhoc_ltc.Id = 23;
+            this.btnlichhoc_ltc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnlichhoc_ltc.ImageOptions.Image")));
+            this.btnlichhoc_ltc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnlichhoc_ltc.ImageOptions.LargeImage")));
+            this.btnlichhoc_ltc.Name = "btnlichhoc_ltc";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
             this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản Trị";
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnDangNhap);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btndangnhap);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnDangKy);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // ribbonPageGroup3
             // 
@@ -311,10 +342,11 @@ namespace QuanLiHocPhan
             // 
             this.ribNhapLieu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4,
+            this.ribbonPageGroup16,
             this.ribbonPageGroup7,
-            this.ribbonPageGroup13,
             this.ribbonPageGroup8,
-            this.ribbonPageGroup14});
+            this.ribbonPageGroup14,
+            this.ribbonPageGroup13});
             this.ribNhapLieu.Name = "ribNhapLieu";
             this.ribNhapLieu.Text = "Nhập Liệu";
             this.ribNhapLieu.Visible = false;
@@ -324,20 +356,30 @@ namespace QuanLiHocPhan
             this.ribbonPageGroup4.ItemLinks.Add(this.btnDanhMucLop);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             // 
+            // ribbonPageGroup16
+            // 
+            this.ribbonPageGroup16.ItemLinks.Add(this.barButtonItem2, true);
+            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
+            // 
             // ribbonPageGroup7
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.btnDSSV);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
-            // ribbonPageGroup13
-            // 
-            this.ribbonPageGroup13.ItemLinks.Add(this.btnMonHoc);
-            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
-            // 
             // ribbonPageGroup8
             // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnLTC);
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnMonHoc);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            // 
+            // ribbonPageGroup14
+            // 
+            this.ribbonPageGroup14.ItemLinks.Add(this.btnLTC);
+            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
+            // 
+            // ribbonPageGroup13
+            // 
+            this.ribbonPageGroup13.ItemLinks.Add(this.btnphancong);
+            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
             // 
             // ribDangKy
             // 
@@ -355,7 +397,6 @@ namespace QuanLiHocPhan
             // 
             // ribbonPageGroup12
             // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.btncapphong);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             // 
             // ribThongTin
@@ -400,32 +441,63 @@ namespace QuanLiHocPhan
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.maGiangVien,
-            this.hoTen,
-            this.nhom});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 685);
+            this.toolStripStatusLabel1,
+            this.txtma,
+            this.toolStripStatusLabel2,
+            this.txthoten,
+            this.toolStripStatusLabel3,
+            this.txtquyen});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 686);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1142, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1142, 25);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // maGiangVien
+            // toolStripStatusLabel1
             // 
-            this.maGiangVien.Name = "maGiangVien";
-            this.maGiangVien.Size = new System.Drawing.Size(30, 20);
-            this.maGiangVien.Text = "Mã";
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 20);
+            this.toolStripStatusLabel1.Text = "Mã:";
             // 
-            // hoTen
+            // txtma
             // 
-            this.hoTen.Name = "hoTen";
-            this.hoTen.Size = new System.Drawing.Size(54, 20);
-            this.hoTen.Text = "Họ tên";
+            this.txtma.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtma.Name = "txtma";
+            this.txtma.Size = new System.Drawing.Size(42, 19);
+            this.txtma.Text = "Trống";
             // 
-            // nhom
+            // toolStripStatusLabel2
             // 
-            this.nhom.Name = "nhom";
-            this.nhom.Size = new System.Drawing.Size(50, 20);
-            this.nhom.Text = "Nhóm";
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(84, 20);
+            this.toolStripStatusLabel2.Text = "Họ và tên:";
+            // 
+            // txthoten
+            // 
+            this.txthoten.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txthoten.Name = "txthoten";
+            this.txthoten.Size = new System.Drawing.Size(42, 19);
+            this.txthoten.Text = "Trống";
+            this.txthoten.Click += new System.EventHandler(this.hoTen_Click);
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(65, 20);
+            this.toolStripStatusLabel3.Text = "Vai trò:";
+            // 
+            // txtquyen
+            // 
+            this.txtquyen.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtquyen.Name = "txtquyen";
+            this.txtquyen.Size = new System.Drawing.Size(42, 19);
+            this.txtquyen.Text = "Trống";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -435,19 +507,6 @@ namespace QuanLiHocPhan
             // 
             this.ribbonPageGroup15.ItemLinks.Add(this.btnDSDHP);
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
-            // 
-            // ribbonPageGroup14
-            // 
-            this.ribbonPageGroup14.ItemLinks.Add(this.ribnhapdiem);
-            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
-            // 
-            // ribnhapdiem
-            // 
-            this.ribnhapdiem.Caption = "Nhập Điểm";
-            this.ribnhapdiem.Enabled = false;
-            this.ribnhapdiem.Id = 18;
-            this.ribnhapdiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ribnhapdiem.ImageOptions.SvgImage")));
-            this.ribnhapdiem.Name = "ribnhapdiem";
             // 
             // frmMain
             // 
@@ -461,6 +520,7 @@ namespace QuanLiHocPhan
             this.Name = "frmMain";
             this.Ribbon = this.ribbonControl1;
             this.Text = "QUẢN LÍ HỌC PHẦN";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
@@ -487,7 +547,6 @@ namespace QuanLiHocPhan
         private DevExpress.XtraBars.BarButtonItem btnDSDHP;
         private DevExpress.XtraBars.BarButtonItem btnTKB;
         private DevExpress.XtraBars.BarButtonItem btnHP;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribNhapLieu;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
@@ -499,11 +558,11 @@ namespace QuanLiHocPhan
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        public System.Windows.Forms.ToolStripStatusLabel maGiangVien;
-        public System.Windows.Forms.ToolStripStatusLabel hoTen;
-        public System.Windows.Forms.ToolStripStatusLabel nhom;
+        public System.Windows.Forms.ToolStripStatusLabel txtma;
+        public System.Windows.Forms.ToolStripStatusLabel txthoten;
+        public System.Windows.Forms.ToolStripStatusLabel txtquyen;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
-        public DevExpress.XtraBars.BarButtonItem btnDangNhap;
+        
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem btnlichgiangday;
@@ -516,11 +575,20 @@ namespace QuanLiHocPhan
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
         private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
         private DevExpress.XtraBars.BarButtonItem btnMonHoc;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribBaoCao;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
         private DevExpress.XtraBars.BarButtonItem ribnhapdiem;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
+        private DevExpress.XtraBars.BarButtonItem btndangnhap;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem btnphancong;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
+        private DevExpress.XtraBars.BarButtonItem btnlichhoc_ltc;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }
 

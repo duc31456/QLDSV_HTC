@@ -56,17 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCapPhongHoc.cs">
+    <Compile Include="frmPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCapPhongHoc.Designer.cs">
-      <DependentUpon>frmCapPhongHoc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDangKy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDangKy.Designer.cs">
-      <DependentUpon>frmDangKy.cs</DependentUpon>
+    <Compile Include="frmPhanCong.Designer.cs">
+      <DependentUpon>frmPhanCong.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -80,11 +74,11 @@
     <Compile Include="frmDSDHP.Designer.cs">
       <DependentUpon>frmDSDHP.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDSLTC.cs">
+    <Compile Include="frmQuanLiLTC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDSLTC.Designer.cs">
-      <DependentUpon>frmDSLTC.cs</DependentUpon>
+    <Compile Include="frmQuanLiLTC.Designer.cs">
+      <DependentUpon>frmQuanLiLTC.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDSSVDangKiLTC.cs">
       <SubType>Form</SubType>
@@ -92,11 +86,11 @@
     <Compile Include="frmDSSVDangKiLTC.Designer.cs">
       <DependentUpon>frmDSSVDangKiLTC.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHP.cs">
+    <Compile Include="frmGV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHP.Designer.cs">
-      <DependentUpon>frmHP.cs</DependentUpon>
+    <Compile Include="frmGV.Designer.cs">
+      <DependentUpon>frmGV.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLichGiangDay.cs">
       <SubType>Form</SubType>
@@ -136,26 +130,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCapPhongHoc.resx">
-      <DependentUpon>frmCapPhongHoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDangKy.resx">
-      <DependentUpon>frmDangKy.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="QLDSV_HTCDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLDSV_HTCDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDSDHP.resx">
       <DependentUpon>frmDSDHP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDSLTC.resx">
-      <DependentUpon>frmDSLTC.cs</DependentUpon>
+    <EmbeddedResource Include="frmPhanCong.resx">
+      <DependentUpon>frmPhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLiLTC.resx">
+      <DependentUpon>frmQuanLiLTC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDSSVDangKiLTC.resx">
       <DependentUpon>frmDSSVDangKiLTC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHP.resx">
-      <DependentUpon>frmHP.cs</DependentUpon>
+    <EmbeddedResource Include="frmGV.resx">
+      <DependentUpon>frmGV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLichGiangDay.resx">
       <DependentUpon>frmLichGiangDay.cs</DependentUpon>
@@ -195,6 +191,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QLDSV_HTCDataSet.xsc">
+      <DependentUpon>QLDSV_HTCDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLDSV_HTCDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLDSV_HTCDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLDSV_HTCDataSet.xss">
+      <DependentUpon>QLDSV_HTCDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

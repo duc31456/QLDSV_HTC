@@ -18,81 +18,28 @@ namespace QuanLiHocPhan
             InitializeComponent();
         }
 
-        public class Comboboxmamh
-        {
-            public string Text { get; set; }
-            public string Value { get; set; }
-
-            public Comboboxmamh(string text, string value)
-            {
-                this.Text = text;
-                this.Value = value;
-            }
-
-            public override string ToString()
-            {
-                return Text;
-            }
-        }
-        public string type = "Select";
-        public String mamhUpdate = "";
-        private void load_mh()
-        {
-
-            String query = "select MAMH,TENMH,SOTC,SOTIET from Get_DSMH";
-            try
-            {
-                SqlCommand com = new SqlCommand(query, Program.conn);
-                com.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                tablemonhoc.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không load được thông tin môn học!");
-            }
-        }
-
-
         private void btnexit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
         }
 
-        private void load_cbx()
-        {
-            try
-            {
-                String querymamh = "select MAMH from dbo.MONHOC";
-                
-                SqlDataReader readermamh = Program.execSqlDataReader(querymamh);
-
-                while (readermamh.Read())
-                {
-                    Comboboxmamh itemmamh = new Comboboxmamh(readermamh.GetString(0), readermamh.GetString(0));
-                    cbmamh.Items.Add(itemmamh);
-                }
-                readermamh.Close();
-                cbmamh.SelectedIndex = 0;
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi load combobox!");
-            }
-        }
+        string type;
         private void frmMH_Load(object sender, EventArgs e)
         {
-            btnedit.Enabled = false;
-            cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;
-
-            load_mh();
-            load_cbx();
-
+            // TODO: This line of code loads data into the 'qLDSV_HTCDataSet.MONHOC' table. You can move, or remove it, as needed.
+            this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
+            reset();
         }
-
+        private void reset()
+        {
+            txtmamh.Text = "";
+            txttenmh.Text = "";      
+            btnadd.Enabled = tablemonhoc.Enabled =true;
+            btnedit.Enabled = false;
+            btndelete.Enabled = false;
+            btnsave.Enabled = false;
+            txtmamh.Enabled = txttenmh.Enabled = false;
+        }
         private void tablemonhoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -102,14 +49,9 @@ namespace QuanLiHocPhan
                 try
                 {
                     DataGridViewRow row = this.tablemonhoc.Rows[e.RowIndex];
-                    cbmamh.Text = row.Cells["MAMH"].Value.ToString();
-                    txttenmh.Text = row.Cells["TENMH"].Value.ToString();
-                    numsotc.Value = int.Parse(row.Cells["SOTC"].Value.ToString());
-                    txtsotiet.Text = row.Cells["SOTIET"].Value.ToString();
-                    cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;
-                    btnedit.Enabled  = true;
-                    btnsave.Enabled = false;
-
+                    txtmamh.Text = row.Cells["mamh"].Value.ToString();
+                    txttenmh.Text = row.Cells["tenmh"].Value.ToString();
+                    btnedit.Enabled = btndelete.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -118,156 +60,126 @@ namespace QuanLiHocPhan
             }
         }
 
-        private void txtnienkhoa_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnreset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            load_mh();
-            load_cbx();
-            tablemonhoc.Enabled = true;
-            MessageBox.Show("Bạn đã làm mới lại trang thành công!");
+            reset();
+            this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
+            Console.WriteLine("Làm mới thành công!");
         }
 
         private void btnadd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {    
-            cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = true;
-            btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
+        {
+            type = "ADD";
+            txtmamh.Text = txttenmh.Text = "";
+            btnadd.Enabled = false;
+            btnedit.Enabled = btndelete.Enabled = false;
+            txtmamh.Enabled = txttenmh.Enabled = true;
             btnsave.Enabled = true;
-
-            cbmamh.Text = txttenmh.Text = numsotc.Text = txtsotiet.Text = "";
             tablemonhoc.Enabled = false;
-
-            type = "Insert";
         }
 
         public void addmh()
         {
-                   
-            string queryaddmonhoc = "";
-            queryaddmonhoc = "exec SP_ADD_EDIT_MH @MAMH=N'" + cbmamh.Text + "',@TENMH=N'" + txttenmh.Text + "',@SOTC=" +
-            numsotc.Value + ",@SOTIET=" + int.Parse(txtsotiet.Text)+ ",@TYPE=N'" + type + "',@MAMHOLD=N'" + mamhUpdate + "'";
+            string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH) VALUES(N'" + txtmamh.Text.Trim()
+            + "', N'" + txttenmh.Text.Trim() + "')";
             Console.WriteLine(queryaddmonhoc);
+            Program.ketNoi();
             try
             {
-                SqlCommand com = new SqlCommand(queryaddmonhoc, Program.conn);
+                SqlCommand com = new SqlCommand(queryaddmonhoc, Program.connection);
                 com.ExecuteNonQuery();
-                DataTable dt = tablemonhoc.DataSource as DataTable;
-                dt.Rows.Add(cbmamh.Text, txttenmh.Text, numsotc.Value, int.Parse(txtsotiet.Text));
-                tablemonhoc.DataSource = dt;
-                MessageBox.Show("Bạn đã thêm thông tin môn học thành công!");
+                this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
+                MessageBox.Show("Thêm môn học thành công!");
+                reset();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Môn học đã tồn tại --- Vui lòng kiểm tra lại!");
+                MessageBox.Show("Môn học này đã tồn tại --- Vui lòng kiểm tra lại!");
             }
+
         }
 
         public void editmh()
-        {            
-            string queryeditmonhoc = "";
-            queryeditmonhoc = "exec SP_ADD_EDIT_MH @MAMH=N'" + cbmamh.Text + "',@TENMH=N'" + txttenmh.Text + "',@SOTC=" +
-            numsotc.Value + ",@SOTIET=" + int.Parse(txtsotiet.Text) + ",@TYPE=N'" + type + "',@MAMHOLD=N'" + mamhUpdate + "'";            
+        {
+            string queryeditmonhoc = "UPDATE MONHOC SET TENMH = N'" + txttenmh.Text.Trim() + "' WHERE MAMH = N'" + txtmamh.Text.Trim() + "'";
+            Console.WriteLine(queryeditmonhoc);
+            Program.ketNoi();
             try
             {
-                SqlCommand com = new SqlCommand(queryeditmonhoc, Program.conn);
+                SqlCommand com = new SqlCommand(queryeditmonhoc, Program.connection);
                 com.ExecuteNonQuery();
-                DataTable dt = tablemonhoc.DataSource as DataTable;
-                int index = 0;
-                foreach (DataRow dr in dt.Rows) // search whole table
-                {
-                    if (String.Equals(dr["MAMH"], mamhUpdate))
-                    {
-                        dt.Rows[index]["MAMH"] = cbmamh.Text;
-                        dt.Rows[index]["TENMH"] = txttenmh.Text;
-                        dt.Rows[index]["SOTC"] = numsotc.Value;
-                        dt.Rows[index]["SOTIET"] = int.Parse(txtsotiet.Text);
-                        
-                        mamhUpdate = cbmamh.Text;
-                    }
-                    index++;
-                }
-
-                tablemonhoc.DataSource = dt;
-                MessageBox.Show("Bạn đã sửa thông tin môn học thành công!");
+                this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
+                MessageBox.Show("Chỉnh sửa thông tin môn học " + txtmamh.Text.Trim() + " thành công!");
+                reset();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thay đổi dữ liệu môn hoặc thay đổi trùng với môn học đang có!");
+              //  MessageBox.Show(ex + "");
+                MessageBox.Show("Lỗi khi thay đổi dữ liệu môn học hoặc thay đổi trùng với môn học đang có!");
             }
         }
 
-        
-        private void btnsave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        public void deletemh()
         {
-            if (String.Equals(type, "Insert"))
+            string querydeletemonhoc = "DELETE FROM MONHOC WHERE MAMH = N'" + txtmamh.Text.Trim() + "'";
+            Program.ketNoi();
+            try
             {
-                addmh();
-
-                cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;                
-              
-                btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
-                
-                btnsave.Enabled = false;
-                tablemonhoc.Enabled = true;
+                SqlCommand com = new SqlCommand(querydeletemonhoc, Program.connection);
+                com.ExecuteNonQuery();
+                this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
+                MessageBox.Show("Xóa thông tin môn học " + txtmamh.Text.Trim() + " thành công!");
+                reset();
 
             }
-            else if (String.Equals(type, "Update"))
+            catch (Exception ex)
             {
-                editmh();
-
-                cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = false;
-
-                btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = true;
-
-                
-                btnsave.Enabled = false;
-                tablemonhoc.Enabled = true;
+                MessageBox.Show("Lỗi khi xóa môn học này!");
             }
         }
 
         private void btnedit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            cbmamh.Enabled = txttenmh.Enabled = numsotc.Enabled = txtsotiet.Enabled = true;
-            btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
-            btnsave.Enabled = true;            
-
-            type = "Update";
+            type = "EDIT"; 
+            btnadd.Enabled = false;
+            btnedit.Enabled = btndelete.Enabled = false;
+            txtmamh.Enabled = txttenmh.Enabled = true;
+            btnsave.Enabled = true;
             tablemonhoc.Enabled = false;
         }
 
-        private void cbmamh_SelectedIndexChanged(object sender, EventArgs e)
+        private void btndelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SqlDataReader myReader;
-            Comboboxmamh comboboxmamh = (Comboboxmamh)cbmamh.SelectedItem;
-            String query;
-            query = "use [QLDSV_HTC] select TENMH from dbo.MONHOC where MAMH=N'" + comboboxmamh.Value + "'";
-            
-            SqlCommand command = new SqlCommand(query, Program.conn);
-            command.CommandType = CommandType.Text;
-            try
+            DialogResult dlr = MessageBox.Show("Bạn có muốn xóa thông tin môn học này?", "Thông báo",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dlr == DialogResult.OK)
             {
-                myReader = command.ExecuteReader();
-                myReader.Read();
-                txttenmh.Text = myReader["TENMH"].ToString();
-                
-                myReader.Close();
+               deletemh();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Tên Môn Học bị lỗi---Vui lòng kiểm tra lại!!");
+                return;
+            }
+        }
+
+        private void btnsave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult dlr = MessageBox.Show("Bạn có muốn lưu vào cơ sở dữ liệu?", "Thông báo",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dlr == DialogResult.OK)
+            {
+                if (type == "ADD")
+                {
+                    addmh();
+                }
+                else if (type == "EDIT")
+                {
+                    editmh();
+                }
+            }
+            else
+            {
+                return;
             }
         }
     }

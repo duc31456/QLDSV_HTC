@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,25 +18,36 @@ namespace QuanLiHocPhan
         }
         public void hienThiMenu()
         {
-            maGiangVien.Text = "Mã : " + Program.username;
-            hoTen.Text = "Họ tên : " + Program.mHoten;
-            nhom.Text = "Nhóm : " + Program.mGroup;
-            ribNhapLieu.Visible = ribThongTin.Visible = ribDangKy.Visible = ribBaoCao.Visible = true;
-            if(Program.mGroup == "PGV")
+            btndangnhap.Enabled = false;
+            String query_hoten = "";
+            if (Program.frmChinh.txtquyen.Text.ToString().Equals("Phòng giáo vụ"))
             {
-                btnDanhMucLop.Enabled = btnDSSV.Enabled = btnLTC.Enabled = btnDSDHP.Enabled = btnlichgiangday.Enabled = true;
-                btncapphong.Enabled = btnMonHoc.Enabled = true;
-                btnDangKy.Enabled = true;
+                query_hoten = "select HO, TEN from dbo.PHONGGIAOVU where MAPGV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() +"'";
             }
-            else if(Program.mType == "GV")
+            else
             {
-                btnDanhMucLop.Enabled = btnDSSV.Enabled = btnlichgiangday.Enabled = true;
-            }    
-            else if(Program.mType == "SV")
+                query_hoten = "select HO, TEN from dbo.SINHVIEN where MASV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() + "'";
+            }
+            
+            Program.ketNoi();
+            try
             {
-                btnDKLTC.Enabled = btnTKB.Enabled = btnHP.Enabled = true;
-            }    
+                SqlCommand com = new SqlCommand(query_hoten, Program.connection);
+                Program.myReader = com.ExecuteReader();
+                if (Program.myReader.Read())
+                {
+                    Program.frmChinh.txthoten.Text = Program.myReader["HO"].ToString().Trim() + " " + Program.myReader["TEN"].ToString().Trim();
+                }
+                Program.myReader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
+            ribNhapLieu.Visible = ribThongTin.Visible = ribDangKy.Visible = ribBaoCao.Visible = true;
+          
         }
+
         private Form checkExists(Type ftype)
         {
             foreach (Form f in this.MdiChildren)
@@ -62,20 +74,7 @@ namespace QuanLiHocPhan
             }
         }
 
-        private void btnDangKy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Form frm = this.checkExists(typeof(frmDangKy));
-            if (frm != null)
-            {
-                frm.Activate();
-            }
-            else
-            {
-                frmDangKy f = new frmDangKy();
-                f.MdiParent = this;
-                f.Show();
-            }
-        }
+        
 
         private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -84,18 +83,11 @@ namespace QuanLiHocPhan
                 MessageBox.Show("Bạn đã đăng xuất trước đó");
                 return;
             }
-
-            Program.username = "";
-            Program.mHoten = "";
-            Program.mGroup = "";
-            Program.passwordDN = "";
-            Program.mloginDN = "";
-            Program.password = "";            
-            maGiangVien.Text = "Mã : " + Program.username;
-            hoTen.Text = "Họ tên : " + Program.mHoten;
-            nhom.Text = "Nhóm : " + Program.mGroup;
+            txtma.Text = "Trống";
+            txthoten.Text = "Trống";
+            txtquyen.Text = "Trống";
             ribThongTin.Visible = ribNhapLieu.Visible = ribDangKy.Visible = false;
-            Program.frmChinh.btnDangNhap.Enabled = true;
+            Program.frmChinh.btndangnhap.Enabled = true;
 
             closeAllForm();
             MessageBox.Show("Đăng xuất thành công");
@@ -147,14 +139,14 @@ namespace QuanLiHocPhan
 
         private void btnLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExists(typeof(frmDSLTC));
+            Form frm = this.checkExists(typeof(frmQuanLiLTC));
             if (frm != null)
             {
                 frm.Activate();
             }
             else
             {
-                frmDSLTC f = new frmDSLTC();
+                frmQuanLiLTC f = new frmQuanLiLTC();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -207,17 +199,7 @@ namespace QuanLiHocPhan
 
         private void btnHP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExists(typeof(frmHP));
-            if (frm != null)
-            {
-                frm.Activate();
-            }
-            else
-            {
-                frmHP f = new frmHP();
-                f.MdiParent = this;
-                f.Show();
-            }
+           
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -235,21 +217,6 @@ namespace QuanLiHocPhan
             else
             {
                 frmLichGiangDay f = new frmLichGiangDay();
-                f.MdiParent = this;
-                f.Show();
-            }
-        }
-
-        private void btncapphong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Form frm = this.checkExists(typeof(frmCapPhongHoc));
-            if (frm != null)
-            {
-                frm.Activate();
-            }
-            else
-            {
-                frmCapPhongHoc f = new frmCapPhongHoc();
                 f.MdiParent = this;
                 f.Show();
             }
@@ -280,6 +247,63 @@ namespace QuanLiHocPhan
             else
             {
                 frmMH f = new frmMH();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void hoTen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmGV));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmGV f = new frmGV();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnphanconggiangday_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmPhanCong));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmPhanCong f = new frmPhanCong();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btndangnhap_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmDangNhap));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmDangNhap f = new frmDangNhap();
                 f.MdiParent = this;
                 f.Show();
             }
