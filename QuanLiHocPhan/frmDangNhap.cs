@@ -41,7 +41,8 @@ namespace QuanLiHocPhan
             cbvaitro.SelectedIndex = 0;
         }
         int ketqua = 0;
-       
+
+        public static bool kiemtra;
         private void dangNhapButton_Click(object sender, EventArgs e)
         {
            
@@ -100,11 +101,23 @@ namespace QuanLiHocPhan
                 }   
                 else if(ketqua == 2)
                 {
-                    MessageBox.Show("Đăng nhập thành công với vai trò sinh viên " + txtusername.Text);
                     Program.frmChinh.txtma.Text = txtusername.Text;
                     Program.frmChinh.txtquyen.Text = cbvaitro.Text.ToString();
                     Program.frmChinh.hienThiMenu();
-                    this.Close();
+
+                       
+                        if (kiemtra)
+                        {
+                            MessageBox.Show("Bạn đã nghỉ học không thể đăng ký môn học!");
+                            frmMain.closeAllForm();
+                            Program.frmChinh.ribDangKy.Visible = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đăng nhập thành công với vai trò sinh viên " + txtusername.Text);
+                           
+                        }    
+                        this.Close();    
                 }    
             }
             catch (Exception ex)

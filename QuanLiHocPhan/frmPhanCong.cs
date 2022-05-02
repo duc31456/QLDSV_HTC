@@ -67,9 +67,7 @@ namespace QuanLiHocPhan
             txtmaltc.Text = "";
             txtmanhom.Text = "";            
             btnadd.Enabled = true;
-            numtietbatdau.Value = 0;
-            //datebatdau.Value = DateTime.Now;
-            //dateketthuc.Value = DateTime.Now;
+            numtietbatdau.Value = 0;          
             txtmaltc.Enabled = txtmanhom.Enabled = numtietbatdau.Enabled = datebatdau.Enabled = dateketthuc.Enabled = false;
             btndelete.Enabled = btnedit.Enabled = btnsave.Enabled = false;
             cbmagv.Enabled = cbmaphong.Enabled = false;

@@ -1,5 +1,0 @@
-create proc SP_Lay_Thong_Tin_Sinh_Vien
-@MASV NVARCHAR(10)
-as
-SELECT MASV, HO, TEN, PHAI, DIACHI, NGAYSINH, MALOP, DANGHIHOC
- from dbo.SINHVIEN where dbo.SINHVIEN.MASV = @MASV

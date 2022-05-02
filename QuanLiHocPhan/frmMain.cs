@@ -23,10 +23,14 @@ namespace QuanLiHocPhan
             if (Program.frmChinh.txtquyen.Text.ToString().Equals("Phòng giáo vụ"))
             {
                 query_hoten = "select HO, TEN from dbo.PHONGGIAOVU where MAPGV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() +"'";
+                ribNhapLieu.Visible = true;
+                ribDangKy.Visible = false;
             }
             else
             {
-                query_hoten = "select HO, TEN from dbo.SINHVIEN where MASV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() + "'";
+                query_hoten = "select HO, TEN, MALOP, DANGHIHOC from dbo.SINHVIEN where MASV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() + "'";
+                ribNhapLieu.Visible = false;
+                ribDangKy.Visible = true;
             }
             
             Program.ketNoi();
@@ -37,6 +41,11 @@ namespace QuanLiHocPhan
                 if (Program.myReader.Read())
                 {
                     Program.frmChinh.txthoten.Text = Program.myReader["HO"].ToString().Trim() + " " + Program.myReader["TEN"].ToString().Trim();
+                    if(Program.frmChinh.txtquyen.Text.ToString().Equals("Sinh viên"))
+                    {
+                        Program.frmChinh.txtmalop.Text = Program.myReader["MALOP"].ToString().Trim();
+                        frmDangNhap.kiemtra = Boolean.Parse(Program.myReader["DANGHIHOC"].ToString().Trim());
+                    }    
                 }
                 Program.myReader.Close();
             }
@@ -44,8 +53,6 @@ namespace QuanLiHocPhan
             {
                 MessageBox.Show(e + "");
             }
-            ribNhapLieu.Visible = ribThongTin.Visible = ribDangKy.Visible = ribBaoCao.Visible = true;
-          
         }
 
         private Form checkExists(Type ftype)
@@ -86,9 +93,9 @@ namespace QuanLiHocPhan
             txtma.Text = "Trống";
             txthoten.Text = "Trống";
             txtquyen.Text = "Trống";
-            ribThongTin.Visible = ribNhapLieu.Visible = ribDangKy.Visible = false;
+            txtmalop.Text = "Trống";
+            ribNhapLieu.Visible = ribDangKy.Visible = false;
             Program.frmChinh.btndangnhap.Enabled = true;
-
             closeAllForm();
             MessageBox.Show("Đăng xuất thành công");
             
