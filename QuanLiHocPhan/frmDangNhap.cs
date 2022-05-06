@@ -104,8 +104,6 @@ namespace QuanLiHocPhan
                     Program.frmChinh.txtma.Text = txtusername.Text;
                     Program.frmChinh.txtquyen.Text = cbvaitro.Text.ToString();
                     Program.frmChinh.hienThiMenu();
-
-                       
                         if (kiemtra)
                         {
                             MessageBox.Show("Bạn đã nghỉ học không thể đăng ký môn học!");
@@ -115,7 +113,7 @@ namespace QuanLiHocPhan
                         else
                         {
                             MessageBox.Show("Đăng nhập thành công với vai trò sinh viên " + txtusername.Text);
-                           
+                            Program.frmChinh.kiemtrangaydangki();
                         }    
                         this.Close();    
                 }    

@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmMoDangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMoDangKy.Designer.cs">
+      <DependentUpon>frmMoDangKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,12 +73,6 @@
     </Compile>
     <Compile Include="frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDSDHP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDSDHP.Designer.cs">
-      <DependentUpon>frmDSDHP.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLiLTC.cs">
       <SubType>Form</SubType>
@@ -91,12 +91,6 @@
     </Compile>
     <Compile Include="frmGV.Designer.cs">
       <DependentUpon>frmGV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmLichGiangDay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLichGiangDay.Designer.cs">
-      <DependentUpon>frmLichGiangDay.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -138,8 +132,8 @@
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDSDHP.resx">
-      <DependentUpon>frmDSDHP.cs</DependentUpon>
+    <EmbeddedResource Include="frmMoDangKy.resx">
+      <DependentUpon>frmMoDangKy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhanCong.resx">
       <DependentUpon>frmPhanCong.cs</DependentUpon>
@@ -152,9 +146,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGV.resx">
       <DependentUpon>frmGV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLichGiangDay.resx">
-      <DependentUpon>frmLichGiangDay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

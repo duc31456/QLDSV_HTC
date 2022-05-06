@@ -24,6 +24,7 @@ namespace QuanLiHocPhan
             {
                 query_hoten = "select HO, TEN from dbo.PHONGGIAOVU where MAPGV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() +"'";
                 ribNhapLieu.Visible = true;
+                ribmodangky.Visible = true;
                 ribDangKy.Visible = false;
             }
             else
@@ -31,6 +32,7 @@ namespace QuanLiHocPhan
                 query_hoten = "select HO, TEN, MALOP, DANGHIHOC from dbo.SINHVIEN where MASV = N'"+ Program.frmChinh.txtma.Text.ToString().Trim() + "'";
                 ribNhapLieu.Visible = false;
                 ribDangKy.Visible = true;
+                ribmodangky.Visible = false;
             }
             
             Program.ketNoi();
@@ -55,6 +57,37 @@ namespace QuanLiHocPhan
             }
         }
 
+        public void kiemtrangaydangki()
+        {
+            string query_ngaydk = "";
+            query_ngaydk = " USE[QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_KiemTraNgayDangKi] @malop =N'" +
+                Program.frmChinh.txtmalop.Text + "' SELECT 'Return Value' = @return_value";
+
+            Program.ketNoi();
+            try
+            {
+                SqlCommand com = new SqlCommand(query_ngaydk, Program.connection);
+                Program.myReader = com.ExecuteReader();
+                while (Program.myReader.Read())
+                {
+                    String str = Program.myReader[0].ToString();
+                    if (String.Equals(str, "0"))
+                    {
+                        MessageBox.Show("Khóa này đang trong thời gian đăng ký!");
+                    }
+                    if (String.Equals(str, "1"))
+                    {
+                        MessageBox.Show("Đang ngoài thời gian đăng ký!");
+                    }
+                }
+                Program.myReader.Close();
+            }
+            catch (Exception ex)
+            {
+               
+                MessageBox.Show("Lôi!");
+            }
+        }
         private Form checkExists(Type ftype)
         {
             foreach (Form f in this.MdiChildren)
@@ -94,7 +127,7 @@ namespace QuanLiHocPhan
             txthoten.Text = "Trống";
             txtquyen.Text = "Trống";
             txtmalop.Text = "Trống";
-            ribNhapLieu.Visible = ribDangKy.Visible = false;
+            ribNhapLieu.Visible = ribDangKy.Visible = ribmodangky.Visible =false;
             Program.frmChinh.btndangnhap.Enabled = true;
             closeAllForm();
             MessageBox.Show("Đăng xuất thành công");
@@ -159,20 +192,7 @@ namespace QuanLiHocPhan
             }
         }
 
-        private void btnDSDHP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Form frm = this.checkExists(typeof(frmDSDHP));
-            if (frm != null)
-            {
-                frm.Activate();
-            }
-            else
-            {
-                frmDSDHP f = new frmDSDHP();
-                f.MdiParent = this;
-                f.Show();
-            }
-        }
+      
 
         private void btnDKLTC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -214,21 +234,7 @@ namespace QuanLiHocPhan
 
         }
 
-        private void btnlichgiangday_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Form frm = this.checkExists(typeof(frmLichGiangDay));
-            if (frm != null)
-            {
-                frm.Activate();
-            }
-            else
-            {
-                frmLichGiangDay f = new frmLichGiangDay();
-                f.MdiParent = this;
-                f.Show();
-            }
-        }
-
+        
         private void barEditItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -311,6 +317,21 @@ namespace QuanLiHocPhan
             else
             {
                 frmDangNhap f = new frmDangNhap();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void frmmodangki_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExists(typeof(frmMoDangKy));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmMoDangKy f = new frmMoDangKy();
                 f.MdiParent = this;
                 f.Show();
             }

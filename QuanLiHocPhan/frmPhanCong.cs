@@ -85,16 +85,23 @@ namespace QuanLiHocPhan
             try
             {
                 Program.myReader = command.ExecuteReader();
-                if(Program.myReader.Read())
+
+                if (Program.myReader.Read())
                 {
                     inputhoten.Text = Program.myReader["HO"].ToString().Trim() + " " + Program.myReader["TEN"].ToString().Trim();
                     inputchuyenmon.Text = Program.myReader["CHUYENMON"].ToString();
-                }    
+                }
+                else
+                {
+                    inputhoten.Text = "";
+                    inputchuyenmon.Text = "";
+                }
+                
                 Program.myReader.Close();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //MessageBox.Show("Không tìm thấy giảng viên");
+                
                 return;
             }
         }
@@ -107,11 +114,19 @@ namespace QuanLiHocPhan
             try
             {
                 Program.myReader = command.ExecuteReader();
+                
                 if (Program.myReader.Read())
                 {
                     inputtenphong.Text = Program.myReader["TENPHONG"].ToString().Trim();
                     inputsucchua.Value = int.Parse(Program.myReader["SUCCHUA"].ToString());
                 }
+                else
+                {
+                    inputtenphong.Text = "";
+                    inputsucchua.Value = 0;
+                }    
+
+                
                 Program.myReader.Close();
             }
             catch (Exception)

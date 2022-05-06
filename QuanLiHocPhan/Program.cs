@@ -9,7 +9,7 @@ namespace QuanLiHocPhan
     {
         public static SqlConnection connection = new SqlConnection();
         public static SqlDataReader myReader;
-        public static SqlCommand sqlcmd;
+      
 
         public static string connectionString = "Data Source = DESKTOP-MMFEF8Q\\SQLEXPRESS; Initial Catalog = QLDSV_HTC; User ID = sa; Password=123;";
         public static frmMain frmChinh;

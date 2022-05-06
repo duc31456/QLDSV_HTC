@@ -36,6 +36,12 @@ namespace QuanLiHocPhan
                 return Text;
             }
         }
+
+        string maltc_th = "";
+        int idnhom_th = 1;
+        DateTime ngaybatdau_th = new DateTime();
+        int tietbatdau_th = 1;
+        int demsosvdangky_th = 0;
         private void btnexit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
@@ -172,7 +178,7 @@ namespace QuanLiHocPhan
         int idnhom = 0;
         DateTime ngaybatdau;
       //  DateTime ngayketthuc;
-        int tietbatdau = 0;
+        int tietbatdau = 1;
         int demsosvdangky = 0;
       
         String tempmaltc = "";
@@ -201,6 +207,15 @@ namespace QuanLiHocPhan
 
         private void dangky()
         {
+            if(demsodong == 0)
+            {
+               maltc_th = "";
+               idnhom_th = 1;
+               ngaybatdau_th = new DateTime();
+                
+               tietbatdau_th = 1;
+               demsosvdangky_th = 0;
+            }    
             string querydangky = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_DangKyLTC] @masv =N'" +
                 Program.frmChinh.txtma.Text.ToString().Trim() + "', @maltc =N'" + maltc.Trim() + "', @idnhom =" + idnhom +
                 ", @sosvdangky =" + demsosvdangky +", @thoigianbatdau ='" + ngaybatdau.ToString("yyyy-MM-dd") + "', @tietbatdau =" + tietbatdau
@@ -286,26 +301,96 @@ namespace QuanLiHocPhan
             }
         }
 
-
+        int demsodong = 0;
         private void tabledangky_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 try
                 {
-                    DataGridViewRow row = this.tabledangky.Rows[e.RowIndex];
                     btnhuydk.Enabled = false;
                     btndk.Enabled = true;
+                    DataGridViewRow row = this.tabledangky.Rows[e.RowIndex];
                      maltc = row.Cells["MALTC2"].Value.ToString();
                       idnhom = int.Parse(row.Cells["IDNHOM2"].Value.ToString());
-                      ngaybatdau = DateTime.Parse(row.Cells["THOIGIANBATDAU2"].Value.ToString());
+                    try
+                    {
+                        ngaybatdau = DateTime.Parse(row.Cells["THOIGIANBATDAU2"].Value.ToString());
+                    }
+                    catch(Exception)
+                    {
+                       // MessageBox.Show("Lỗi thời gian!");
+                    }
                        demsosvdangky = int.Parse(row.Cells["SOSVDANGKY2"].Value.ToString());
                       tietbatdau = int.Parse(row.Cells["TIETBATDAU2"].Value.ToString());
-                    //   MessageBox.Show(maltc +"\n"+ idnhom + "\n" + ngaybatdau.ToString("yyyy-MM-dd") + "\n" + ngayketthuc.ToString("yyyy-MM-dd") + "\n" + tietbatdau);
+                    // nếu ltc có thực hành sẽ show ra
+                     load_formthuchanh(row.Cells["MALTC2"].Value.ToString());
+
+                    // nếu có lớp thực hành thì tắt đăng ký và ngược lại
+                    demsodong = tablethuchanh.RowCount;
+                   // MessageBox.Show(demsodong + "");
+                    if (demsodong > 0)
+                    {
+                        btnhuydk.Enabled = false;
+                        btndk.Enabled = false;
+                        demsodong = 0;
+                    }
+                    else
+                    {
+                        btnhuydk.Enabled = false;
+                        btndk.Enabled = true;
+                        demsodong = 0;
+                    }
+
                 }
                 catch (Exception ex)
                 {
-                       MessageBox.Show("" +ex);
+                     //  MessageBox.Show("" +ex);
+                    //  MessageBox.Show("Không thể lấy danh sách này!");
+                }
+            }
+        }
+
+        private void load_formthuchanh(String maltc_th)
+        {
+            tablethuchanh.Refresh();
+            string query = "EXEC [LoadFormDangKyThucHanh] @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" +
+                cbhocky.Text + ", @maltc =N'" + maltc_th + "'";
+            Program.ketNoi();
+            try
+            {
+                SqlCommand com = new SqlCommand(query, Program.connection);
+                com.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                tablethuchanh.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex + "");
+            }
+        }
+
+        
+        private void tablethuchanh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                try
+                {
+                    DataGridViewRow row = this.tablethuchanh.Rows[e.RowIndex];
+                    btnhuydk.Enabled = false;
+                    btndk.Enabled = true;
+                    maltc_th = row.Cells["MALTC3"].Value.ToString();
+                    idnhom_th = int.Parse(row.Cells["IDNHOM3"].Value.ToString());
+                    ngaybatdau_th = DateTime.Parse(row.Cells["THOIGIANBATDAU3"].Value.ToString());
+                    demsosvdangky_th = int.Parse(row.Cells["SOSVDANGKY3"].Value.ToString());
+                    tietbatdau_th = int.Parse(row.Cells["TIETBATDAU3"].Value.ToString());
+                }
+                catch (Exception ex)
+                {
+                   //   MessageBox.Show("" +ex);
                     //  MessageBox.Show("Không thể lấy danh sách này!");
                 }
             }
