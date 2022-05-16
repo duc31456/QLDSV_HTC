@@ -38,19 +38,19 @@ namespace QuanLiHocPhan
             btnedit.Enabled = false;
             btndelete.Enabled = false;
             btnsave.Enabled = false;
-            txtmamh.Enabled = txttenmh.Enabled = false;
+            txtmamh.Enabled = txttenmh.Enabled = spinnerSoTC_LT.Enabled = spinnerSoTC_TH.Enabled = false;
         }
         private void tablemonhoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (e.RowIndex >= 0)
             {
 
                 try
                 {
-                    DataGridViewRow row = this.tablemonhoc.Rows[e.RowIndex];
-                    txtmamh.Text = row.Cells["mamh"].Value.ToString();
-                    txttenmh.Text = row.Cells["tenmh"].Value.ToString();
+                    //DataGridViewRow row = this.tablemonhoc.Rows[e.RowIndex];
+                    //txtmamh.Text = row.Cells["mamh"].Value.ToString();
+                    //txttenmh.Text = row.Cells["tenmh"].Value.ToString();
                     btnedit.Enabled = btndelete.Enabled = true;
                 }
                 catch (Exception ex)
@@ -71,22 +71,31 @@ namespace QuanLiHocPhan
         {
             type = "ADD";
             txtmamh.Text = txttenmh.Text = "";
+            spinnerSoTC_LT.Value = spinnerSoTC_TH.Value = 0;
             btnadd.Enabled = false;
             btnedit.Enabled = btndelete.Enabled = false;
-            txtmamh.Enabled = txttenmh.Enabled = true;
+            txtmamh.Enabled = txttenmh.Enabled = spinnerSoTC_LT.Enabled = spinnerSoTC_TH.Enabled = true;
             btnsave.Enabled = true;
             tablemonhoc.Enabled = false;
         }
 
         public void addmh()
         {
-            string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH) VALUES(N'" + txtmamh.Text.Trim()
-            + "', N'" + txttenmh.Text.Trim() + "')";
+            //string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH, SOTIET_LT, SOTIET_TH) VALUES(N'" + txtmamh.Text.Trim()
+            //+ "', N'" + txttenmh.Text.Trim() + "')";
+
+            string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH, SOTIET_LT, SOTIET_TH) VALUES(@maMH, @tenMH, @soTietLT, @soTietTH)";
             Console.WriteLine(queryaddmonhoc);
             Program.ketNoi();
             try
             {
                 SqlCommand com = new SqlCommand(queryaddmonhoc, Program.connection);
+                com.Parameters.Clear();
+                com.Parameters.AddWithValue("@maMH", txtmamh.Text.Trim());
+                com.Parameters.AddWithValue("@tenMH", txttenmh.Text.Trim());
+                com.Parameters.AddWithValue("@soTietLT", (Int32)spinnerSoTC_LT.Value);
+                com.Parameters.AddWithValue("@soTietTH", (Int32)spinnerSoTC_TH.Value);
+
                 com.ExecuteNonQuery();
                 this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
                 MessageBox.Show("Thêm môn học thành công!");
@@ -101,12 +110,19 @@ namespace QuanLiHocPhan
 
         public void editmh()
         {
-            string queryeditmonhoc = "UPDATE MONHOC SET TENMH = N'" + txttenmh.Text.Trim() + "' WHERE MAMH = N'" + txtmamh.Text.Trim() + "'";
+            //string queryeditmonhoc = "UPDATE MONHOC SET TENMH = N'" + txttenmh.Text.Trim() + "' WHERE MAMH = N'" + txtmamh.Text.Trim() + "'";
+            string queryeditmonhoc = "UPDATE MONHOC SET TENMH=@tenMH, SOTIET_LT=@soTietLT, SOTIET_TH=@soTietTH WHERE MAMH=@maMH";
             Console.WriteLine(queryeditmonhoc);
             Program.ketNoi();
             try
             {
                 SqlCommand com = new SqlCommand(queryeditmonhoc, Program.connection);
+                com.Parameters.Clear();
+                com.Parameters.AddWithValue("@maMH", txtmamh.Text.Trim());
+                com.Parameters.AddWithValue("@tenMH", txttenmh.Text.Trim());
+                com.Parameters.AddWithValue("@soTietLT", (Int32)spinnerSoTC_LT.Value);
+                com.Parameters.AddWithValue("@soTietTH", (Int32)spinnerSoTC_TH.Value);
+
                 com.ExecuteNonQuery();
                 this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
                 MessageBox.Show("Chỉnh sửa thông tin môn học " + txtmamh.Text.Trim() + " thành công!");
@@ -143,7 +159,8 @@ namespace QuanLiHocPhan
             type = "EDIT"; 
             btnadd.Enabled = false;
             btnedit.Enabled = btndelete.Enabled = false;
-            txtmamh.Enabled = txttenmh.Enabled = true;
+            txtmamh.Enabled = false;
+                txttenmh.Enabled = spinnerSoTC_LT.Enabled = spinnerSoTC_TH.Enabled = true;
             btnsave.Enabled = true;
             tablemonhoc.Enabled = false;
         }
@@ -164,6 +181,8 @@ namespace QuanLiHocPhan
 
         private void btnsave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (!isValidSoTC()) return;
+
             DialogResult dlr = MessageBox.Show("Bạn có muốn lưu vào cơ sở dữ liệu?", "Thông báo",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dlr == DialogResult.OK)
@@ -181,6 +200,22 @@ namespace QuanLiHocPhan
             {
                 return;
             }
+        }
+
+        private bool isValidSoTC()
+        {
+            // Kiểm tra ràng buộc số tín chỉ lý thuyết + thực hành
+            if ((Int32)spinnerSoTC_LT.Value < 0 || (Int32)spinnerSoTC_TH.Value < 0)
+            {
+                MessageBox.Show("Số tín chỉ không được phép < 0", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            } else if ((Int32)spinnerSoTC_LT.Value == 0){
+                MessageBox.Show("Số tín chỉ lý thuyết không được phép = 0", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+                return true;
         }
     }
 }

@@ -45,8 +45,12 @@ namespace QuanLiHocPhan
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numSoTC_TH = new System.Windows.Forms.NumericUpDown();
+            this.sP_QuanLyLTCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
+            this.label4 = new System.Windows.Forms.Label();
             this.numsiso = new System.Windows.Forms.NumericUpDown();
-            this.numsotc = new System.Windows.Forms.NumericUpDown();
+            this.numSoTC_LT = new System.Windows.Forms.NumericUpDown();
             this.numhocky = new System.Windows.Forms.NumericUpDown();
             this.txtmaltc = new System.Windows.Forms.TextBox();
             this.cbmanhom = new System.Windows.Forms.ComboBox();
@@ -57,13 +61,12 @@ namespace QuanLiHocPhan
             this.maltc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenmh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chuthich = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sotc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTIET_LT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTIET_TH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nienkhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hocky = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.malop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sP_QuanLyLTCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -87,12 +90,13 @@ namespace QuanLiHocPhan
             mALOPLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numsiso)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numsotc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numhocky)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableltc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoTC_TH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_QuanLyLTCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numsiso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoTC_LT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numhocky)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableltc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nHOMLTCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTLTCBindingSource1)).BeginInit();
@@ -104,9 +108,9 @@ namespace QuanLiHocPhan
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(583, 196);
+            mALOPLabel.Location = new System.Drawing.Point(656, 245);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(54, 17);
+            mALOPLabel.Size = new System.Drawing.Size(60, 20);
             mALOPLabel.TabIndex = 21;
             mALOPLabel.Text = "Mã lớp:";
             // 
@@ -206,37 +210,43 @@ namespace QuanLiHocPhan
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1924, 30);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1924, 34);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1055);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1050);
             this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.barDockControlBottom.Size = new System.Drawing.Size(1924, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1025);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1016);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1924, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1924, 34);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1025);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1016);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.numSoTC_TH);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.numsiso);
-            this.panel1.Controls.Add(this.numsotc);
+            this.panel1.Controls.Add(this.numSoTC_LT);
             this.panel1.Controls.Add(this.numhocky);
             this.panel1.Controls.Add(this.txtmaltc);
             this.panel1.Controls.Add(this.cbmanhom);
@@ -254,14 +264,55 @@ namespace QuanLiHocPhan
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 34);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1924, 1025);
+            this.panel1.Size = new System.Drawing.Size(1924, 1016);
             this.panel1.TabIndex = 4;
+            // 
+            // numSoTC_TH
+            // 
+            this.numSoTC_TH.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sP_QuanLyLTCBindingSource, "SOTIET_TH", true));
+            this.numSoTC_TH.Location = new System.Drawing.Point(1020, 328);
+            this.numSoTC_TH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numSoTC_TH.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numSoTC_TH.Name = "numSoTC_TH";
+            this.numSoTC_TH.Size = new System.Drawing.Size(117, 26);
+            this.numSoTC_TH.TabIndex = 32;
+            this.numSoTC_TH.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // sP_QuanLyLTCBindingSource
+            // 
+            this.sP_QuanLyLTCBindingSource.DataMember = "SP_QuanLyLTC";
+            this.sP_QuanLyLTCBindingSource.DataSource = this.qLDSV_HTCDataSet;
+            // 
+            // qLDSV_HTCDataSet
+            // 
+            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
+            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(847, 332);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(139, 20);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Số TC Thực Hành:";
             // 
             // numsiso
             // 
-            this.numsiso.Location = new System.Drawing.Point(1798, 120);
+            this.numsiso.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sP_QuanLyLTCBindingSource, "SISO", true));
+            this.numsiso.Location = new System.Drawing.Point(175, 311);
+            this.numsiso.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numsiso.Maximum = new decimal(new int[] {
             300,
             0,
@@ -273,7 +324,7 @@ namespace QuanLiHocPhan
             0,
             0});
             this.numsiso.Name = "numsiso";
-            this.numsiso.Size = new System.Drawing.Size(104, 22);
+            this.numsiso.Size = new System.Drawing.Size(117, 26);
             this.numsiso.TabIndex = 29;
             this.numsiso.Value = new decimal(new int[] {
             1,
@@ -281,23 +332,25 @@ namespace QuanLiHocPhan
             0,
             0});
             // 
-            // numsotc
+            // numSoTC_LT
             // 
-            this.numsotc.Location = new System.Drawing.Point(1798, 198);
-            this.numsotc.Maximum = new decimal(new int[] {
+            this.numSoTC_LT.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sP_QuanLyLTCBindingSource, "SOTIET_LT", true));
+            this.numSoTC_LT.Location = new System.Drawing.Point(617, 326);
+            this.numSoTC_LT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numSoTC_LT.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
-            this.numsotc.Minimum = new decimal(new int[] {
+            this.numSoTC_LT.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numsotc.Name = "numsotc";
-            this.numsotc.Size = new System.Drawing.Size(104, 22);
-            this.numsotc.TabIndex = 28;
-            this.numsotc.Value = new decimal(new int[] {
+            this.numSoTC_LT.Name = "numSoTC_LT";
+            this.numSoTC_LT.Size = new System.Drawing.Size(117, 26);
+            this.numSoTC_LT.TabIndex = 28;
+            this.numSoTC_LT.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -305,7 +358,9 @@ namespace QuanLiHocPhan
             // 
             // numhocky
             // 
-            this.numhocky.Location = new System.Drawing.Point(1277, 196);
+            this.numhocky.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sP_QuanLyLTCBindingSource, "HOCKY", true));
+            this.numhocky.Location = new System.Drawing.Point(1437, 245);
+            this.numhocky.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numhocky.Maximum = new decimal(new int[] {
             3,
             0,
@@ -317,7 +372,7 @@ namespace QuanLiHocPhan
             0,
             0});
             this.numhocky.Name = "numhocky";
-            this.numhocky.Size = new System.Drawing.Size(104, 22);
+            this.numhocky.Size = new System.Drawing.Size(117, 26);
             this.numhocky.TabIndex = 27;
             this.numhocky.Value = new decimal(new int[] {
             1,
@@ -327,41 +382,52 @@ namespace QuanLiHocPhan
             // 
             // txtmaltc
             // 
-            this.txtmaltc.Location = new System.Drawing.Point(137, 122);
+            this.txtmaltc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sP_QuanLyLTCBindingSource, "MALTC", true));
+            this.txtmaltc.Location = new System.Drawing.Point(154, 152);
+            this.txtmaltc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtmaltc.Name = "txtmaltc";
-            this.txtmaltc.Size = new System.Drawing.Size(174, 22);
+            this.txtmaltc.Size = new System.Drawing.Size(195, 26);
             this.txtmaltc.TabIndex = 26;
             // 
             // cbmanhom
             // 
+            this.cbmanhom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sP_QuanLyLTCBindingSource, "CHUTHICH", true));
             this.cbmanhom.FormattingEnabled = true;
-            this.cbmanhom.Location = new System.Drawing.Point(137, 193);
+            this.cbmanhom.Location = new System.Drawing.Point(154, 241);
+            this.cbmanhom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbmanhom.Name = "cbmanhom";
-            this.cbmanhom.Size = new System.Drawing.Size(249, 24);
+            this.cbmanhom.Size = new System.Drawing.Size(280, 28);
             this.cbmanhom.TabIndex = 25;
             // 
             // cbmalop
             // 
+            this.cbmalop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sP_QuanLyLTCBindingSource, "MALOP", true));
             this.cbmalop.FormattingEnabled = true;
-            this.cbmalop.Location = new System.Drawing.Point(691, 193);
+            this.cbmalop.Location = new System.Drawing.Point(777, 241);
+            this.cbmalop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbmalop.Name = "cbmalop";
-            this.cbmalop.Size = new System.Drawing.Size(201, 24);
+            this.cbmalop.Size = new System.Drawing.Size(226, 28);
             this.cbmalop.TabIndex = 24;
             // 
             // cbmamh
             // 
+            this.cbmamh.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sP_QuanLyLTCBindingSource, "TENMH", true));
             this.cbmamh.FormattingEnabled = true;
-            this.cbmamh.Location = new System.Drawing.Point(691, 120);
+            this.cbmamh.Location = new System.Drawing.Point(777, 150);
+            this.cbmamh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbmamh.Name = "cbmamh";
-            this.cbmamh.Size = new System.Drawing.Size(320, 24);
+            this.cbmamh.Size = new System.Drawing.Size(360, 28);
             this.cbmamh.TabIndex = 23;
+            this.cbmamh.SelectedIndexChanged += new System.EventHandler(this.cbmamh_SelectedIndexChanged);
             // 
             // cbnienkhoa
             // 
+            this.cbnienkhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sP_QuanLyLTCBindingSource, "NIENKHOA", true));
             this.cbnienkhoa.FormattingEnabled = true;
-            this.cbnienkhoa.Location = new System.Drawing.Point(1277, 122);
+            this.cbnienkhoa.Location = new System.Drawing.Point(1437, 152);
+            this.cbnienkhoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbnienkhoa.Name = "cbnienkhoa";
-            this.cbnienkhoa.Size = new System.Drawing.Size(201, 24);
+            this.cbnienkhoa.Size = new System.Drawing.Size(226, 28);
             this.cbnienkhoa.TabIndex = 22;
             // 
             // tableltc
@@ -375,19 +441,21 @@ namespace QuanLiHocPhan
             this.maltc,
             this.tenmh,
             this.chuthich,
-            this.sotc,
+            this.SOTIET_LT,
+            this.SOTIET_TH,
             this.nienkhoa,
             this.hocky,
             this.malop,
             this.siso});
             this.tableltc.DataSource = this.sP_QuanLyLTCBindingSource;
             this.tableltc.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableltc.Location = new System.Drawing.Point(0, 550);
+            this.tableltc.Location = new System.Drawing.Point(0, 422);
+            this.tableltc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableltc.Name = "tableltc";
             this.tableltc.ReadOnly = true;
             this.tableltc.RowHeadersWidth = 51;
             this.tableltc.RowTemplate.Height = 24;
-            this.tableltc.Size = new System.Drawing.Size(1924, 475);
+            this.tableltc.Size = new System.Drawing.Size(1924, 594);
             this.tableltc.TabIndex = 16;
             this.tableltc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellClick);
             // 
@@ -416,13 +484,21 @@ namespace QuanLiHocPhan
             this.chuthich.Name = "chuthich";
             this.chuthich.ReadOnly = true;
             // 
-            // sotc
+            // SOTIET_LT
             // 
-            this.sotc.DataPropertyName = "SOTC";
-            this.sotc.HeaderText = "Số Tín Chỉ";
-            this.sotc.MinimumWidth = 6;
-            this.sotc.Name = "sotc";
-            this.sotc.ReadOnly = true;
+            this.SOTIET_LT.DataPropertyName = "SOTIET_LT";
+            this.SOTIET_LT.HeaderText = "Số TC Lý Thuyết";
+            this.SOTIET_LT.MinimumWidth = 8;
+            this.SOTIET_LT.Name = "SOTIET_LT";
+            this.SOTIET_LT.ReadOnly = true;
+            // 
+            // SOTIET_TH
+            // 
+            this.SOTIET_TH.DataPropertyName = "SOTIET_TH";
+            this.SOTIET_TH.HeaderText = "Số TC Thực Hành";
+            this.SOTIET_TH.MinimumWidth = 8;
+            this.SOTIET_TH.Name = "SOTIET_TH";
+            this.SOTIET_TH.ReadOnly = true;
             // 
             // nienkhoa
             // 
@@ -456,76 +532,66 @@ namespace QuanLiHocPhan
             this.siso.Name = "siso";
             this.siso.ReadOnly = true;
             // 
-            // sP_QuanLyLTCBindingSource
-            // 
-            this.sP_QuanLyLTCBindingSource.DataMember = "SP_QuanLyLTC";
-            this.sP_QuanLyLTCBindingSource.DataSource = this.qLDSV_HTCDataSet;
-            // 
-            // qLDSV_HTCDataSet
-            // 
-            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
-            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1181, 125);
+            this.label14.Location = new System.Drawing.Point(1329, 156);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 17);
+            this.label14.Size = new System.Drawing.Size(86, 20);
             this.label14.TabIndex = 16;
             this.label14.Text = "Niên Khóa:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(44, 196);
+            this.label13.Location = new System.Drawing.Point(50, 245);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 17);
+            this.label13.Size = new System.Drawing.Size(86, 20);
             this.label13.TabIndex = 15;
             this.label13.Text = "Nhóm Lớp:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1693, 125);
+            this.label12.Location = new System.Drawing.Point(52, 317);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 17);
+            this.label12.Size = new System.Drawing.Size(51, 20);
             this.label12.TabIndex = 14;
             this.label12.Text = "Sĩ Số:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1693, 200);
+            this.label11.Location = new System.Drawing.Point(452, 328);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 17);
+            this.label11.Size = new System.Drawing.Size(129, 20);
             this.label11.TabIndex = 13;
-            this.label11.Text = "Số Tín Chỉ:";
+            this.label11.Text = "Số TC Lý Thuyết:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1181, 200);
+            this.label10.Location = new System.Drawing.Point(1329, 250);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 17);
+            this.label10.Size = new System.Drawing.Size(61, 20);
             this.label10.TabIndex = 12;
             this.label10.Text = "Học kỳ:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(579, 123);
+            this.label5.Location = new System.Drawing.Point(651, 154);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.Size = new System.Drawing.Size(108, 20);
             this.label5.TabIndex = 7;
             this.label5.Text = "Tên Môn Học:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 125);
+            this.label3.Location = new System.Drawing.Point(50, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 17);
+            this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "MÃ LTC:";
             // 
@@ -535,9 +601,9 @@ namespace QuanLiHocPhan
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(977, 48);
+            this.label1.Location = new System.Drawing.Point(1099, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 23);
+            this.label1.Size = new System.Drawing.Size(246, 28);
             this.label1.TabIndex = 4;
             this.label1.Text = "QUẢN LÝ LỚP TÍN CHỈ";
             // 
@@ -609,27 +675,29 @@ namespace QuanLiHocPhan
             // 
             // frmQuanLiLTC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1924, 1050);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmQuanLiLTC";
             this.Text = "Thông Tin Quản Lý Lớp Tín Chỉ";
             this.Load += new System.EventHandler(this.frmDSLTC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numsiso)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numsotc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numhocky)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableltc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoTC_TH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_QuanLyLTCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numsiso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoTC_LT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numhocky)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableltc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nHOMLTCBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTLTCBindingSource1)).EndInit();
@@ -681,7 +749,7 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.BindingSource cTLTCBindingSource1;
         private System.Windows.Forms.BindingSource cTLTCBindingSource;
         private System.Windows.Forms.NumericUpDown numsiso;
-        private System.Windows.Forms.NumericUpDown numsotc;
+        private System.Windows.Forms.NumericUpDown numSoTC_LT;
         private System.Windows.Forms.NumericUpDown numhocky;
         private System.Windows.Forms.TextBox txtmaltc;
         private System.Windows.Forms.ComboBox cbmanhom;
@@ -691,10 +759,13 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.DataGridViewTextBoxColumn maltc;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenmh;
         private System.Windows.Forms.DataGridViewTextBoxColumn chuthich;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sotc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET_LT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET_TH;
         private System.Windows.Forms.DataGridViewTextBoxColumn nienkhoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn hocky;
         private System.Windows.Forms.DataGridViewTextBoxColumn malop;
         private System.Windows.Forms.DataGridViewTextBoxColumn siso;
+        private System.Windows.Forms.NumericUpDown numSoTC_TH;
+        private System.Windows.Forms.Label label4;
     }
 }

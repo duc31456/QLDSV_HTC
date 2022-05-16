@@ -5439,6 +5439,10 @@ namespace QuanLiHocPhan {
             
             private global::System.Data.DataColumn columnSISO;
             
+            private global::System.Data.DataColumn columnSOTIET_LT;
+            
+            private global::System.Data.DataColumn columnSOTIET_TH;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public SP_QuanLyLTCDataTable() {
@@ -5538,6 +5542,22 @@ namespace QuanLiHocPhan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SOTIET_LTColumn {
+                get {
+                    return this.columnSOTIET_LT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SOTIET_THColumn {
+                get {
+                    return this.columnSOTIET_TH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5573,7 +5593,7 @@ namespace QuanLiHocPhan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SP_QuanLyLTCRow AddSP_QuanLyLTCRow(string MALTC, string TENMH, string CHUTHICH, int SOTC, string NIENKHOA, int HOCKY, string MALOP, int SISO) {
+            public SP_QuanLyLTCRow AddSP_QuanLyLTCRow(string MALTC, string TENMH, string CHUTHICH, int SOTC, string NIENKHOA, int HOCKY, string MALOP, int SISO, int SOTIET_LT, int SOTIET_TH) {
                 SP_QuanLyLTCRow rowSP_QuanLyLTCRow = ((SP_QuanLyLTCRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MALTC,
@@ -5583,7 +5603,9 @@ namespace QuanLiHocPhan {
                         NIENKHOA,
                         HOCKY,
                         MALOP,
-                        SISO};
+                        SISO,
+                        SOTIET_LT,
+                        SOTIET_TH};
                 rowSP_QuanLyLTCRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_QuanLyLTCRow);
                 return rowSP_QuanLyLTCRow;
@@ -5614,6 +5636,8 @@ namespace QuanLiHocPhan {
                 this.columnHOCKY = base.Columns["HOCKY"];
                 this.columnMALOP = base.Columns["MALOP"];
                 this.columnSISO = base.Columns["SISO"];
+                this.columnSOTIET_LT = base.Columns["SOTIET_LT"];
+                this.columnSOTIET_TH = base.Columns["SOTIET_TH"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5635,6 +5659,10 @@ namespace QuanLiHocPhan {
                 base.Columns.Add(this.columnMALOP);
                 this.columnSISO = new global::System.Data.DataColumn("SISO", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSISO);
+                this.columnSOTIET_LT = new global::System.Data.DataColumn("SOTIET_LT", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSOTIET_LT);
+                this.columnSOTIET_TH = new global::System.Data.DataColumn("SOTIET_TH", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSOTIET_TH);
                 this.columnMALTC.AllowDBNull = false;
                 this.columnMALTC.MaxLength = 50;
                 this.columnTENMH.AllowDBNull = false;
@@ -9758,6 +9786,38 @@ namespace QuanLiHocPhan {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int SOTIET_LT {
+                get {
+                    try {
+                        return ((int)(this[this.tableSP_QuanLyLTC.SOTIET_LTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SOTIET_LT\' in table \'SP_QuanLyLTC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_QuanLyLTC.SOTIET_LTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int SOTIET_TH {
+                get {
+                    try {
+                        return ((int)(this[this.tableSP_QuanLyLTC.SOTIET_THColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SOTIET_TH\' in table \'SP_QuanLyLTC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_QuanLyLTC.SOTIET_THColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsSISONull() {
                 return this.IsNull(this.tableSP_QuanLyLTC.SISOColumn);
             }
@@ -9766,6 +9826,30 @@ namespace QuanLiHocPhan {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSISONull() {
                 this[this.tableSP_QuanLyLTC.SISOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSOTIET_LTNull() {
+                return this.IsNull(this.tableSP_QuanLyLTC.SOTIET_LTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSOTIET_LTNull() {
+                this[this.tableSP_QuanLyLTC.SOTIET_LTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSOTIET_THNull() {
+                return this.IsNull(this.tableSP_QuanLyLTC.SOTIET_THColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSOTIET_THNull() {
+                this[this.tableSP_QuanLyLTC.SOTIET_THColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -17119,6 +17203,8 @@ SELECT MAPGV, HO, TEN FROM PHONGGIAOVU WHERE (MAPGV = @MAPGV)";
             tableMapping.ColumnMappings.Add("HOCKY", "HOCKY");
             tableMapping.ColumnMappings.Add("MALOP", "MALOP");
             tableMapping.ColumnMappings.Add("SISO", "SISO");
+            tableMapping.ColumnMappings.Add("SOTIET_LT", "SOTIET_LT");
+            tableMapping.ColumnMappings.Add("SOTIET_TH", "SOTIET_TH");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v19.2" />
     <Reference Include="DevExpress.Data.v19.2" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.2.Core" />
     <Reference Include="DevExpress.Utils.v19.2" />
     <Reference Include="DevExpress.XtraBars.v19.2" />
@@ -44,7 +45,9 @@
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -122,6 +125,12 @@
     <Compile Include="frmTKB.Designer.cs">
       <DependentUpon>frmTKB.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTKB2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTKB2.Designer.cs">
+      <DependentUpon>frmTKB2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLDSV_HTCDataSet.Designer.cs">
@@ -129,6 +138,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLDSV_HTCDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UserControlItemTKB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlItemTKB.Designer.cs">
+      <DependentUpon>UserControlItemTKB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils_TKB.cs" />
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +178,9 @@
     <EmbeddedResource Include="frmTKB.resx">
       <DependentUpon>frmTKB.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTKB2.resx">
+      <DependentUpon>frmTKB2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -171,7 +190,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControlItemTKB.resx">
+      <DependentUpon>UserControlItemTKB.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -193,6 +216,9 @@
     <None Include="QLDSV_HTCDataSet.xss">
       <DependentUpon>QLDSV_HTCDataSet.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\studentX32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

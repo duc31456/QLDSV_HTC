@@ -8,10 +8,10 @@ namespace QuanLiHocPhan
     static class Program
     {
         public static SqlConnection connection = new SqlConnection();
-        public static SqlDataReader myReader;
+        public static SqlDataReader myReader = null;
       
 
-        public static string connectionString = "Data Source = DESKTOP-MMFEF8Q\\SQLEXPRESS; Initial Catalog = QLDSV_HTC; User ID = sa; Password=123;";
+        public static string connectionString = "Data Source = LAPTOP-ELKCHA2M; Initial Catalog = QLDSV_HTC; User ID = sa; Password=123;";
         public static frmMain frmChinh;
 
             public static int ketNoi()
@@ -63,8 +63,9 @@ namespace QuanLiHocPhan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            frmChinh = new frmMain();
-            Application.Run(frmChinh);
+            //frmChinh = new frmMain();
+            ketNoi();
+            Application.Run(new frmTKB2("N18DCCN001"));
         }
     }
 }
