@@ -30,9 +30,9 @@ namespace QuanLiHocPhan
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMH));
             System.Windows.Forms.Label sOTIET_LTLabel;
             System.Windows.Forms.Label sOTIET_THLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMH));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnadd = new DevExpress.XtraBars.BarButtonItem();
@@ -46,32 +46,49 @@ namespace QuanLiHocPhan
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.spinnerSoTC_TH = new DevExpress.XtraEditors.SpinEdit();
+            this.spinnerSoTC_LT = new DevExpress.XtraEditors.SpinEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.txtmamh = new System.Windows.Forms.TextBox();
             this.txttenmh = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tablemonhoc = new System.Windows.Forms.DataGridView();
-            this.mamh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenmh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
+            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mONHOCTableAdapter = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.MONHOCTableAdapter();
-            this.tableAdapterManager = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.TableAdapterManager();
-            this.spinnerSoTC_LT = new DevExpress.XtraEditors.SpinEdit();
-            this.spinnerSoTC_TH = new DevExpress.XtraEditors.SpinEdit();
-            this.SOTIET_LT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTIET_TH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TENMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTC_LT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTC_TH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             sOTIET_LTLabel = new System.Windows.Forms.Label();
             sOTIET_THLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_LT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_TH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_LT.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sOTIET_LTLabel
+            // 
+            sOTIET_LTLabel.AutoSize = true;
+            sOTIET_LTLabel.Location = new System.Drawing.Point(818, 151);
+            sOTIET_LTLabel.Name = "sOTIET_LTLabel";
+            sOTIET_LTLabel.Size = new System.Drawing.Size(118, 17);
+            sOTIET_LTLabel.TabIndex = 34;
+            sOTIET_LTLabel.Text = "Số TC Lý Thuyết:";
+            // 
+            // sOTIET_THLabel
+            // 
+            sOTIET_THLabel.AutoSize = true;
+            sOTIET_THLabel.Location = new System.Drawing.Point(815, 203);
+            sOTIET_THLabel.Name = "sOTIET_THLabel";
+            sOTIET_THLabel.Size = new System.Drawing.Size(125, 17);
+            sOTIET_THLabel.TabIndex = 35;
+            sOTIET_THLabel.Text = "Số TC Thực Hành:";
             // 
             // barManager1
             // 
@@ -169,39 +186,36 @@ namespace QuanLiHocPhan
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1924, 34);
+            this.barDockControlTop.Size = new System.Drawing.Size(1710, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1050);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 840);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1924, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1710, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1016);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 810);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1924, 34);
+            this.barDockControlRight.Location = new System.Drawing.Point(1710, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1016);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 810);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.tablemonhoc);
             this.panel1.Controls.Add(sOTIET_THLabel);
             this.panel1.Controls.Add(this.spinnerSoTC_TH);
             this.panel1.Controls.Add(sOTIET_LTLabel);
@@ -211,13 +225,43 @@ namespace QuanLiHocPhan
             this.panel1.Controls.Add(this.txttenmh);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.tablemonhoc);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 34);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1924, 1016);
+            this.panel1.Size = new System.Drawing.Size(1710, 810);
             this.panel1.TabIndex = 4;
+            // 
+            // spinnerSoTC_TH
+            // 
+            this.spinnerSoTC_TH.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinnerSoTC_TH.Location = new System.Drawing.Point(956, 198);
+            this.spinnerSoTC_TH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.spinnerSoTC_TH.MenuManager = this.barManager1;
+            this.spinnerSoTC_TH.Name = "spinnerSoTC_TH";
+            this.spinnerSoTC_TH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinnerSoTC_TH.Size = new System.Drawing.Size(133, 24);
+            this.spinnerSoTC_TH.TabIndex = 36;
+            // 
+            // spinnerSoTC_LT
+            // 
+            this.spinnerSoTC_LT.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinnerSoTC_LT.Location = new System.Drawing.Point(956, 149);
+            this.spinnerSoTC_LT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.spinnerSoTC_LT.MenuManager = this.barManager1;
+            this.spinnerSoTC_LT.Name = "spinnerSoTC_LT";
+            this.spinnerSoTC_LT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinnerSoTC_LT.Size = new System.Drawing.Size(133, 24);
+            this.spinnerSoTC_LT.TabIndex = 35;
             // 
             // label1
             // 
@@ -225,45 +269,41 @@ namespace QuanLiHocPhan
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(818, 59);
+            this.label1.Location = new System.Drawing.Point(727, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(587, 28);
+            this.label1.Size = new System.Drawing.Size(489, 23);
             this.label1.TabIndex = 34;
             this.label1.Text = "DANH SÁCH MÔN HỌC KHOA CÔNG NGHỆ THÔNG TIN";
             // 
             // txtmamh
             // 
-            this.txtmamh.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mONHOCBindingSource, "MAMH", true));
-            this.txtmamh.Location = new System.Drawing.Point(443, 188);
-            this.txtmamh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtmamh.Location = new System.Drawing.Point(394, 150);
             this.txtmamh.Name = "txtmamh";
-            this.txtmamh.Size = new System.Drawing.Size(149, 26);
+            this.txtmamh.Size = new System.Drawing.Size(133, 22);
             this.txtmamh.TabIndex = 33;
             // 
             // txttenmh
             // 
-            this.txttenmh.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.mONHOCBindingSource, "TENMH", true));
-            this.txttenmh.Location = new System.Drawing.Point(443, 252);
-            this.txttenmh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txttenmh.Location = new System.Drawing.Point(394, 202);
             this.txttenmh.Name = "txttenmh";
-            this.txttenmh.Size = new System.Drawing.Size(302, 26);
+            this.txttenmh.Size = new System.Drawing.Size(269, 22);
             this.txttenmh.TabIndex = 27;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(259, 249);
+            this.label11.Location = new System.Drawing.Point(230, 199);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(108, 20);
+            this.label11.Size = new System.Drawing.Size(97, 17);
             this.label11.TabIndex = 23;
             this.label11.Text = "Tên Môn Học:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(259, 194);
+            this.label3.Location = new System.Drawing.Point(230, 155);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 20);
+            this.label3.Size = new System.Drawing.Size(91, 17);
             this.label3.TabIndex = 21;
             this.label3.Text = "Mã Môn Học:";
             // 
@@ -275,161 +315,88 @@ namespace QuanLiHocPhan
             this.tablemonhoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablemonhoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablemonhoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mamh,
-            this.tenmh,
-            this.SOTIET_LT,
-            this.SOTIET_TH});
+            this.MAMH,
+            this.TENMH,
+            this.SOTC_LT,
+            this.SOTC_TH});
             this.tablemonhoc.DataSource = this.mONHOCBindingSource;
             this.tablemonhoc.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tablemonhoc.Location = new System.Drawing.Point(0, 425);
-            this.tablemonhoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tablemonhoc.Location = new System.Drawing.Point(0, 347);
             this.tablemonhoc.Name = "tablemonhoc";
             this.tablemonhoc.ReadOnly = true;
             this.tablemonhoc.RowHeadersWidth = 51;
             this.tablemonhoc.RowTemplate.Height = 24;
-            this.tablemonhoc.Size = new System.Drawing.Size(1924, 591);
-            this.tablemonhoc.TabIndex = 0;
+            this.tablemonhoc.Size = new System.Drawing.Size(1710, 463);
+            this.tablemonhoc.TabIndex = 36;
             this.tablemonhoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablemonhoc_CellClick);
-            // 
-            // mamh
-            // 
-            this.mamh.DataPropertyName = "MAMH";
-            this.mamh.HeaderText = "Mã môn học";
-            this.mamh.MinimumWidth = 6;
-            this.mamh.Name = "mamh";
-            this.mamh.ReadOnly = true;
-            // 
-            // tenmh
-            // 
-            this.tenmh.DataPropertyName = "TENMH";
-            this.tenmh.HeaderText = "Tên môn học";
-            this.tenmh.MinimumWidth = 6;
-            this.tenmh.Name = "tenmh";
-            this.tenmh.ReadOnly = true;
-            // 
-            // mONHOCBindingSource
-            // 
-            this.mONHOCBindingSource.DataMember = "MONHOC";
-            this.mONHOCBindingSource.DataSource = this.qLDSV_HTCDataSet;
             // 
             // qLDSV_HTCDataSet
             // 
             this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
             this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // mONHOCBindingSource
+            // 
+            this.mONHOCBindingSource.DataMember = "MONHOC";
+            this.mONHOCBindingSource.DataSource = this.qLDSV_HTCDataSet;
+            // 
             // mONHOCTableAdapter
             // 
             this.mONHOCTableAdapter.ClearBeforeFill = true;
             // 
-            // tableAdapterManager
+            // MAMH
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CT_LTCTableAdapter = null;
-            this.tableAdapterManager.DSSV_LTCTableAdapter = null;
-            this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            this.tableAdapterManager.GVDAY_LTCTableAdapter = null;
-            this.tableAdapterManager.KHOAHOCTableAdapter = null;
-            this.tableAdapterManager.LICHHOC_LTCTableAdapter = null;
-            this.tableAdapterManager.LOPTableAdapter = null;
-            this.tableAdapterManager.LTCTableAdapter = null;
-            this.tableAdapterManager.MoDangKy_LTCTableAdapter = null;
-            this.tableAdapterManager.MONHOCTableAdapter = this.mONHOCTableAdapter;
-            this.tableAdapterManager.NHOM_LTCTableAdapter = null;
-            this.tableAdapterManager.PHANQUYENTableAdapter = null;
-            this.tableAdapterManager.PHONGGIAOVUTableAdapter = null;
-            this.tableAdapterManager.PHONGHOCTableAdapter = null;
-            this.tableAdapterManager.SINHVIENTableAdapter = null;
-            this.tableAdapterManager.TAIKHOANTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.MAMH.DataPropertyName = "MAMH";
+            this.MAMH.HeaderText = "MAMH";
+            this.MAMH.MinimumWidth = 6;
+            this.MAMH.Name = "MAMH";
+            this.MAMH.ReadOnly = true;
             // 
-            // sOTIET_LTLabel
+            // TENMH
             // 
-            sOTIET_LTLabel.AutoSize = true;
-            sOTIET_LTLabel.Location = new System.Drawing.Point(920, 189);
-            sOTIET_LTLabel.Name = "sOTIET_LTLabel";
-            sOTIET_LTLabel.Size = new System.Drawing.Size(129, 20);
-            sOTIET_LTLabel.TabIndex = 34;
-            sOTIET_LTLabel.Text = "Số TC Lý Thuyết:";
+            this.TENMH.DataPropertyName = "TENMH";
+            this.TENMH.HeaderText = "TENMH";
+            this.TENMH.MinimumWidth = 6;
+            this.TENMH.Name = "TENMH";
+            this.TENMH.ReadOnly = true;
             // 
-            // spinnerSoTC_LT
+            // SOTC_LT
             // 
-            this.spinnerSoTC_LT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mONHOCBindingSource, "SOTIET_LT", true));
-            this.spinnerSoTC_LT.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinnerSoTC_LT.Location = new System.Drawing.Point(1076, 186);
-            this.spinnerSoTC_LT.MenuManager = this.barManager1;
-            this.spinnerSoTC_LT.Name = "spinnerSoTC_LT";
-            this.spinnerSoTC_LT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinnerSoTC_LT.Size = new System.Drawing.Size(150, 28);
-            this.spinnerSoTC_LT.TabIndex = 35;
+            this.SOTC_LT.DataPropertyName = "SOTC_LT";
+            this.SOTC_LT.HeaderText = "SOTC_LT";
+            this.SOTC_LT.MinimumWidth = 6;
+            this.SOTC_LT.Name = "SOTC_LT";
+            this.SOTC_LT.ReadOnly = true;
             // 
-            // sOTIET_THLabel
+            // SOTC_TH
             // 
-            sOTIET_THLabel.AutoSize = true;
-            sOTIET_THLabel.Location = new System.Drawing.Point(917, 254);
-            sOTIET_THLabel.Name = "sOTIET_THLabel";
-            sOTIET_THLabel.Size = new System.Drawing.Size(139, 20);
-            sOTIET_THLabel.TabIndex = 35;
-            sOTIET_THLabel.Text = "Số TC Thực Hành:";
-            // 
-            // spinnerSoTC_TH
-            // 
-            this.spinnerSoTC_TH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.mONHOCBindingSource, "SOTIET_TH", true));
-            this.spinnerSoTC_TH.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spinnerSoTC_TH.Location = new System.Drawing.Point(1076, 248);
-            this.spinnerSoTC_TH.MenuManager = this.barManager1;
-            this.spinnerSoTC_TH.Name = "spinnerSoTC_TH";
-            this.spinnerSoTC_TH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinnerSoTC_TH.Size = new System.Drawing.Size(150, 28);
-            this.spinnerSoTC_TH.TabIndex = 36;
-            // 
-            // SOTIET_LT
-            // 
-            this.SOTIET_LT.DataPropertyName = "SOTIET_LT";
-            this.SOTIET_LT.HeaderText = "SOTIET_LT";
-            this.SOTIET_LT.MinimumWidth = 8;
-            this.SOTIET_LT.Name = "SOTIET_LT";
-            this.SOTIET_LT.ReadOnly = true;
-            // 
-            // SOTIET_TH
-            // 
-            this.SOTIET_TH.DataPropertyName = "SOTIET_TH";
-            this.SOTIET_TH.HeaderText = "SOTIET_TH";
-            this.SOTIET_TH.MinimumWidth = 8;
-            this.SOTIET_TH.Name = "SOTIET_TH";
-            this.SOTIET_TH.ReadOnly = true;
+            this.SOTC_TH.DataPropertyName = "SOTC_TH";
+            this.SOTC_TH.HeaderText = "SOTC_TH";
+            this.SOTC_TH.MinimumWidth = 6;
+            this.SOTC_TH.Name = "SOTC_TH";
+            this.SOTC_TH.ReadOnly = true;
             // 
             // frmMH
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.ClientSize = new System.Drawing.Size(1710, 840);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMH";
             this.Text = "Quản Lí Môn Học";
             this.Load += new System.EventHandler(this.frmMH_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_LT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_TH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_LT.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,24 +416,23 @@ namespace QuanLiHocPhan
       
         private DevExpress.XtraBars.BarButtonItem btnreset;
         private DevExpress.XtraBars.BarButtonItem btnexit;
-        private System.Windows.Forms.DataGridView tablemonhoc;
         private System.Windows.Forms.TextBox txttenmh;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
       
         private System.Windows.Forms.TextBox txtmamh;
-        private QLDSV_HTCDataSet qLDSV_HTCDataSet;
-        private System.Windows.Forms.BindingSource mONHOCBindingSource;
-        private QLDSV_HTCDataSetTableAdapters.MONHOCTableAdapter mONHOCTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mamh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenmh;
         private DevExpress.XtraBars.BarButtonItem btndelete;
         private DevExpress.XtraBars.BarButtonItem btnsave;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SpinEdit spinnerSoTC_TH;
         private DevExpress.XtraEditors.SpinEdit spinnerSoTC_LT;
-        private QLDSV_HTCDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET_LT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOTIET_TH;
+        private System.Windows.Forms.DataGridView tablemonhoc;
+        private QLDSV_HTCDataSet qLDSV_HTCDataSet;
+        private System.Windows.Forms.BindingSource mONHOCBindingSource;
+        private QLDSV_HTCDataSetTableAdapters.MONHOCTableAdapter mONHOCTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAMH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TENMH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTC_LT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOTC_TH;
     }
 }

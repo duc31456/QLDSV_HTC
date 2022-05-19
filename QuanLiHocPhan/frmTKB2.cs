@@ -78,18 +78,24 @@ namespace QuanLiHocPhan
             // kiem tra hocKy da co du du lieu chua?
             HocKy hocKy = listHocKy.listHocKy[indexHocKy];
             cmbTuan.Items.Clear();
-            foreach (Tuan tuan in hocKy.listTuan)
+            try
             {
-                int sttTuan = tuan.tuan;
+                foreach (Tuan tuan in hocKy.listTuan)
+                {
+                    int sttTuan = tuan.tuan;
 
-                String ngayBDTuan = tuan.ngayBD.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-                String ngayKTTuan = tuan.ngayKT.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-                String s = "Tuần " + sttTuan + " [Từ " + ngayBDTuan + " -- Đến "
-                        + ngayKTTuan + "]";
-                cmbTuan.Items.Add(s);
+                    String ngayBDTuan = tuan.ngayBD.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    String ngayKTTuan = tuan.ngayKT.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    String s = "Tuần " + sttTuan + " [Từ " + ngayBDTuan + " -- Đến "
+                            + ngayKTTuan + "]";
+                    cmbTuan.Items.Add(s);
+                }
+                indexTuan = 0;
+                cmbTuan.SelectedIndex = indexTuan;
             }
-            indexTuan = 0;
-            cmbTuan.SelectedIndex = indexTuan;
+            catch(Exception e)
+            { }
+          
         }
 
         private void setCBMoiNhat()

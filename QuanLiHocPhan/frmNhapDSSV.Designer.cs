@@ -369,6 +369,7 @@ namespace QuanLiHocPhan
             // cbphai
             // 
             this.cbphai.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.sINHVIENBindingSource, "PHAI", true));
+            this.cbphai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbphai.FormattingEnabled = true;
             this.cbphai.Location = new System.Drawing.Point(1512, 145);
             this.cbphai.Name = "cbphai";

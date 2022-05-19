@@ -28,6 +28,7 @@ namespace QuanLiHocPhan
         {
             // TODO: This line of code loads data into the 'qLDSV_HTCDataSet.MONHOC' table. You can move, or remove it, as needed.
             this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
+            
             reset();
         }
         private void reset()
@@ -40,26 +41,7 @@ namespace QuanLiHocPhan
             btnsave.Enabled = false;
             txtmamh.Enabled = txttenmh.Enabled = spinnerSoTC_LT.Enabled = spinnerSoTC_TH.Enabled = false;
         }
-        private void tablemonhoc_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (e.RowIndex >= 0)
-            {
-
-                try
-                {
-                    //DataGridViewRow row = this.tablemonhoc.Rows[e.RowIndex];
-                    //txtmamh.Text = row.Cells["mamh"].Value.ToString();
-                    //txttenmh.Text = row.Cells["tenmh"].Value.ToString();
-                    btnedit.Enabled = btndelete.Enabled = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Không thể lấy thông tin môn học này!");
-                }
-            }
-        }
-
+       
         private void btnreset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             reset();
@@ -84,7 +66,7 @@ namespace QuanLiHocPhan
             //string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH, SOTIET_LT, SOTIET_TH) VALUES(N'" + txtmamh.Text.Trim()
             //+ "', N'" + txttenmh.Text.Trim() + "')";
 
-            string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH, SOTIET_LT, SOTIET_TH) VALUES(@maMH, @tenMH, @soTietLT, @soTietTH)";
+            string queryaddmonhoc = "INSERT INTO MONHOC(MAMH, TENMH, SOTC_LT, SOTC_TH) VALUES(@maMH, @tenMH, @soTCLT, @soTCTH)";
             Console.WriteLine(queryaddmonhoc);
             Program.ketNoi();
             try
@@ -93,8 +75,8 @@ namespace QuanLiHocPhan
                 com.Parameters.Clear();
                 com.Parameters.AddWithValue("@maMH", txtmamh.Text.Trim());
                 com.Parameters.AddWithValue("@tenMH", txttenmh.Text.Trim());
-                com.Parameters.AddWithValue("@soTietLT", (Int32)spinnerSoTC_LT.Value);
-                com.Parameters.AddWithValue("@soTietTH", (Int32)spinnerSoTC_TH.Value);
+                com.Parameters.AddWithValue("@soTCLT", (Int32)spinnerSoTC_LT.Value);
+                com.Parameters.AddWithValue("@soTCTH", (Int32)spinnerSoTC_TH.Value);
 
                 com.ExecuteNonQuery();
                 this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
@@ -111,7 +93,7 @@ namespace QuanLiHocPhan
         public void editmh()
         {
             //string queryeditmonhoc = "UPDATE MONHOC SET TENMH = N'" + txttenmh.Text.Trim() + "' WHERE MAMH = N'" + txtmamh.Text.Trim() + "'";
-            string queryeditmonhoc = "UPDATE MONHOC SET TENMH=@tenMH, SOTIET_LT=@soTietLT, SOTIET_TH=@soTietTH WHERE MAMH=@maMH";
+            string queryeditmonhoc = "UPDATE MONHOC SET TENMH=@tenMH, SOTC_LT=@soTCLT, SOTC_TH=@soTCTH WHERE MAMH=@maMH";
             Console.WriteLine(queryeditmonhoc);
             Program.ketNoi();
             try
@@ -120,8 +102,8 @@ namespace QuanLiHocPhan
                 com.Parameters.Clear();
                 com.Parameters.AddWithValue("@maMH", txtmamh.Text.Trim());
                 com.Parameters.AddWithValue("@tenMH", txttenmh.Text.Trim());
-                com.Parameters.AddWithValue("@soTietLT", (Int32)spinnerSoTC_LT.Value);
-                com.Parameters.AddWithValue("@soTietTH", (Int32)spinnerSoTC_TH.Value);
+                com.Parameters.AddWithValue("@soTCLT", (Int32)spinnerSoTC_LT.Value);
+                com.Parameters.AddWithValue("@soTCTH", (Int32)spinnerSoTC_TH.Value);
 
                 com.ExecuteNonQuery();
                 this.mONHOCTableAdapter.Fill(this.qLDSV_HTCDataSet.MONHOC);
@@ -216,6 +198,27 @@ namespace QuanLiHocPhan
                 return false;
             }
                 return true;
+        }
+
+        private void tablemonhoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                try
+                {
+                    DataGridViewRow row = this.tablemonhoc.Rows[e.RowIndex];
+                    txtmamh.Text = row.Cells["mamh"].Value.ToString();
+                    txttenmh.Text = row.Cells["tenmh"].Value.ToString();
+                    spinnerSoTC_LT.Value = int.Parse(row.Cells["SOTC_LT"].Value.ToString());
+                    spinnerSoTC_TH.Value = int.Parse(row.Cells["SOTC_TH"].Value.ToString());
+                    btnedit.Enabled = btndelete.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể lấy thông tin môn học này!");
+                }
+            }
         }
     }
 }

@@ -59,6 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGV.Designer.cs">
+      <DependentUpon>AddGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPhongHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPhongHoc.Designer.cs">
+      <DependentUpon>AddPhongHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMoDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +131,6 @@
     <Compile Include="frmNhapDSSV.Designer.cs">
       <DependentUpon>frmNhapDSSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTKB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTKB.Designer.cs">
-      <DependentUpon>frmTKB.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmTKB2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
       <DependentUpon>UserControlItemTKB.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils_TKB.cs" />
+    <EmbeddedResource Include="AddGV.resx">
+      <DependentUpon>AddGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPhongHoc.resx">
+      <DependentUpon>AddPhongHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,9 +186,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNhapDSSV.resx">
       <DependentUpon>frmNhapDSSV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTKB.resx">
-      <DependentUpon>frmTKB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTKB2.resx">
       <DependentUpon>frmTKB2.cs</DependentUpon>

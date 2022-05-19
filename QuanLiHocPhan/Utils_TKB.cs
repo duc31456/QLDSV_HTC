@@ -49,12 +49,20 @@ namespace QuanLiHocPhan
                 Program.myReader.Read();
 
                 int sttHocKyMoiNhat = 0;
-                string nienKhoaMoiNhat = null;
-                if (Program.myReader.HasRows)
+                string nienKhoaMoiNhat = "";
+                try
+                {               
+                    if (Program.myReader.HasRows)
+                    {
+                        sttHocKyMoiNhat = Program.myReader.GetInt32(0);
+                        nienKhoaMoiNhat = Program.myReader.GetString(1);
+                    }
+                }catch(Exception e)
                 {
-                    sttHocKyMoiNhat = Program.myReader.GetInt32(0);
-                    nienKhoaMoiNhat = Program.myReader.GetString(1);
+                     sttHocKyMoiNhat = 0;
+                     nienKhoaMoiNhat = "";
                 }
+              
 
                 Program.myReader.Close();
                 // nếu trong năm SV đang học học kỳ 2,3
@@ -98,21 +106,26 @@ namespace QuanLiHocPhan
                     // thêm danh sách tuần bắt đầu từ học kỳ 1, tuần 1
                     for (int i = 0; i < listHocKy.Count; i++)
                     {
-                        HocKy hocKy = listHocKy[i];
-                        Program.myReader = getReaderNgayBD_KT_HocKy(hocKy.hocky, hocKy.nienKhoa);
-                        
-                        if (Program.myReader == null) return;
-                        Program.myReader.Read();
+                        try
+                        {
+                            HocKy hocKy = listHocKy[i];
+                            Program.myReader = getReaderNgayBD_KT_HocKy(hocKy.hocky, hocKy.nienKhoa);
 
-                        DateTime ngayBDTuanDauTien = Program.myReader.GetDateTime(0);
-                        DateTime ngayKTTuanCuoiCung = Program.myReader.GetDateTime(1);
+                            if (Program.myReader == null) return;
+                            Program.myReader.Read();
 
-                        Program.myReader.Close();
+                            DateTime ngayBDTuanDauTien = Program.myReader.GetDateTime(0);
+                            DateTime ngayKTTuanCuoiCung = Program.myReader.GetDateTime(1);
 
-                        hocKy.fillDSTuan(tuanTmp, ngayBDTuanDauTien, ngayKTTuanCuoiCung);
+                            Program.myReader.Close();
 
-                        int lastIndex = hocKy.listTuan.Count - 1;
-                        tuanTmp = hocKy.listTuan[lastIndex].tuan + 1;
+                            hocKy.fillDSTuan(tuanTmp, ngayBDTuanDauTien, ngayKTTuanCuoiCung);
+
+                            int lastIndex = hocKy.listTuan.Count - 1;
+                            tuanTmp = hocKy.listTuan[lastIndex].tuan + 1;
+                        }catch(Exception e)
+                        {}
+                       
                     }
                 }
             }

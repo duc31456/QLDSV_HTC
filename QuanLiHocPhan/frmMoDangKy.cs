@@ -68,7 +68,7 @@ namespace QuanLiHocPhan
             //MessageBox.Show(dateketthuc.Value.ToString("yyyy/MM/dd") + datebatdau.Value.ToString("yyyy/MM/dd") + "");
             if (sosanh < 0)
             {
-                
+                dateketthuc.Value = datebatdau.Value;
                 MessageBox.Show(" Ngày kết thúc không thể nhỏ hơn ngày bắt đầu");
                 return;
             }

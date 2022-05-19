@@ -56,6 +56,7 @@ namespace QuanLiHocPhan
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.btnphancong = new DevExpress.XtraBars.BarButtonItem();
             this.btnlichhoc_ltc = new DevExpress.XtraBars.BarButtonItem();
+            this.frmmodangki = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -66,6 +67,8 @@ namespace QuanLiHocPhan
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribmodangky = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribDangKy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -80,9 +83,6 @@ namespace QuanLiHocPhan
             this.txtmalop = new System.Windows.Forms.ToolStripStatusLabel();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribmodangky = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.frmmodangki = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -180,6 +180,7 @@ namespace QuanLiHocPhan
             // btnDKLTC
             // 
             this.btnDKLTC.Caption = "Đăng Ký Lớp";
+            this.btnDKLTC.Enabled = false;
             this.btnDKLTC.Id = 4;
             this.btnDKLTC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDKLTC.ImageOptions.SvgImage")));
             this.btnDKLTC.Name = "btnDKLTC";
@@ -217,7 +218,6 @@ namespace QuanLiHocPhan
             // btnTKB
             // 
             this.btnTKB.Caption = "Thời Khóa Biểu";
-            this.btnTKB.Enabled = false;
             this.btnTKB.Id = 9;
             this.btnTKB.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTKB.ImageOptions.SvgImage")));
             this.btnTKB.Name = "btnTKB";
@@ -314,6 +314,15 @@ namespace QuanLiHocPhan
             this.btnlichhoc_ltc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnlichhoc_ltc.ImageOptions.LargeImage")));
             this.btnlichhoc_ltc.Name = "btnlichhoc_ltc";
             // 
+            // frmmodangki
+            // 
+            this.frmmodangki.Caption = "Mở đăng ký học phần";
+            this.frmmodangki.Id = 28;
+            this.frmmodangki.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmmodangki.ImageOptions.Image")));
+            this.frmmodangki.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frmmodangki.ImageOptions.LargeImage")));
+            this.frmmodangki.Name = "frmmodangki";
+            this.frmmodangki.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.frmmodangki_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -374,6 +383,19 @@ namespace QuanLiHocPhan
             // 
             this.ribbonPageGroup13.ItemLinks.Add(this.btnphancong);
             this.ribbonPageGroup13.Name = "ribbonPageGroup13";
+            // 
+            // ribmodangky
+            // 
+            this.ribmodangky.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2});
+            this.ribmodangky.Name = "ribmodangky";
+            this.ribmodangky.Text = "Mở đăng ký";
+            this.ribmodangky.Visible = false;
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.frmmodangki);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // ribDangKy
             // 
@@ -481,28 +503,6 @@ namespace QuanLiHocPhan
             // 
             this.ribbonPageGroup15.ItemLinks.Add(this.btnDSDHP);
             this.ribbonPageGroup15.Name = "ribbonPageGroup15";
-            // 
-            // ribmodangky
-            // 
-            this.ribmodangky.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
-            this.ribmodangky.Name = "ribmodangky";
-            this.ribmodangky.Text = "Mở đăng ký";
-            this.ribmodangky.Visible = false;
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.frmmodangki);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
-            // frmmodangki
-            // 
-            this.frmmodangki.Caption = "Mở đăng ký học phần";
-            this.frmmodangki.Id = 28;
-            this.frmmodangki.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmmodangki.ImageOptions.Image")));
-            this.frmmodangki.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frmmodangki.ImageOptions.LargeImage")));
-            this.frmmodangki.Name = "frmmodangki";
-            this.frmmodangki.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.frmmodangki_ItemClick);
             // 
             // frmMain
             // 

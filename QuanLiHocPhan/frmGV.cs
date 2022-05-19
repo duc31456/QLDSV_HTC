@@ -22,6 +22,7 @@ namespace QuanLiHocPhan
         private void frmGV_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'qLDSV_HTCDataSet.GIANGVIEN' table. You can move, or remove it, as needed.
+            
             this.gIANGVIENTableAdapter.Fill(this.qLDSV_HTCDataSet.GIANGVIEN);
             reset();
 

@@ -74,10 +74,13 @@ namespace QuanLiHocPhan
                     if (String.Equals(str, "0"))
                     {
                         MessageBox.Show("Khóa này đang trong thời gian đăng ký!");
+                        btnDKLTC.Enabled = true;
+
                     }
                     if (String.Equals(str, "1"))
                     {
                         MessageBox.Show("Đang ngoài thời gian đăng ký!");
+                        btnDKLTC.Enabled = false;
                     }
                 }
                 Program.myReader.Close();
@@ -211,14 +214,14 @@ namespace QuanLiHocPhan
 
         private void btnTKB_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExists(typeof(frmTKB));
+            Form frm = this.checkExists(typeof(frmTKB2));
             if (frm != null)
             {
                 frm.Activate();
             }
             else
             {
-                frmTKB f = new frmTKB();
+                frmTKB2 f = new frmTKB2(Program.frmChinh.txtma.Text.ToString().Trim());
                 f.MdiParent = this;
                 f.Show();
             }

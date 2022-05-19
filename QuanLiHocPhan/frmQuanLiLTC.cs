@@ -94,10 +94,9 @@ namespace QuanLiHocPhan
 
         private void frmDSLTC_Load(object sender, EventArgs e)
         {
-            this.qLDSV_HTCDataSet.EnforceConstraints = false;
-            // TODO: This line of code loads data into the 'qLDSV_HTCDataSet.SP_QuanLyLTC' table. You can move, or remove it, as needed. 
-            this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);
-            numSoTC_LT.Enabled = numSoTC_TH.Enabled = false;
+            // TODO: This line of code loads data into the 'qLDSV_HTCDataSet.SP_QuanLyLTC' table. You can move, or remove it, as needed.
+            this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);       
+           
             reset();
         }
 
@@ -106,7 +105,7 @@ namespace QuanLiHocPhan
             txtmaltc.Text = "";
             btnadd.Enabled = true;
             btndelete.Enabled = btnedit.Enabled = btnsave.Enabled = false;
-            txtmaltc.Enabled = numsiso.Enabled = 
+            txtmaltc.Enabled = numsiso.Enabled = numSoTC.Enabled = false;
             cbmalop.Enabled = numhocky.Enabled = cbnienkhoa.Enabled = cbmamh.Enabled = cbmanhom.Enabled = false;
             cbmalop.Items.Clear();
             cbmamh.Items.Clear();
@@ -176,110 +175,123 @@ namespace QuanLiHocPhan
 
         public void addltc()
         {
-            //string queryaddltc = "EXEC [SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc =N'" + txtmaltc.Text.Trim() +
-            //    "', @chuthich =N'" + cbmanhom.Text + "', @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" + numhocky.Value + ", @malop =N'" +
-            //    cbmalop.Text + "', @siso =" + numsiso.Value + ", @sotc=" + numSoTC_LT.Value + ", @tenmh =N'" + cbmamh.Text +
-            //    "', @type=N'" + type + "'";
-
-            string queryaddltc = "EXEC [SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc, @chuthich, @nienkhoa, @hocky," +
-                "@malop, @siso, @tenmh, @type";
+         
+            string queryaddltc = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc =N'" +
+                 txtmaltc.Text.Trim() + "', @chuthich =N'" + cbmanhom.Text + "', @nienkhoa =N'" + cbnienkhoa.Text +
+                 "', @hocky =" + numhocky.Value + ", @malop = N'" +
+                cbmalop.Text + "', @siso =" + numsiso.Value + ", @sotc=" + numSoTC.Value + ", @tenmh =N'" + cbmamh.Text + "'," +
+                "@type=N'" + type + "' SELECT 'Return Value' = @return_value";
 
             Console.WriteLine(queryaddltc);
             Program.ketNoi();
             try
             {
                 SqlCommand com = new SqlCommand(queryaddltc, Program.connection);
-                com.Parameters.Clear();
-                com.Parameters.AddWithValue("@maltc", txtmaltc.Text.Trim());
-                com.Parameters.AddWithValue("@chuthich", cbmanhom.Text);
-                com.Parameters.AddWithValue("@nienkhoa", cbnienkhoa.Text);
-                com.Parameters.AddWithValue("@hocky", numhocky.Value);
-                com.Parameters.AddWithValue("@malop", cbmalop.Text);
-                com.Parameters.AddWithValue("@siso", numsiso.Value);
-                com.Parameters.AddWithValue("@tenmh", cbmamh.Text);
-                com.Parameters.AddWithValue("@type", type);
+                Program.myReader = com.ExecuteReader();
+                while (Program.myReader.Read())
+                {
+                    String str = Program.myReader[0].ToString();
+                    if (String.Equals(str, "0"))
+                    {
+                        MessageBox.Show("Thêm lớp tín chỉ thành công!");
 
-                com.ExecuteNonQuery();
-                this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);
-                MessageBox.Show("Thêm lớp tín chỉ thành công!");
+                    }
+                    if (String.Equals(str, "1"))
+                    {
+                        MessageBox.Show("Thêm lớp thực hành thành công!");
+
+                    }
+                    if (String.Equals(str, "-1"))
+                    {
+                        MessageBox.Show("Tạo lớp lý thuyết trước khi thêm lớp thực hành!");
+
+                    }
+                    if (String.Equals(str, "-2"))
+                    {
+                        MessageBox.Show("Đã tồn tại Lớp lý thuyết của "+txtmaltc.Text.Trim()+" này!");
+
+                    }
+                    if (String.Equals(str, "-3"))
+                    {
+                        MessageBox.Show("Môn này không có tiết thực hành!");
+
+                    }
+                }
+                Program.myReader.Close();
+                this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);             
                 reset();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex + "");
+                //MessageBox.Show(ex + "");
                 MessageBox.Show("Lớp tín chỉ này đã tồn tại --- Vui lòng kiểm tra lại!");
             }
         }
 
         public void editltc()
         {
-            //string queryeditltc = "EXEC	[dbo].[SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc =N'" + txtmaltc.Text.Trim() +
-            //      "', @chuthich =N'" + cbmanhom.Text.Trim().ToString() + "', @nienkhoa =N'" + cbnienkhoa.Text.Trim().ToString() + "', @hocky =" + numhocky.Value + ", @malop =N'" +
-            //     cbmalop.Text.Trim().ToString() + "', @siso =" + numsiso.Value + ", @sotc=" + numSoTC_LT.Value + ", @tenmh =N'" + cbmamh.Text.Trim().ToString() +
-            //      "', @type=N'" + type + "'";
-
-            string queryeditltc = "EXEC [SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc, @chuthich, @nienkhoa, @hocky," +
-                "@malop, @siso, @tenmh, @type";
+            string queryeditltc = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc =N'" +
+                 txtmaltc.Text.Trim() + "', @chuthich =N'" + cbmanhom.Text + "', @nienkhoa =N'" + cbnienkhoa.Text +
+                 "', @hocky =" + numhocky.Value + ", @malop = N'" +
+                cbmalop.Text + "', @siso =" + numsiso.Value + ", @sotc=" + numSoTC.Value + ", @tenmh =N'" + cbmamh.Text + "'," +
+                "@type=N'" + type + "' SELECT 'Return Value' = @return_value";
             Console.WriteLine(queryeditltc);
             Program.ketNoi();
             try
             {
                 SqlCommand com = new SqlCommand(queryeditltc, Program.connection);
-                com.Parameters.Clear();
-                com.Parameters.AddWithValue("@maltc", txtmaltc.Text.Trim());
-                com.Parameters.AddWithValue("@chuthich", cbmanhom.Text);
-                com.Parameters.AddWithValue("@nienkhoa", cbnienkhoa.Text);
-                com.Parameters.AddWithValue("@hocky", numhocky.Value);
-                com.Parameters.AddWithValue("@malop", cbmalop.Text);
-                com.Parameters.AddWithValue("@siso", numsiso.Value);
-                com.Parameters.AddWithValue("@tenmh", cbmamh.Text);
-                com.Parameters.AddWithValue("@type", type);
+                Program.myReader = com.ExecuteReader();
+                while (Program.myReader.Read())
+                {
+                    String str = Program.myReader[0].ToString();
+                    if (String.Equals(str, "0"))
+                    {
+                        MessageBox.Show("Sửa thông tin "+txtmaltc.Text.Trim()+" thành công!");
 
-                com.ExecuteNonQuery();
-                this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);
-                MessageBox.Show("Chỉnh sửa thông tin lớp tín chỉ " + txtmaltc.Text.Trim() + " thành công!");
+                    }
+                   
+                }
+                Program.myReader.Close();
+                this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);           
                 reset();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex + "");
+               // MessageBox.Show(ex + "");
                 MessageBox.Show("Lỗi khi thay đổi dữ liệu lớp tín chỉ hoặc thay đổi trùng với lớp tín chỉ đang có!");
             }
         }
 
         public void deleteltc()
         {
-            //string querydeleteltc = "EXEC [dbo].[SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc =N'" + txtmaltc.Text.Trim() + "', @chuthich =N'" +
-            //    cbmanhom.Text + "', @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" + numhocky.Value + ", @malop =N'" +
-            //      cbmalop.Text + "', @siso =" + numsiso.Value + ", @sotc=" + numSoTC_LT.Value + ", @tenmh =N'" + cbmamh.Text +
-            //      "', @type=N'" + type + "'";
-
-            string querydeleteltc = "EXEC [SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc, @chuthich, @nienkhoa, @hocky," +
-                "@malop, @siso, @tenmh, @type";
+            string querydeleteltc = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_ADD_EDIT_DELETE_QuanLyLTC] @maltc =N'" +
+                 txtmaltc.Text.Trim() + "', @chuthich =N'" + cbmanhom.Text + "', @nienkhoa =N'" + cbnienkhoa.Text +
+                 "', @hocky =" + numhocky.Value + ", @malop = N'" +
+                cbmalop.Text + "', @siso =" + numsiso.Value + ", @sotc=" + numSoTC.Value + ", @tenmh =N'" + cbmamh.Text + "'," +
+                "@type=N'" + type + "' SELECT 'Return Value' = @return_value";
             Program.ketNoi();
             try
             {
                 string maLTC = txtmaltc.Text.Trim();
 
                 SqlCommand com = new SqlCommand(querydeleteltc, Program.connection);
-                com.Parameters.Clear();
-                com.Parameters.AddWithValue("@maltc", maLTC);
-                com.Parameters.AddWithValue("@chuthich", cbmanhom.Text);
-                com.Parameters.AddWithValue("@nienkhoa", cbnienkhoa.Text);
-                com.Parameters.AddWithValue("@hocky", numhocky.Value);
-                com.Parameters.AddWithValue("@malop", cbmalop.Text);
-                com.Parameters.AddWithValue("@siso", numsiso.Value);
-                com.Parameters.AddWithValue("@tenmh", cbmamh.Text);
-                com.Parameters.AddWithValue("@type", type);
+                Program.myReader = com.ExecuteReader();
+                while (Program.myReader.Read())
+                {
+                    String str = Program.myReader[0].ToString();
+                    if (String.Equals(str, "0"))
+                    {
+                        MessageBox.Show("Xóa thông tin "+txtmaltc.Text.Trim()+"thành công!");
 
-                com.ExecuteNonQuery();
+                    }                  
+                }
+                Program.myReader.Close();
                 this.sP_QuanLyLTCTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_QuanLyLTC);
-                MessageBox.Show("Xóa thông tin lớp tín chỉ " + maLTC + " thành công!");
                 reset();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex + "");
+                //MessageBox.Show(ex + "");
                 MessageBox.Show("Lỗi khi xóa lớp tín chỉ này!");
             }
         }
@@ -289,7 +301,7 @@ namespace QuanLiHocPhan
             load_combobox();
             type = "ADD";
             txtmaltc.Text = "";
-            txtmaltc.Enabled = numsiso.Enabled = true;
+            txtmaltc.Enabled = numsiso.Enabled = numSoTC.Enabled= true;
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
             cbmalop.Enabled = numhocky.Enabled = cbnienkhoa.Enabled = cbmamh.Enabled = cbmanhom.Enabled = true;
             btnsave.Enabled = true;
@@ -300,9 +312,10 @@ namespace QuanLiHocPhan
         {
             load_combobox();
             type = "EDIT";
-            numsiso.Enabled  = true;
+            txtmaltc.Enabled = cbmanhom.Enabled = cbmamh.Enabled = false;
+            numsiso.Enabled  = numSoTC.Enabled = true;
             btnadd.Enabled = btnedit.Enabled = btndelete.Enabled = false;
-            cbmalop.Enabled = numhocky.Enabled = cbnienkhoa.Enabled = cbmamh.Enabled = true;
+            cbmalop.Enabled = numhocky.Enabled = cbnienkhoa.Enabled = true;
             btnsave.Enabled = true;
             tableltc.Enabled = false;
         }
@@ -350,15 +363,15 @@ namespace QuanLiHocPhan
             {
                 try
                 {
-                    //DataGridViewRow row = this.tableltc.Rows[e.RowIndex];
-                    //txtmaltc.Text = row.Cells["maltc"].Value.ToString();
-                    //cbmanhom.Text = row.Cells["chuthich"].Value.ToString();
-                    //cbmamh.Text = row.Cells["tenmh"].Value.ToString();
-                    //cbmalop.Text = row.Cells["malop"].Value.ToString();
-                    //cbnienkhoa.Text = row.Cells["nienkhoa"].Value.ToString();
-                    //numhocky.Value = int.Parse(row.Cells["hocky"].Value.ToString());
-                    //numsiso.Value = int.Parse(row.Cells["siso"].Value.ToString());
-                    //numsotc.Value = int.Parse(row.Cells["sotc"].Value.ToString());
+                    DataGridViewRow row = this.tableltc.Rows[e.RowIndex];
+                    txtmaltc.Text = row.Cells["maltc"].Value.ToString();
+                    cbmanhom.Text = row.Cells["chuthich"].Value.ToString();
+                    cbmamh.Text = row.Cells["tenmh"].Value.ToString();
+                    cbmalop.Text = row.Cells["malop"].Value.ToString();
+                    cbnienkhoa.Text = row.Cells["nienkhoa"].Value.ToString();
+                    numhocky.Value = int.Parse(row.Cells["hocky"].Value.ToString());
+                    numsiso.Value = int.Parse(row.Cells["siso"].Value.ToString());
+                    numSoTC.Value = int.Parse(row.Cells["sotc"].Value.ToString());
                     btnedit.Enabled = btndelete.Enabled = true;
                 }
                 catch (Exception ex)
@@ -370,29 +383,6 @@ namespace QuanLiHocPhan
 
         private void cbmamh_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbmamh.Text.Length == 0 || cbmamh.Text == null) return;
-
-            string query = "SELECT SOTIET_LT, SOTIET_TH FROM MONHOC WHERE TENMH = @tenMH";
-            Program.ketNoi();
-            try
-            {
-                string tenMH = cbmamh.Text;
-                
-                SqlCommand com = new SqlCommand(query, Program.connection);
-                com.Parameters.Clear();
-                com.Parameters.AddWithValue("@tenMH", tenMH);
-
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                numSoTC_LT.Value = dt.Rows[0].Field<Int32>("SOTIET_LT");
-                numSoTC_TH.Value = dt.Rows[0].Field<Int32>("SOTIET_TH");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex + "");
-            }
         }
     }
 }

@@ -44,6 +44,7 @@ namespace QuanLiHocPhan
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtten = new System.Windows.Forms.TextBox();
             this.txtchuyenmon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@ namespace QuanLiHocPhan
             this.gIANGVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
             this.gIANGVIENTableAdapter = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.GIANGVIENTableAdapter();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -208,6 +208,18 @@ namespace QuanLiHocPhan
             this.panel1.Size = new System.Drawing.Size(1924, 816);
             this.panel1.TabIndex = 4;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label11.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(802, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(511, 23);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "THÔNG TIN GIẢNG VIÊN KHOA CÔNG NGHỆ THÔNG TIN";
+            // 
             // txtten
             // 
             this.txtten.Location = new System.Drawing.Point(1202, 164);
@@ -351,18 +363,6 @@ namespace QuanLiHocPhan
             // 
             this.gIANGVIENTableAdapter.ClearBeforeFill = true;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label11.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(802, 49);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(511, 23);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "THÔNG TIN GIẢNG VIÊN KHOA CÔNG NGHỆ THÔNG TIN";
-            // 
             // frmGV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -374,7 +374,7 @@ namespace QuanLiHocPhan
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmGV";
-            this.Text = "Quản Lý Giảng Viên";
+            this.Text = "  nb";
             this.Load += new System.EventHandler(this.frmGV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
