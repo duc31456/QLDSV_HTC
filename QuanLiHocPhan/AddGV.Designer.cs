@@ -118,10 +118,11 @@ namespace QuanLiHocPhan
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
             this.label18.Location = new System.Drawing.Point(318, 46);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(185, 23);
+            this.label18.Size = new System.Drawing.Size(243, 29);
             this.label18.TabIndex = 68;
             this.label18.Text = "Phân công giảng viên";
             // 

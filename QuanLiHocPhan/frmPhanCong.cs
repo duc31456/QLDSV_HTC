@@ -181,7 +181,7 @@ namespace QuanLiHocPhan
 
         private void datebatdau_ValueChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -221,13 +221,13 @@ namespace QuanLiHocPhan
                   if(dem == 0)
                     {
                        // MessageBox.Show(Program.myReader["SOTC_LT"].ToString().Trim());
-                        dateketthuc = datebatdau.Value.AddDays(28 * int.Parse(Program.myReader["SOTC_LT"].ToString().Trim()));
+                        dateketthuc = datebatdau.Value.AddDays((28 * int.Parse(Program.myReader["SOTC_LT"].ToString().Trim()))-1);
                       //  MessageBox.Show(dateketthuc.ToString("dd/MM/yyyy"));
                     }
                     else
                     {
                        // MessageBox.Show(Program.myReader["SOTC_TH"].ToString().Trim());
-                        dateketthuc = datebatdau.Value.AddDays(28 * int.Parse(Program.myReader["SOTC_TH"].ToString().Trim()));
+                        dateketthuc = datebatdau.Value.AddDays((28 * int.Parse(Program.myReader["SOTC_TH"].ToString().Trim()))-1);
                         //MessageBox.Show(dateketthuc.ToString("dd/MM/yyyy"));
                     }
                 }

@@ -288,7 +288,7 @@ namespace QuanLiHocPhan
             // MALTC
             // 
             this.MALTC.DataPropertyName = "MALTC";
-            this.MALTC.HeaderText = "MALTC";
+            this.MALTC.HeaderText = "Mã lớp tín chỉ";
             this.MALTC.MinimumWidth = 6;
             this.MALTC.Name = "MALTC";
             this.MALTC.ReadOnly = true;
@@ -296,7 +296,7 @@ namespace QuanLiHocPhan
             // CHUTHICH
             // 
             this.CHUTHICH.DataPropertyName = "CHUTHICH";
-            this.CHUTHICH.HeaderText = "CHUTHICH";
+            this.CHUTHICH.HeaderText = "Tên nhóm học";
             this.CHUTHICH.MinimumWidth = 6;
             this.CHUTHICH.Name = "CHUTHICH";
             this.CHUTHICH.ReadOnly = true;
@@ -304,7 +304,7 @@ namespace QuanLiHocPhan
             // MAGV
             // 
             this.MAGV.DataPropertyName = "MAGV";
-            this.MAGV.HeaderText = "MAGV";
+            this.MAGV.HeaderText = "Mã giảng viên";
             this.MAGV.MinimumWidth = 6;
             this.MAGV.Name = "MAGV";
             this.MAGV.ReadOnly = true;
@@ -312,7 +312,7 @@ namespace QuanLiHocPhan
             // THOIGIANBATDAU
             // 
             this.THOIGIANBATDAU.DataPropertyName = "THOIGIANBATDAU";
-            this.THOIGIANBATDAU.HeaderText = "THOIGIANBATDAU";
+            this.THOIGIANBATDAU.HeaderText = "Thời gian bắt đầu";
             this.THOIGIANBATDAU.MinimumWidth = 6;
             this.THOIGIANBATDAU.Name = "THOIGIANBATDAU";
             this.THOIGIANBATDAU.ReadOnly = true;
@@ -320,7 +320,7 @@ namespace QuanLiHocPhan
             // THOIGIANKETTHUC
             // 
             this.THOIGIANKETTHUC.DataPropertyName = "THOIGIANKETTHUC";
-            this.THOIGIANKETTHUC.HeaderText = "THOIGIANKETTHUC";
+            this.THOIGIANKETTHUC.HeaderText = "Thời gian kết thúc";
             this.THOIGIANKETTHUC.MinimumWidth = 6;
             this.THOIGIANKETTHUC.Name = "THOIGIANKETTHUC";
             this.THOIGIANKETTHUC.ReadOnly = true;
@@ -328,7 +328,7 @@ namespace QuanLiHocPhan
             // THU
             // 
             this.THU.DataPropertyName = "THU";
-            this.THU.HeaderText = "THU";
+            this.THU.HeaderText = "Thứ";
             this.THU.MinimumWidth = 6;
             this.THU.Name = "THU";
             this.THU.ReadOnly = true;
@@ -336,7 +336,7 @@ namespace QuanLiHocPhan
             // TIETBATDAU
             // 
             this.TIETBATDAU.DataPropertyName = "TIETBATDAU";
-            this.TIETBATDAU.HeaderText = "TIETBATDAU";
+            this.TIETBATDAU.HeaderText = "Tiết bắt đầu";
             this.TIETBATDAU.MinimumWidth = 6;
             this.TIETBATDAU.Name = "TIETBATDAU";
             this.TIETBATDAU.ReadOnly = true;
@@ -344,7 +344,7 @@ namespace QuanLiHocPhan
             // MAPHONG
             // 
             this.MAPHONG.DataPropertyName = "MAPHONG";
-            this.MAPHONG.HeaderText = "MAPHONG";
+            this.MAPHONG.HeaderText = "Mã phòng";
             this.MAPHONG.MinimumWidth = 6;
             this.MAPHONG.Name = "MAPHONG";
             this.MAPHONG.ReadOnly = true;
@@ -352,7 +352,7 @@ namespace QuanLiHocPhan
             // SISO
             // 
             this.SISO.DataPropertyName = "SISO";
-            this.SISO.HeaderText = "SISO";
+            this.SISO.HeaderText = "Sĩ số";
             this.SISO.MinimumWidth = 6;
             this.SISO.Name = "SISO";
             this.SISO.ReadOnly = true;
@@ -556,11 +556,11 @@ namespace QuanLiHocPhan
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label11.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(822, 43);
+            this.label11.Location = new System.Drawing.Point(730, 40);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(556, 23);
+            this.label11.Size = new System.Drawing.Size(705, 30);
             this.label11.TabIndex = 33;
             this.label11.Text = "LÊN LỊCH HỌC CHO LỚP TÍN CHỈ VÀ PHÂN CÔNG GIẢNG VIÊN ";
             // 

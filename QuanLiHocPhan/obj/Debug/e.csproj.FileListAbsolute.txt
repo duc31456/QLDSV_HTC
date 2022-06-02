@@ -347,3 +347,4 @@ C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiH
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.pdb
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.AddGV.resources
 C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.AddPhongHoc.resources
+C:\Users\desom\OneDrive - The University of Technology\Desktop\QLDSV_HTC\QuanLiHocPhan\obj\Debug\QuanLiHocPhan.popUpDangKyLTC_TH.resources

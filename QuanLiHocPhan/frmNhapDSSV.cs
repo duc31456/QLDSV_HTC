@@ -110,7 +110,7 @@ namespace QuanLiHocPhan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               // MessageBox.Show(ex.Message);
             }
         }
         private void label2_Click(object sender, EventArgs e)
@@ -195,7 +195,7 @@ namespace QuanLiHocPhan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex + "");
+              //  MessageBox.Show(ex + "");
                 MessageBox.Show("Lỗi khi thay đổi dữ liệu sinh viên hoặc thay đổi trùng với sinh viên đang có!");
             }
         }
@@ -216,7 +216,7 @@ namespace QuanLiHocPhan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex + "");
+               // MessageBox.Show(ex + "");
                 MessageBox.Show("Lỗi khi xóa sinh viên này!");
             }
         }

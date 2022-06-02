@@ -13,8 +13,9 @@ namespace QuanLiHocPhan
 
         public static string connectionString = "Data Source = DESKTOP-MMFEF8Q\\SQLEXPRESS; Initial Catalog = QLDSV_HTC; User ID = sa; Password=123;";
         public static frmMain frmChinh;
+        public static frmDSSVDangKiLTC frmDangKyLTC;
 
-            public static int ketNoi()
+        public static int ketNoi()
             {
             try
             {
@@ -65,7 +66,8 @@ namespace QuanLiHocPhan
             Application.SetCompatibleTextRenderingDefault(false);
             frmChinh = new frmMain();
             ketNoi();
-            Application.Run(frmChinh);
+             Application.Run(frmChinh);
+                 
         }
     }
 }

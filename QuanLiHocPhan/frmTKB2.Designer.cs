@@ -30,6 +30,7 @@ namespace QuanLiHocPhan
         private void InitializeComponent()
         {
             this.paneHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbTuan = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbHocKy = new System.Windows.Forms.ComboBox();
@@ -73,32 +74,49 @@ namespace QuanLiHocPhan
             // 
             // paneHeader
             // 
+            this.paneHeader.Controls.Add(this.label1);
             this.paneHeader.Controls.Add(this.cmbTuan);
             this.paneHeader.Controls.Add(this.label4);
             this.paneHeader.Controls.Add(this.cmbHocKy);
             this.paneHeader.Controls.Add(this.label3);
             this.paneHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.paneHeader.Location = new System.Drawing.Point(0, 0);
+            this.paneHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.paneHeader.Name = "paneHeader";
-            this.paneHeader.Size = new System.Drawing.Size(1654, 214);
+            this.paneHeader.Size = new System.Drawing.Size(1470, 171);
             this.paneHeader.TabIndex = 7;
+            this.paneHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.paneHeader_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(1009, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 30);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "THỜI KHÓA BIỂU";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cmbTuan
             // 
             this.cmbTuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTuan.FormattingEnabled = true;
-            this.cmbTuan.Location = new System.Drawing.Point(172, 143);
+            this.cmbTuan.Location = new System.Drawing.Point(153, 128);
+            this.cmbTuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbTuan.Name = "cmbTuan";
-            this.cmbTuan.Size = new System.Drawing.Size(528, 28);
+            this.cmbTuan.Size = new System.Drawing.Size(470, 24);
             this.cmbTuan.TabIndex = 3;
             this.cmbTuan.SelectedIndexChanged += new System.EventHandler(this.cmbTuan_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 143);
+            this.label4.Location = new System.Drawing.Point(37, 128);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 20);
+            this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "Chọn tuần";
             // 
@@ -106,18 +124,19 @@ namespace QuanLiHocPhan
             // 
             this.cmbHocKy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHocKy.FormattingEnabled = true;
-            this.cmbHocKy.Location = new System.Drawing.Point(172, 61);
+            this.cmbHocKy.Location = new System.Drawing.Point(153, 88);
+            this.cmbHocKy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbHocKy.Name = "cmbHocKy";
-            this.cmbHocKy.Size = new System.Drawing.Size(308, 28);
+            this.cmbHocKy.Size = new System.Drawing.Size(274, 24);
             this.cmbHocKy.TabIndex = 1;
             this.cmbHocKy.SelectedIndexChanged += new System.EventHandler(this.cmbHocKy_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 61);
+            this.label3.Location = new System.Drawing.Point(37, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 20);
+            this.label3.Size = new System.Drawing.Size(86, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Chọn học kỳ";
             // 
@@ -125,9 +144,9 @@ namespace QuanLiHocPhan
             // 
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1431, 3);
+            this.label11.Location = new System.Drawing.Point(1275, 3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(217, 39);
+            this.label11.Size = new System.Drawing.Size(189, 31);
             this.label11.TabIndex = 10;
             this.label11.Text = "CHỦ NHẬT";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,9 +155,9 @@ namespace QuanLiHocPhan
             // 
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1212, 3);
+            this.label9.Location = new System.Drawing.Point(1080, 3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(210, 39);
+            this.label9.Size = new System.Drawing.Size(186, 31);
             this.label9.TabIndex = 9;
             this.label9.Text = "THỨ 7";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,9 +166,9 @@ namespace QuanLiHocPhan
             // 
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(993, 3);
+            this.label10.Location = new System.Drawing.Point(885, 3);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(210, 39);
+            this.label10.Size = new System.Drawing.Size(186, 31);
             this.label10.TabIndex = 8;
             this.label10.Text = "THỨ 6";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,9 +177,9 @@ namespace QuanLiHocPhan
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(774, 3);
+            this.label7.Location = new System.Drawing.Point(690, 3);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(210, 39);
+            this.label7.Size = new System.Drawing.Size(186, 31);
             this.label7.TabIndex = 7;
             this.label7.Text = "THỨ 5";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -169,9 +188,9 @@ namespace QuanLiHocPhan
             // 
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(555, 3);
+            this.label8.Location = new System.Drawing.Point(495, 3);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(210, 39);
+            this.label8.Size = new System.Drawing.Size(186, 31);
             this.label8.TabIndex = 6;
             this.label8.Text = "THỨ 4";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,9 +199,9 @@ namespace QuanLiHocPhan
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(336, 3);
+            this.label6.Location = new System.Drawing.Point(300, 3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(210, 39);
+            this.label6.Size = new System.Drawing.Size(186, 31);
             this.label6.TabIndex = 5;
             this.label6.Text = "THỨ 3";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -191,9 +210,9 @@ namespace QuanLiHocPhan
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(117, 3);
+            this.label5.Location = new System.Drawing.Point(105, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(210, 39);
+            this.label5.Size = new System.Drawing.Size(186, 31);
             this.label5.TabIndex = 4;
             this.label5.Text = "THỨ 2";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,145 +254,160 @@ namespace QuanLiHocPhan
             this.paneTimeTable.Controls.Add(this.labelChieu, 0, 2);
             this.paneTimeTable.Controls.Add(this.panel1, 1, 1);
             this.paneTimeTable.Dock = System.Windows.Forms.DockStyle.Top;
-            this.paneTimeTable.Location = new System.Drawing.Point(0, 214);
+            this.paneTimeTable.Location = new System.Drawing.Point(0, 171);
+            this.paneTimeTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.paneTimeTable.Name = "paneTimeTable";
             this.paneTimeTable.RowCount = 3;
             this.paneTimeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.7931F));
             this.paneTimeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.10345F));
             this.paneTimeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.10345F));
-            this.paneTimeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.paneTimeTable.Size = new System.Drawing.Size(1654, 296);
+            this.paneTimeTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.paneTimeTable.Size = new System.Drawing.Size(1470, 237);
             this.paneTimeTable.TabIndex = 8;
             // 
             // panel13
             // 
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(1212, 173);
+            this.panel13.Location = new System.Drawing.Point(1080, 138);
+            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(210, 117);
+            this.panel13.Size = new System.Drawing.Size(186, 94);
             this.panel13.TabIndex = 26;
             // 
             // panel14
             // 
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(1431, 173);
+            this.panel14.Location = new System.Drawing.Point(1275, 138);
+            this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(217, 117);
+            this.panel14.Size = new System.Drawing.Size(189, 94);
             this.panel14.TabIndex = 25;
             // 
             // panel7
             // 
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(1431, 48);
+            this.panel7.Location = new System.Drawing.Point(1275, 39);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(217, 116);
+            this.panel7.Size = new System.Drawing.Size(189, 92);
             this.panel7.TabIndex = 24;
             // 
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(117, 173);
+            this.panel8.Location = new System.Drawing.Point(105, 138);
+            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(210, 117);
+            this.panel8.Size = new System.Drawing.Size(186, 94);
             this.panel8.TabIndex = 23;
             // 
             // panel9
             // 
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(336, 173);
+            this.panel9.Location = new System.Drawing.Point(300, 138);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(210, 117);
+            this.panel9.Size = new System.Drawing.Size(186, 94);
             this.panel9.TabIndex = 22;
             // 
             // panel10
             // 
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(555, 173);
+            this.panel10.Location = new System.Drawing.Point(495, 138);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(210, 117);
+            this.panel10.Size = new System.Drawing.Size(186, 94);
             this.panel10.TabIndex = 21;
             // 
             // panel11
             // 
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(774, 173);
+            this.panel11.Location = new System.Drawing.Point(690, 138);
+            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(210, 117);
+            this.panel11.Size = new System.Drawing.Size(186, 94);
             this.panel11.TabIndex = 20;
             // 
             // panel12
             // 
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(993, 173);
+            this.panel12.Location = new System.Drawing.Point(885, 138);
+            this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(210, 117);
+            this.panel12.Size = new System.Drawing.Size(186, 94);
             this.panel12.TabIndex = 19;
             // 
             // panel5
             // 
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(993, 48);
+            this.panel5.Location = new System.Drawing.Point(885, 39);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(210, 116);
+            this.panel5.Size = new System.Drawing.Size(186, 92);
             this.panel5.TabIndex = 18;
             // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(1212, 48);
+            this.panel6.Location = new System.Drawing.Point(1080, 39);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(210, 116);
+            this.panel6.Size = new System.Drawing.Size(186, 92);
             this.panel6.TabIndex = 17;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(555, 48);
+            this.panel3.Location = new System.Drawing.Point(495, 39);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(210, 116);
+            this.panel3.Size = new System.Drawing.Size(186, 92);
             this.panel3.TabIndex = 16;
             // 
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(774, 48);
+            this.panel4.Location = new System.Drawing.Point(690, 39);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(210, 116);
+            this.panel4.Size = new System.Drawing.Size(186, 92);
             this.panel4.TabIndex = 15;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(336, 48);
+            this.panel2.Location = new System.Drawing.Point(300, 39);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(210, 116);
+            this.panel2.Size = new System.Drawing.Size(186, 92);
             this.panel2.TabIndex = 14;
             // 
             // labelSang
             // 
             this.labelSang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelSang.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSang.Location = new System.Drawing.Point(6, 45);
+            this.labelSang.Location = new System.Drawing.Point(6, 37);
             this.labelSang.Name = "labelSang";
-            this.labelSang.Size = new System.Drawing.Size(102, 122);
+            this.labelSang.Size = new System.Drawing.Size(90, 96);
             this.labelSang.TabIndex = 7;
             this.labelSang.Text = "Sáng";
             this.labelSang.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // paneBlank
             // 
-            this.paneBlank.Location = new System.Drawing.Point(6, 6);
+            this.paneBlank.Location = new System.Drawing.Point(6, 5);
+            this.paneBlank.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.paneBlank.Name = "paneBlank";
-            this.paneBlank.Size = new System.Drawing.Size(102, 33);
+            this.paneBlank.Size = new System.Drawing.Size(90, 26);
             this.paneBlank.TabIndex = 11;
             // 
             // labelChieu
             // 
             this.labelChieu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelChieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChieu.Location = new System.Drawing.Point(6, 170);
+            this.labelChieu.Location = new System.Drawing.Point(6, 136);
             this.labelChieu.Name = "labelChieu";
-            this.labelChieu.Size = new System.Drawing.Size(102, 123);
+            this.labelChieu.Size = new System.Drawing.Size(90, 98);
             this.labelChieu.TabIndex = 12;
             this.labelChieu.Text = "Chiều";
             this.labelChieu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -381,18 +415,20 @@ namespace QuanLiHocPhan
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(117, 48);
+            this.panel1.Location = new System.Drawing.Point(105, 39);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 116);
+            this.panel1.Size = new System.Drawing.Size(186, 92);
             this.panel1.TabIndex = 13;
             // 
             // paneChangeWeek
             // 
             this.paneChangeWeek.Controls.Add(this.tableLayoutPanel1);
             this.paneChangeWeek.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paneChangeWeek.Location = new System.Drawing.Point(0, 510);
+            this.paneChangeWeek.Location = new System.Drawing.Point(0, 408);
+            this.paneChangeWeek.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.paneChangeWeek.Name = "paneChangeWeek";
-            this.paneChangeWeek.Size = new System.Drawing.Size(1654, 251);
+            this.paneChangeWeek.Size = new System.Drawing.Size(1470, 201);
             this.paneChangeWeek.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -410,21 +446,22 @@ namespace QuanLiHocPhan
             this.tableLayoutPanel1.Controls.Add(this.btnTuanCuoi, 4, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.15505F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.15157F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.69337F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1654, 251);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1470, 201);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnTuanDau
             // 
             this.btnTuanDau.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTuanDau.Location = new System.Drawing.Point(554, 75);
-            this.btnTuanDau.Margin = new System.Windows.Forms.Padding(10);
+            this.btnTuanDau.Location = new System.Drawing.Point(492, 60);
+            this.btnTuanDau.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.btnTuanDau.Name = "btnTuanDau";
-            this.btnTuanDau.Size = new System.Drawing.Size(121, 45);
+            this.btnTuanDau.Size = new System.Drawing.Size(107, 36);
             this.btnTuanDau.TabIndex = 0;
             this.btnTuanDau.Text = "Tuần Đầu";
             this.btnTuanDau.UseVisualStyleBackColor = true;
@@ -433,10 +470,10 @@ namespace QuanLiHocPhan
             // btnTuanTruoc
             // 
             this.btnTuanTruoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTuanTruoc.Location = new System.Drawing.Point(695, 75);
-            this.btnTuanTruoc.Margin = new System.Windows.Forms.Padding(10);
+            this.btnTuanTruoc.Location = new System.Drawing.Point(617, 60);
+            this.btnTuanTruoc.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.btnTuanTruoc.Name = "btnTuanTruoc";
-            this.btnTuanTruoc.Size = new System.Drawing.Size(121, 45);
+            this.btnTuanTruoc.Size = new System.Drawing.Size(107, 36);
             this.btnTuanTruoc.TabIndex = 1;
             this.btnTuanTruoc.Text = "Tuần Trước";
             this.btnTuanTruoc.UseVisualStyleBackColor = true;
@@ -445,10 +482,10 @@ namespace QuanLiHocPhan
             // btnTuanKe
             // 
             this.btnTuanKe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTuanKe.Location = new System.Drawing.Point(836, 75);
-            this.btnTuanKe.Margin = new System.Windows.Forms.Padding(10);
+            this.btnTuanKe.Location = new System.Drawing.Point(742, 60);
+            this.btnTuanKe.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.btnTuanKe.Name = "btnTuanKe";
-            this.btnTuanKe.Size = new System.Drawing.Size(121, 45);
+            this.btnTuanKe.Size = new System.Drawing.Size(107, 36);
             this.btnTuanKe.TabIndex = 2;
             this.btnTuanKe.Text = "Tuần Kế";
             this.btnTuanKe.UseVisualStyleBackColor = true;
@@ -457,10 +494,10 @@ namespace QuanLiHocPhan
             // btnTuanCuoi
             // 
             this.btnTuanCuoi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTuanCuoi.Location = new System.Drawing.Point(977, 75);
-            this.btnTuanCuoi.Margin = new System.Windows.Forms.Padding(10);
+            this.btnTuanCuoi.Location = new System.Drawing.Point(867, 60);
+            this.btnTuanCuoi.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.btnTuanCuoi.Name = "btnTuanCuoi";
-            this.btnTuanCuoi.Size = new System.Drawing.Size(121, 45);
+            this.btnTuanCuoi.Size = new System.Drawing.Size(107, 36);
             this.btnTuanCuoi.TabIndex = 3;
             this.btnTuanCuoi.Text = "Tuần Cuối";
             this.btnTuanCuoi.UseVisualStyleBackColor = true;
@@ -468,14 +505,15 @@ namespace QuanLiHocPhan
             // 
             // frmTKB2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1654, 761);
+            this.ClientSize = new System.Drawing.Size(1470, 609);
             this.Controls.Add(this.paneChangeWeek);
             this.Controls.Add(this.paneTimeTable);
             this.Controls.Add(this.paneHeader);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTKB2";
-            this.Text = "frmTKB2";
+            this.Text = "Thời khóa biểu";
             this.Load += new System.EventHandler(this.frmTKB2_Load);
             this.paneHeader.ResumeLayout(false);
             this.paneHeader.PerformLayout();
@@ -523,5 +561,6 @@ namespace QuanLiHocPhan
         private System.Windows.Forms.Button btnTuanTruoc;
         private System.Windows.Forms.Button btnTuanKe;
         private System.Windows.Forms.Button btnTuanCuoi;
+        private System.Windows.Forms.Label label1;
     }
 }

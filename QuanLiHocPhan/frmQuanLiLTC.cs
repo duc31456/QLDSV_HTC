@@ -224,7 +224,7 @@ namespace QuanLiHocPhan
             catch (Exception ex)
             {
                 //MessageBox.Show(ex + "");
-                MessageBox.Show("Lớp tín chỉ này đã tồn tại --- Vui lòng kiểm tra lại!");
+                MessageBox.Show("Lỗi khi thêm dữ liệu!");
             }
         }
 

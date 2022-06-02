@@ -110,8 +110,15 @@ namespace QuanLiHocPhan
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.cbkhoahoc);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtmalop);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txttenlop);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
@@ -120,25 +127,18 @@ namespace QuanLiHocPhan
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.cbkhoahoc);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txttenlop);
-            this.panel2.Controls.Add(this.txtmalop);
             this.panel2.Controls.Add(this.tablelop);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 126);
+            this.panel2.Location = new System.Drawing.Point(0, 318);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1417, 595);
+            this.panel2.Size = new System.Drawing.Size(1417, 403);
             this.panel2.TabIndex = 2;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // cbkhoahoc
             // 
             this.cbkhoahoc.FormattingEnabled = true;
-            this.cbkhoahoc.Location = new System.Drawing.Point(784, 478);
+            this.cbkhoahoc.Location = new System.Drawing.Point(448, 253);
             this.cbkhoahoc.Name = "cbkhoahoc";
             this.cbkhoahoc.Size = new System.Drawing.Size(173, 24);
             this.cbkhoahoc.TabIndex = 9;
@@ -146,7 +146,7 @@ namespace QuanLiHocPhan
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(692, 442);
+            this.label5.Location = new System.Drawing.Point(356, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 8;
@@ -155,7 +155,7 @@ namespace QuanLiHocPhan
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(692, 478);
+            this.label4.Location = new System.Drawing.Point(356, 253);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 7;
@@ -165,7 +165,7 @@ namespace QuanLiHocPhan
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(690, 343);
+            this.label3.Location = new System.Drawing.Point(354, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(233, 29);
             this.label3.TabIndex = 6;
@@ -174,7 +174,7 @@ namespace QuanLiHocPhan
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(693, 403);
+            this.label2.Location = new System.Drawing.Point(357, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 5;
@@ -182,14 +182,14 @@ namespace QuanLiHocPhan
             // 
             // txttenlop
             // 
-            this.txttenlop.Location = new System.Drawing.Point(784, 437);
+            this.txttenlop.Location = new System.Drawing.Point(448, 212);
             this.txttenlop.Name = "txttenlop";
             this.txttenlop.Size = new System.Drawing.Size(328, 22);
             this.txttenlop.TabIndex = 3;
             // 
             // txtmalop
             // 
-            this.txtmalop.Location = new System.Drawing.Point(784, 400);
+            this.txtmalop.Location = new System.Drawing.Point(448, 175);
             this.txtmalop.Name = "txtmalop";
             this.txtmalop.Size = new System.Drawing.Size(173, 22);
             this.txtmalop.TabIndex = 2;
@@ -206,13 +206,13 @@ namespace QuanLiHocPhan
             this.tenlop,
             this.khoahoc});
             this.tablelop.DataSource = this.lOPBindingSource;
-            this.tablelop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tablelop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablelop.Location = new System.Drawing.Point(0, 0);
             this.tablelop.Name = "tablelop";
             this.tablelop.ReadOnly = true;
             this.tablelop.RowHeadersWidth = 51;
             this.tablelop.RowTemplate.Height = 24;
-            this.tablelop.Size = new System.Drawing.Size(1417, 296);
+            this.tablelop.Size = new System.Drawing.Size(1417, 403);
             this.tablelop.TabIndex = 1;
             this.tablelop.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablelop_CellClick);
             // 
@@ -254,11 +254,11 @@ namespace QuanLiHocPhan
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(796, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(440, 23);
+            this.label1.Size = new System.Drawing.Size(552, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "THÔNG TIN LỚP KHOA CÔNG NGHỆ THÔNG TIN";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -461,7 +461,6 @@ namespace QuanLiHocPhan
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablelop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();

@@ -31,10 +31,10 @@ namespace QuanLiHocPhan
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMoDangKy));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnadd = new DevExpress.XtraBars.BarButtonItem();
@@ -209,14 +209,14 @@ namespace QuanLiHocPhan
             this.tablemodangky.AllowUserToDeleteRows = false;
             this.tablemodangky.AutoGenerateColumns = false;
             this.tablemodangky.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablemodangky.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablemodangky.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tablemodangky.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablemodangky.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KHOAHOC,
@@ -236,8 +236,8 @@ namespace QuanLiHocPhan
             // KHOAHOC
             // 
             this.KHOAHOC.DataPropertyName = "KHOAHOC";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.KHOAHOC.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.KHOAHOC.DefaultCellStyle = dataGridViewCellStyle2;
             this.KHOAHOC.HeaderText = "Khóa đăng ký";
             this.KHOAHOC.MinimumWidth = 6;
             this.KHOAHOC.Name = "KHOAHOC";
@@ -246,8 +246,8 @@ namespace QuanLiHocPhan
             // THOIGIANMO
             // 
             this.THOIGIANMO.DataPropertyName = "THOIGIANMO";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.THOIGIANMO.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.THOIGIANMO.DefaultCellStyle = dataGridViewCellStyle3;
             this.THOIGIANMO.HeaderText = "Thời gian mở đăng ký";
             this.THOIGIANMO.MinimumWidth = 6;
             this.THOIGIANMO.Name = "THOIGIANMO";
@@ -256,8 +256,8 @@ namespace QuanLiHocPhan
             // THOIGIANDONG
             // 
             this.THOIGIANDONG.DataPropertyName = "THOIGIANDONG";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.THOIGIANDONG.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.THOIGIANDONG.DefaultCellStyle = dataGridViewCellStyle4;
             this.THOIGIANDONG.HeaderText = "Thời gian đóng đăng ký";
             this.THOIGIANDONG.MinimumWidth = 6;
             this.THOIGIANDONG.Name = "THOIGIANDONG";
@@ -277,13 +277,13 @@ namespace QuanLiHocPhan
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(925, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 23);
+            this.label1.Size = new System.Drawing.Size(466, 30);
             this.label1.TabIndex = 60;
-            this.label1.Text = "QUẢN LÝ LỚP TÍN CHỈ";
+            this.label1.Text = "MỞ ĐĂNG KÝ CHO SINH VIÊN CÁC KHÓA";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dateketthuc
@@ -358,7 +358,7 @@ namespace QuanLiHocPhan
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMoDangKy";
-            this.Text = "frmMoDangKy";
+            this.Text = "Mở Đăng Ký";
             this.Load += new System.EventHandler(this.frmMoDangKy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -13,386 +13,225 @@ namespace QuanLiHocPhan
 {
     public partial class frmDSSVDangKiLTC : Form
     {
-        public int selectedindex { get; set; }
-        
-        public frmDSSVDangKiLTC()
+        public string mssv;
+        private string maLop;
+
+        public frmDSSVDangKiLTC(string mssv, string maLop)
         {
             InitializeComponent();
-        }
-
-        public class Comboboxmonhoc
-        {
-            public string Text { get; set; }
-            public string Value { get; set; }
-
-            public Comboboxmonhoc(string text, string value)
-            {
-                this.Text = text;
-                this.Value = value;
-            }
-
-            public override string ToString()
-            {
-                return Text;
-            }
-        }
-
-        string maltc_th = "";
-        int idnhom_th = 1;
-        DateTime ngaybatdau_th = new DateTime();
-        int tietbatdau_th = 1;
-        int demsosvdangky_th = 0;
-        private void btnexit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void load_thongtindsltc()
-        {
-            string query = "EXEC [SP_LoadFormDangKy] @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" +
-                cbhocky.Text + ", @malop =N'" + Program.frmChinh.txtmalop.Text + "'";
-            Program.ketNoi();
-            try
-            {
-                SqlCommand com = new SqlCommand(query, Program.connection);
-                com.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                tabledangky.DataSource = dt;
-                cbnienkhoa.Enabled = cbhocky.Enabled = btnlaythongtin.Enabled = false;
-                cbmonhoc.Enabled = btnloc.Enabled = true;
-                load_combobox();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex + "");
-            }
-        }
-
-        private void load_thongtindsdk()
-        {
-            string query2 = "EXEC [SP_LOAD_LTC_SV_Dang_Ky] @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" +
-               cbhocky.Text + ", @masv =N'" + Program.frmChinh.txtma.Text + "'";
-            try
-            {
-                SqlCommand command = new SqlCommand(query2, Program.connection);
-                command.CommandType = CommandType.Text;
-                SqlDataAdapter da2 = new SqlDataAdapter(command);
-                DataTable dt2 = new DataTable();
-                da2.Fill(dt2);
-                tabledsdk.DataSource = dt2;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex + "");
-            }
-        }
-
-        private void load_combobox()
-        {
-            cbmonhoc.Items.Clear();
-            Program.ketNoi();
-            try
-            {            
-                String querymonhoc = "select TENMH from dbo.MONHOC";
-                SqlDataReader readermonhoc = Program.execSqlDataReader(querymonhoc);
-                while (readermonhoc.Read())
-                {
-                    Comboboxmonhoc itemmonhoc = new Comboboxmonhoc(readermonhoc.GetString(0), readermonhoc.GetString(0));
-                    cbmonhoc.Items.Add(itemmonhoc);
-                }
-                readermonhoc.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "Lỗi");
-            }
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            load_thongtindsltc();
-            load_thongtindsdk();
-        }
-
-
-        private void btnreset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            load_thongtindsdk();
-            load_thongtindsltc();
-        }
-
-      
-
-        private void btnhuydk_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            DialogResult dlr = MessageBox.Show("Bạn có muốn hủy đăng ký môn học này?", "Thông báo",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (dlr == DialogResult.OK)
-            {
-                huydangky();
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
+            this.mssv = mssv;
+            this.maLop = maLop;
         }
 
         private void frmDSSVDangKiLTC_Load(object sender, EventArgs e)
         {
-            cbnienkhoa.SelectedIndex = 0;
-            cbhocky.SelectedIndex = 0;
-            btndk.Enabled = btnhuydk.Enabled = false;
-            cbmonhoc.Enabled = btnloc.Enabled = false;
+            this.sP_Load_LTC_SV_DangKyTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_Load_LTC_SV_DangKy, mssv);
+
+            string queryLop = "SELECT MALOP as MaLop ,MALOP + ' -- ' + TENLOP AS CT_LOP FROM dbo.LOP ORDER BY KHOAHOC";
+
+            DataTable dt = new DataTable();
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            SqlDataAdapter da = new SqlDataAdapter(queryLop, Program.connection);
+            da.Fill(dt);
+            Program.connection.Close();
+            BindingSource bds = new BindingSource();
+            bds.DataSource = dt;
+            cbChonLop.DataSource = bds;
+            cbChonLop.DisplayMember = "CT_LOP"; cbChonLop.ValueMember = "MaLop";
+
+            cbChonLop.SelectedIndex = cbChonLop.FindString(maLop);
+            this.sP_LoadLTC_LTTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_LoadLTC_LT, maLop);
         }
 
-        private void btnloc_Click(object sender, EventArgs e)
+        private void cbChonLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = "EXEC [SP_TimKiemTheoMonHoc] @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" +
-                cbhocky.Text + ", @tenmh =N'" + cbmonhoc.Text.ToString().Trim() + "'";
-            Program.ketNoi();
+            if (cbChonLop.SelectedIndex != -1)
+            {
+                this.sP_LoadLTC_LTTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_LoadLTC_LT, cbChonLop.SelectedValue.ToString().Trim());
+            }
+        }
+
+     
+        public bool isLopTC_HaveNhomTH(string maLTC)
+        {
+            String query = " SELECT COUNT(1) FROM dbo.CT_LTC WHERE MALTC = @maLTC";
+
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(query, Program.connection);
+            sqlcmd.Parameters.Clear();
+            sqlcmd.Parameters.AddWithValue("@maLTC", maLTC);
+
+            SqlDataReader reader = null;
+
             try
             {
-                SqlCommand com = new SqlCommand(query, Program.connection);
-                com.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                tabledangky.DataSource = dt;
+                reader = sqlcmd.ExecuteReader();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex + "");
+                MessageBox.Show(ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-        }
-        string maltc = "";
-        int idnhom = 0;
-        DateTime ngaybatdau;
-      //  DateTime ngayketthuc;
-        int tietbatdau = 1;
-        int demsosvdangky = 0;
-      
-        String tempmaltc = "";
-        String tempmanhom = "";
-        private void tabledsdk_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            if (e.RowIndex >= 0)
+
+            reader.Read();
+            int result = int.Parse(reader.GetValue(0).ToString());
+            reader.Close();
+
+            if (result <= 1)
             {
+                return false;
+            }
+            return true;
+        }
+
+        public bool isLopTC_Validated(string maLTC, string tenNhom, string mssv)
+        {
+            String query = "DECLARE @return_value int,  @idNhom int; " +
+                "SELECT @idNhom = IDNHOM from NHOM_LTC where CHUTHICH = @tenNhom; " +
+                               "EXEC @return_value = SP_RangBuoc_SVDangKy_LTC " +
+                               "@maLTC, @idNhom, @mssv " +
+                               "SELECT @return_value";
+
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(query, Program.connection);
+            sqlcmd.Parameters.Clear();
+            sqlcmd.Parameters.AddWithValue("@maLTC", maLTC);
+            sqlcmd.Parameters.AddWithValue("@tenNhom", tenNhom);
+            sqlcmd.Parameters.AddWithValue("@mssv", mssv);
+
+            SqlDataReader reader = null;
+
+            try
+            {
+                reader = sqlcmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            reader.Read();
+            int result = int.Parse(reader.GetValue(0).ToString());
+            reader.Close();
+            if (result == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool saveLopTC_SVDangKy(string maLTC, string tenNhom, string mssv)
+        {
+            String query = "Declare @idNhom int; " +
+                "SELECT @idNhom = IDNHOM from NHOM_LTC where CHUTHICH = @tenNhom; " +
+                "INSERT INTO [dbo].[DSSV_LTC]([MALTC],[IDNHOM],[MASV]) VALUES" +
+                "(@maLTC, @idNhom, @mssv )";
+
+            if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(query, Program.connection);
+            sqlcmd.Parameters.Clear();
+            sqlcmd.Parameters.AddWithValue("@maLTC", maLTC);
+            sqlcmd.Parameters.AddWithValue("@tenNhom", tenNhom);
+            sqlcmd.Parameters.AddWithValue("@mssv", mssv);
+
+            SqlDataReader reader = null;
+
+            try
+            {
+                sqlcmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        public void refreshData()
+        {
+            this.sP_Load_LTC_SV_DangKyTableAdapter.Fill(this.qLDSV_HTCDataSet.SP_Load_LTC_SV_DangKy, this.mssv);
+        }
+
+        private void btnXoaMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn loại môn học này ra khỏi danh sách chọn không?", "Thông Báo",
+                       MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                String query = "DELETE FROM dbo.DSSV_LTC WHERE MALTC = @maLTC";
+
+                int[] SelectedRowHandles = gvLoad_LTC_SV_DangKy.GetSelectedRows();
+                string maLTC = (string)gvLoad_LTC_SV_DangKy.GetRowCellValue(SelectedRowHandles[0], gvLoad_LTC_SV_DangKy.Columns["MALTC"]);
+
+                if (Program.connection.State == ConnectionState.Closed) Program.connection.Open();
+                SqlCommand sqlcmd = new SqlCommand(query, Program.connection);
+                sqlcmd.Parameters.Clear();
+                sqlcmd.Parameters.AddWithValue("@maLTC", maLTC);
+
+                SqlDataReader reader = null;
+
                 try
                 {
-                    DataGridViewRow row = this.tabledsdk.Rows[e.RowIndex];
-                    btnhuydk.Enabled = true;
-                    btndk.Enabled = false;
-                    tempmaltc = row.Cells["MALTC1"].Value.ToString();
-                    tempmanhom = row.Cells["CHUTHICH1"].Value.ToString();
-                 //   MessageBox.Show(tempmaltc + "\n"+tempmanhom +"");
-                    
+                    sqlcmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Không thể lấy danh sách này!");
+                    MessageBox.Show(ex.Message, "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                MessageBox.Show("Loại lớp tín chỉ khỏi danh sách chọn môn học thành công", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                refreshData();
             }
         }
 
-        private void dangky()
+        private void btnReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(demsodong == 0)
+            refreshData();
+        }
+
+        private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void gvLoadLTC_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+
+            int[] SelectedRowHandles = gvLoadLTC.GetSelectedRows();
+            string maLTC = (string)gvLoadLTC.GetRowCellValue(SelectedRowHandles[0], gvLoadLTC.Columns["MALTC"]);
+            string tenNhom = "Lớp lý thuyết";
+
+           // Console.WriteLine(maLTC);
+
+            if (!isLopTC_HaveNhomTH(maLTC))
             {
-               maltc_th = "";
-               idnhom_th = 1;
-               ngaybatdau_th = new DateTime();
-                
-               tietbatdau_th = 1;
-               demsosvdangky_th = 0;
-            }    
-            string querydangky = "USE [QLDSV_HTC] DECLARE @return_value int EXEC @return_value = [dbo].[SP_DangKyLTC] @masv =N'" +
-                Program.frmChinh.txtma.Text.ToString().Trim() + "', @maltc =N'" + maltc.Trim() + "', @idnhom =" + idnhom +
-                ", @sosvdangky =" + demsosvdangky +", @thoigianbatdau ='" + ngaybatdau.ToString("yyyy-MM-dd") + "', @tietbatdau =" + tietbatdau
-                + " SELECT 'Return Value' = @return_value";
-            Program.ketNoi();
-            try
-            {
-                SqlCommand com = new SqlCommand(querydangky, Program.connection);
-                Program.myReader = com.ExecuteReader();
-                while (Program.myReader.Read())
+                if (isLopTC_Validated(maLTC, tenNhom, mssv))
                 {
-                    String str = Program.myReader[0].ToString();
-                    if (String.Equals(str, "0"))
+                    if (MessageBox.Show("Bạn có chắc muốn đăng ký lớp tín chỉ này không?", "Thông Báo",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        MessageBox.Show("Đăng ký lớp lý thuyết thành công!");
-                        load_thongtindsltc();
-                        load_thongtindsdk();
-                        btndk.Enabled = btnhuydk.Enabled = false;
-                    }
-                    if (String.Equals(str, "1"))
-                    {
-                        MessageBox.Show("Đăng ký lớp thực hành thành công!");
-                        load_thongtindsltc();
-                        load_thongtindsdk();
-                        btndk.Enabled = btnhuydk.Enabled = false;
-                    }
-                    if (String.Equals(str, "-1"))
-                    {
-                        MessageBox.Show("Trùng thời gian học với môn khác!");
-
-                    }
-                    if (String.Equals(str, "-2"))
-                    {
-                        MessageBox.Show("Bạn đã đăng ký thực hành môn này!");
-
-                    }
-                    if (String.Equals(str, "-3"))
-                    {
-                        MessageBox.Show("Lớp này đã đăng ký đủ! Vui lòng chọn lớp khác^^");
-
+                        if (saveLopTC_SVDangKy(maLTC, tenNhom, mssv))
+                        {
+                            MessageBox.Show("Đăng ký lớp tín chỉ thành công", "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            refreshData();
+                        }
                     }
 
                 }
-                Program.myReader.Close();
-               
-            }
-            catch (Exception ex)
-            {
-                 MessageBox.Show(ex + "");
-               // MessageBox.Show("Lỗi!");
-            }
-        }
-
-        private void huydangky()
-        {
-            string queryhuydangky = "EXEC [SP_HuyDangKyLTC] @maltc =N'" + tempmaltc.Trim() +
-               "', @chuthich =N'" + tempmanhom.Trim() + "', @masv =N'" + Program.frmChinh.txtma.Text.ToString().Trim() +"'";
-            try
-            {
-                SqlCommand com = new SqlCommand(queryhuydangky, Program.connection);
-                com.ExecuteNonQuery();
-                load_thongtindsdk();
-                
-                btndk.Enabled = btnhuydk.Enabled = false;
-                MessageBox.Show("Hủy đăng ký thành công!");    
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex + "");
-            }
-        }
-        private void btndk_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            DialogResult dlr = MessageBox.Show("Bạn có muốn đăng ký môn học này?", "Thông báo",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (dlr == DialogResult.OK)
-            {
-                dangky();
-            }
-            else
-            {
                 return;
             }
-        }
 
-        int demsodong = 0;
-        private void tabledangky_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            if (isLopTC_Validated(maLTC, tenNhom, mssv))
             {
-                try
-                {
-                    btnhuydk.Enabled = false;
-                    btndk.Enabled = true;
-                    DataGridViewRow row = this.tabledangky.Rows[e.RowIndex];
-                     maltc = row.Cells["MALTC2"].Value.ToString();
-                      idnhom = int.Parse(row.Cells["IDNHOM2"].Value.ToString());
-                    try
-                    {
-                        ngaybatdau = DateTime.Parse(row.Cells["THOIGIANBATDAU2"].Value.ToString());
-                    }
-                    catch(Exception)
-                    {
-                       // MessageBox.Show("Lỗi thời gian!");
-                    }
-                       demsosvdangky = int.Parse(row.Cells["SOSVDANGKY2"].Value.ToString());
-                      tietbatdau = int.Parse(row.Cells["TIETBATDAU2"].Value.ToString());
-                    // nếu ltc có thực hành sẽ show ra
-                     load_formthuchanh(row.Cells["MALTC2"].Value.ToString());
-
-                    // nếu có lớp thực hành thì tắt đăng ký và ngược lại
-                    demsodong = tablethuchanh.RowCount;
-                   // MessageBox.Show(demsodong + "");
-                    if (demsodong > 0)
-                    {
-                        btnhuydk.Enabled = false;
-                        btndk.Enabled = false;
-                        demsodong = 0;
-                    }
-                    else
-                    {
-                        btnhuydk.Enabled = false;
-                        btndk.Enabled = true;
-                        demsodong = 0;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                     //  MessageBox.Show("" +ex);
-                    //  MessageBox.Show("Không thể lấy danh sách này!");
-                }
-            }
-        }
-
-        private void load_formthuchanh(String maltc_th)
-        {
-            tablethuchanh.Refresh();
-            string query = "EXEC [LoadFormDangKyThucHanh] @nienkhoa =N'" + cbnienkhoa.Text + "', @hocky =" +
-                cbhocky.Text + ", @maltc =N'" + maltc_th + "'";
-            Program.ketNoi();
-            try
-            {
-                SqlCommand com = new SqlCommand(query, Program.connection);
-                com.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(com);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                tablethuchanh.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex + "");
-            }
-        }
-
-        
-        private void tablethuchanh_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                try
-                {
-                    DataGridViewRow row = this.tablethuchanh.Rows[e.RowIndex];
-                    btnhuydk.Enabled = false;
-                    btndk.Enabled = true;
-                    maltc_th = row.Cells["MALTC3"].Value.ToString();
-                    idnhom_th = int.Parse(row.Cells["IDNHOM3"].Value.ToString());
-                    ngaybatdau_th = DateTime.Parse(row.Cells["THOIGIANBATDAU3"].Value.ToString());
-                    demsosvdangky_th = int.Parse(row.Cells["SOSVDANGKY3"].Value.ToString());
-                    tietbatdau_th = int.Parse(row.Cells["TIETBATDAU3"].Value.ToString());
-                }
-                catch (Exception ex)
-                {
-                   //   MessageBox.Show("" +ex);
-                    //  MessageBox.Show("Không thể lấy danh sách này!");
-                }
+                new popUpDangKyLTC_TH(maLTC).Show();
             }
         }
     }

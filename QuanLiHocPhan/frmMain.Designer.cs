@@ -218,6 +218,7 @@ namespace QuanLiHocPhan
             // btnTKB
             // 
             this.btnTKB.Caption = "Thời Khóa Biểu";
+            this.btnTKB.Enabled = false;
             this.btnTKB.Id = 9;
             this.btnTKB.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTKB.ImageOptions.SvgImage")));
             this.btnTKB.Name = "btnTKB";
@@ -541,7 +542,6 @@ namespace QuanLiHocPhan
         private DevExpress.XtraBars.BarButtonItem btnDSSV;
         private DevExpress.XtraBars.BarButtonItem btnLTC;
         private DevExpress.XtraBars.BarButtonItem btnDSDHP;
-        private DevExpress.XtraBars.BarButtonItem btnTKB;
         private DevExpress.XtraBars.BarButtonItem btnHP;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribNhapLieu;
@@ -584,6 +584,7 @@ namespace QuanLiHocPhan
         private DevExpress.XtraBars.BarButtonItem frmmodangki;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribmodangky;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        public DevExpress.XtraBars.BarButtonItem btnTKB;
     }
 }
 

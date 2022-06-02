@@ -46,6 +46,13 @@ namespace QuanLiHocPhan
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tablemonhoc = new System.Windows.Forms.DataGridView();
+            this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TENMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTC_LT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOTC_TH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
             this.spinnerSoTC_TH = new DevExpress.XtraEditors.SpinEdit();
             this.spinnerSoTC_LT = new DevExpress.XtraEditors.SpinEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,23 +60,16 @@ namespace QuanLiHocPhan
             this.txttenmh = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tablemonhoc = new System.Windows.Forms.DataGridView();
-            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
-            this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mONHOCTableAdapter = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.MONHOCTableAdapter();
-            this.MAMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TENMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTC_LT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOTC_TH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             sOTIET_LTLabel = new System.Windows.Forms.Label();
             sOTIET_THLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_TH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_LT.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // sOTIET_LTLabel
@@ -231,6 +231,71 @@ namespace QuanLiHocPhan
             this.panel1.Size = new System.Drawing.Size(1710, 810);
             this.panel1.TabIndex = 4;
             // 
+            // tablemonhoc
+            // 
+            this.tablemonhoc.AllowUserToAddRows = false;
+            this.tablemonhoc.AllowUserToDeleteRows = false;
+            this.tablemonhoc.AutoGenerateColumns = false;
+            this.tablemonhoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tablemonhoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablemonhoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MAMH,
+            this.TENMH,
+            this.SOTC_LT,
+            this.SOTC_TH});
+            this.tablemonhoc.DataSource = this.mONHOCBindingSource;
+            this.tablemonhoc.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tablemonhoc.Location = new System.Drawing.Point(0, 347);
+            this.tablemonhoc.Name = "tablemonhoc";
+            this.tablemonhoc.ReadOnly = true;
+            this.tablemonhoc.RowHeadersWidth = 51;
+            this.tablemonhoc.RowTemplate.Height = 24;
+            this.tablemonhoc.Size = new System.Drawing.Size(1710, 463);
+            this.tablemonhoc.TabIndex = 36;
+            this.tablemonhoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablemonhoc_CellClick);
+            // 
+            // MAMH
+            // 
+            this.MAMH.DataPropertyName = "MAMH";
+            this.MAMH.HeaderText = "Mã môn học";
+            this.MAMH.MinimumWidth = 6;
+            this.MAMH.Name = "MAMH";
+            this.MAMH.ReadOnly = true;
+            // 
+            // TENMH
+            // 
+            this.TENMH.DataPropertyName = "TENMH";
+            this.TENMH.HeaderText = "Tên môn học";
+            this.TENMH.MinimumWidth = 6;
+            this.TENMH.Name = "TENMH";
+            this.TENMH.ReadOnly = true;
+            // 
+            // SOTC_LT
+            // 
+            this.SOTC_LT.DataPropertyName = "SOTC_LT";
+            this.SOTC_LT.HeaderText = "Số tín chỉ lý thuyết";
+            this.SOTC_LT.MinimumWidth = 6;
+            this.SOTC_LT.Name = "SOTC_LT";
+            this.SOTC_LT.ReadOnly = true;
+            // 
+            // SOTC_TH
+            // 
+            this.SOTC_TH.DataPropertyName = "SOTC_TH";
+            this.SOTC_TH.HeaderText = "Số tín chỉ thực hành";
+            this.SOTC_TH.MinimumWidth = 6;
+            this.SOTC_TH.Name = "SOTC_TH";
+            this.SOTC_TH.ReadOnly = true;
+            // 
+            // mONHOCBindingSource
+            // 
+            this.mONHOCBindingSource.DataMember = "MONHOC";
+            this.mONHOCBindingSource.DataSource = this.qLDSV_HTCDataSet;
+            // 
+            // qLDSV_HTCDataSet
+            // 
+            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
+            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // spinnerSoTC_TH
             // 
             this.spinnerSoTC_TH.EditValue = new decimal(new int[] {
@@ -267,11 +332,11 @@ namespace QuanLiHocPhan
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(727, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(489, 23);
+            this.label1.Size = new System.Drawing.Size(615, 30);
             this.label1.TabIndex = 34;
             this.label1.Text = "DANH SÁCH MÔN HỌC KHOA CÔNG NGHỆ THÔNG TIN";
             // 
@@ -307,74 +372,9 @@ namespace QuanLiHocPhan
             this.label3.TabIndex = 21;
             this.label3.Text = "Mã Môn Học:";
             // 
-            // tablemonhoc
-            // 
-            this.tablemonhoc.AllowUserToAddRows = false;
-            this.tablemonhoc.AllowUserToDeleteRows = false;
-            this.tablemonhoc.AutoGenerateColumns = false;
-            this.tablemonhoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tablemonhoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablemonhoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MAMH,
-            this.TENMH,
-            this.SOTC_LT,
-            this.SOTC_TH});
-            this.tablemonhoc.DataSource = this.mONHOCBindingSource;
-            this.tablemonhoc.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tablemonhoc.Location = new System.Drawing.Point(0, 347);
-            this.tablemonhoc.Name = "tablemonhoc";
-            this.tablemonhoc.ReadOnly = true;
-            this.tablemonhoc.RowHeadersWidth = 51;
-            this.tablemonhoc.RowTemplate.Height = 24;
-            this.tablemonhoc.Size = new System.Drawing.Size(1710, 463);
-            this.tablemonhoc.TabIndex = 36;
-            this.tablemonhoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablemonhoc_CellClick);
-            // 
-            // qLDSV_HTCDataSet
-            // 
-            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
-            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mONHOCBindingSource
-            // 
-            this.mONHOCBindingSource.DataMember = "MONHOC";
-            this.mONHOCBindingSource.DataSource = this.qLDSV_HTCDataSet;
-            // 
             // mONHOCTableAdapter
             // 
             this.mONHOCTableAdapter.ClearBeforeFill = true;
-            // 
-            // MAMH
-            // 
-            this.MAMH.DataPropertyName = "MAMH";
-            this.MAMH.HeaderText = "MAMH";
-            this.MAMH.MinimumWidth = 6;
-            this.MAMH.Name = "MAMH";
-            this.MAMH.ReadOnly = true;
-            // 
-            // TENMH
-            // 
-            this.TENMH.DataPropertyName = "TENMH";
-            this.TENMH.HeaderText = "TENMH";
-            this.TENMH.MinimumWidth = 6;
-            this.TENMH.Name = "TENMH";
-            this.TENMH.ReadOnly = true;
-            // 
-            // SOTC_LT
-            // 
-            this.SOTC_LT.DataPropertyName = "SOTC_LT";
-            this.SOTC_LT.HeaderText = "SOTC_LT";
-            this.SOTC_LT.MinimumWidth = 6;
-            this.SOTC_LT.Name = "SOTC_LT";
-            this.SOTC_LT.ReadOnly = true;
-            // 
-            // SOTC_TH
-            // 
-            this.SOTC_TH.DataPropertyName = "SOTC_TH";
-            this.SOTC_TH.HeaderText = "SOTC_TH";
-            this.SOTC_TH.MinimumWidth = 6;
-            this.SOTC_TH.Name = "SOTC_TH";
-            this.SOTC_TH.ReadOnly = true;
             // 
             // frmMH
             // 
@@ -392,11 +392,11 @@ namespace QuanLiHocPhan
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_TH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerSoTC_LT.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablemonhoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

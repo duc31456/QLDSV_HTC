@@ -54,17 +54,6 @@ namespace QuanLiHocPhan
             this.cbmamh = new System.Windows.Forms.ComboBox();
             this.cbnienkhoa = new System.Windows.Forms.ComboBox();
             this.tableltc = new System.Windows.Forms.DataGridView();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
-            this.sPQuanLyLTCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sP_QuanLyLTCTableAdapter = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.SP_QuanLyLTCTableAdapter();
             this.MALTC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TENMH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHUTHICH = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +62,17 @@ namespace QuanLiHocPhan
             this.HOCKY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MALOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SISO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sPQuanLyLTCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLDSV_HTCDataSet = new QuanLiHocPhan.QLDSV_HTCDataSet();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.sP_QuanLyLTCTableAdapter = new QuanLiHocPhan.QLDSV_HTCDataSetTableAdapters.SP_QuanLyLTCTableAdapter();
             mALOPLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -80,8 +80,8 @@ namespace QuanLiHocPhan
             ((System.ComponentModel.ISupportInitialize)(this.numSoTC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numhocky)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableltc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPQuanLyLTCBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // mALOPLabel
@@ -375,6 +375,80 @@ namespace QuanLiHocPhan
             this.tableltc.TabIndex = 16;
             this.tableltc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableltc_CellClick);
             // 
+            // MALTC
+            // 
+            this.MALTC.DataPropertyName = "MALTC";
+            this.MALTC.HeaderText = "Mã Lớp Tín Chỉ";
+            this.MALTC.MinimumWidth = 6;
+            this.MALTC.Name = "MALTC";
+            this.MALTC.ReadOnly = true;
+            // 
+            // TENMH
+            // 
+            this.TENMH.DataPropertyName = "TENMH";
+            this.TENMH.HeaderText = "Tên môn học";
+            this.TENMH.MinimumWidth = 6;
+            this.TENMH.Name = "TENMH";
+            this.TENMH.ReadOnly = true;
+            // 
+            // CHUTHICH
+            // 
+            this.CHUTHICH.DataPropertyName = "CHUTHICH";
+            this.CHUTHICH.HeaderText = "Nhóm";
+            this.CHUTHICH.MinimumWidth = 6;
+            this.CHUTHICH.Name = "CHUTHICH";
+            this.CHUTHICH.ReadOnly = true;
+            // 
+            // SOTC
+            // 
+            this.SOTC.DataPropertyName = "SOTC";
+            this.SOTC.HeaderText = "Số Tín Chỉ";
+            this.SOTC.MinimumWidth = 6;
+            this.SOTC.Name = "SOTC";
+            this.SOTC.ReadOnly = true;
+            // 
+            // NIENKHOA
+            // 
+            this.NIENKHOA.DataPropertyName = "NIENKHOA";
+            this.NIENKHOA.HeaderText = "Niên Khóa";
+            this.NIENKHOA.MinimumWidth = 6;
+            this.NIENKHOA.Name = "NIENKHOA";
+            this.NIENKHOA.ReadOnly = true;
+            // 
+            // HOCKY
+            // 
+            this.HOCKY.DataPropertyName = "HOCKY";
+            this.HOCKY.HeaderText = "Học Kỳ";
+            this.HOCKY.MinimumWidth = 6;
+            this.HOCKY.Name = "HOCKY";
+            this.HOCKY.ReadOnly = true;
+            // 
+            // MALOP
+            // 
+            this.MALOP.DataPropertyName = "MALOP";
+            this.MALOP.HeaderText = "Mã Lớp";
+            this.MALOP.MinimumWidth = 6;
+            this.MALOP.Name = "MALOP";
+            this.MALOP.ReadOnly = true;
+            // 
+            // SISO
+            // 
+            this.SISO.DataPropertyName = "SISO";
+            this.SISO.HeaderText = "Sĩ Số";
+            this.SISO.MinimumWidth = 6;
+            this.SISO.Name = "SISO";
+            this.SISO.ReadOnly = true;
+            // 
+            // sPQuanLyLTCBindingSource
+            // 
+            this.sPQuanLyLTCBindingSource.DataMember = "SP_QuanLyLTC";
+            this.sPQuanLyLTCBindingSource.DataSource = this.qLDSV_HTCDataSet;
+            // 
+            // qLDSV_HTCDataSet
+            // 
+            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
+            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -442,91 +516,17 @@ namespace QuanLiHocPhan
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Cambria", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(977, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 23);
+            this.label1.Size = new System.Drawing.Size(261, 30);
             this.label1.TabIndex = 4;
             this.label1.Text = "QUẢN LÝ LỚP TÍN CHỈ";
-            // 
-            // qLDSV_HTCDataSet
-            // 
-            this.qLDSV_HTCDataSet.DataSetName = "QLDSV_HTCDataSet";
-            this.qLDSV_HTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sPQuanLyLTCBindingSource
-            // 
-            this.sPQuanLyLTCBindingSource.DataMember = "SP_QuanLyLTC";
-            this.sPQuanLyLTCBindingSource.DataSource = this.qLDSV_HTCDataSet;
             // 
             // sP_QuanLyLTCTableAdapter
             // 
             this.sP_QuanLyLTCTableAdapter.ClearBeforeFill = true;
-            // 
-            // MALTC
-            // 
-            this.MALTC.DataPropertyName = "MALTC";
-            this.MALTC.HeaderText = "Mã Lớp Tín Chỉ";
-            this.MALTC.MinimumWidth = 6;
-            this.MALTC.Name = "MALTC";
-            this.MALTC.ReadOnly = true;
-            // 
-            // TENMH
-            // 
-            this.TENMH.DataPropertyName = "TENMH";
-            this.TENMH.HeaderText = "Tên môn học";
-            this.TENMH.MinimumWidth = 6;
-            this.TENMH.Name = "TENMH";
-            this.TENMH.ReadOnly = true;
-            // 
-            // CHUTHICH
-            // 
-            this.CHUTHICH.DataPropertyName = "CHUTHICH";
-            this.CHUTHICH.HeaderText = "Nhóm";
-            this.CHUTHICH.MinimumWidth = 6;
-            this.CHUTHICH.Name = "CHUTHICH";
-            this.CHUTHICH.ReadOnly = true;
-            // 
-            // SOTC
-            // 
-            this.SOTC.DataPropertyName = "SOTC";
-            this.SOTC.HeaderText = "Số Tín Chỉ";
-            this.SOTC.MinimumWidth = 6;
-            this.SOTC.Name = "SOTC";
-            this.SOTC.ReadOnly = true;
-            // 
-            // NIENKHOA
-            // 
-            this.NIENKHOA.DataPropertyName = "NIENKHOA";
-            this.NIENKHOA.HeaderText = "Niên Khóa";
-            this.NIENKHOA.MinimumWidth = 6;
-            this.NIENKHOA.Name = "NIENKHOA";
-            this.NIENKHOA.ReadOnly = true;
-            // 
-            // HOCKY
-            // 
-            this.HOCKY.DataPropertyName = "HOCKY";
-            this.HOCKY.HeaderText = "Học Kỳ";
-            this.HOCKY.MinimumWidth = 6;
-            this.HOCKY.Name = "HOCKY";
-            this.HOCKY.ReadOnly = true;
-            // 
-            // MALOP
-            // 
-            this.MALOP.DataPropertyName = "MALOP";
-            this.MALOP.HeaderText = "Mã Lớp";
-            this.MALOP.MinimumWidth = 6;
-            this.MALOP.Name = "MALOP";
-            this.MALOP.ReadOnly = true;
-            // 
-            // SISO
-            // 
-            this.SISO.DataPropertyName = "SISO";
-            this.SISO.HeaderText = "Sĩ Số";
-            this.SISO.MinimumWidth = 6;
-            this.SISO.Name = "SISO";
-            this.SISO.ReadOnly = true;
             // 
             // frmQuanLiLTC
             // 
@@ -549,8 +549,8 @@ namespace QuanLiHocPhan
             ((System.ComponentModel.ISupportInitialize)(this.numSoTC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numhocky)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableltc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPQuanLyLTCBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLDSV_HTCDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -206,9 +206,9 @@ namespace QuanLiHocPhan
             }
             else
             {
-                frmDSSVDangKiLTC f = new frmDSSVDangKiLTC();
-                f.MdiParent = this;
-                f.Show();
+                Program.frmDangKyLTC = new frmDSSVDangKiLTC(Program.frmChinh.txtma.Text, Program.frmChinh.txtmalop.Text);
+                Program.frmDangKyLTC.MdiParent = this;
+                Program.frmDangKyLTC.Show();
             }
         }
 

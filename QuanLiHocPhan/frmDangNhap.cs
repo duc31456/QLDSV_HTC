@@ -114,6 +114,7 @@ namespace QuanLiHocPhan
                         {
                             MessageBox.Show("Đăng nhập thành công với vai trò sinh viên " + txtusername.Text);
                             Program.frmChinh.kiemtrangaydangki();
+                            load_tkb();
                         }    
                         this.Close();    
                 }    
@@ -124,6 +125,20 @@ namespace QuanLiHocPhan
                 MessageBox.Show("Lỗi load dữ liệu!" + ex);
             }
 
+        }
+        public void load_tkb()
+        {
+            String querytkb = "select MALTC, IDNHOM from dbo.DSSV_LTC where MASV = N'"+Program.frmChinh.txtma+"'";
+            SqlDataReader readertkb = Program.execSqlDataReader(querytkb);
+            if (readertkb.HasRows)
+            {
+                Program.frmChinh.btnTKB.Enabled = true;
+            }
+            else
+            {
+                Program.frmChinh.btnTKB.Enabled = false;
+            }
+            readertkb.Close();
         }
     }
 }
